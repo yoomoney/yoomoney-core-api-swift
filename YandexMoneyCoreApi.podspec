@@ -16,7 +16,7 @@ Pod::Spec.new do |spec|
 
   spec.ios.deployment_target  = '9.0'
 
-  spec.source_files  = 'YandexMoneyUI/**/*.swift'
+  spec.source_files  = 'YandexMoneyCoreApi/**/*.swift'
 
   spec.ios.framework  = 'UIKit'
 
