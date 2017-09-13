@@ -1,6 +1,7 @@
-/* The MIT License
+/*
+ * The MIT License (MIT)
  *
- * Copyright (c) 2017 NBCO Yandex.Money LLC
+ * Copyright (c) 2016 NBCO Yandex.Money LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,31 +22,12 @@
  * THE SOFTWARE.
  */
 
-import XCTest
-@testable import YandexMoneyCoreApi
 
-class YandexMoneyCoreApiTests: XCTestCase {
-    
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+import Foundation
+
+// MARK: - Equatable
+extension Dictionary: Equatable {
+    public static func ==(lhs: Dictionary, rhs: Dictionary) -> Bool {
+        return NSDictionary(dictionary: lhs).isEqual(to: rhs)
     }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
-    
 }

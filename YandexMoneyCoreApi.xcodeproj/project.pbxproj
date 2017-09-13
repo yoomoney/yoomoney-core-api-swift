@@ -8,8 +8,30 @@
 
 /* Begin PBXBuildFile section */
 		DD76810D1F6817EA001C18CE /* YandexMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YandexMoneyCoreApi.framework */; };
-		DD7681121F6817EA001C18CE /* YandexMoneyCoreApiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7681111F6817EA001C18CE /* YandexMoneyCoreApiTests.swift */; };
 		DD7681141F6817EA001C18CE /* YandexMoneyCoreApi.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DD7AFA871F6964580047E9DF /* IssuerClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7AFA861F6964580047E9DF /* IssuerClaim.swift */; };
+		DD7AFA891F6964A50047E9DF /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7AFA881F6964A50047E9DF /* Result.swift */; };
+		DD9234D41F6968DC00AFD229 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234D31F6968DC00AFD229 /* ApiMethod.swift */; };
+		DD9234E01F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */; };
+		DD9234E11F696D6D00AFD229 /* JwsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DD1F696D6D00AFD229 /* JwsTests.swift */; };
+		DD9234E21F696D6D00AFD229 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DF1F696D6D00AFD229 /* String+Tools.swift */; };
+		DD9234E41F696E4D00AFD229 /* XCTTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E31F696E4D00AFD229 /* XCTTools.swift */; };
+		DD9234E61F696F7700AFD229 /* Dictionary+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E51F696F7700AFD229 /* Dictionary+Tools.swift */; };
+		DDB207431F694F1C007163CE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207421F694F1C007163CE /* Alamofire.framework */; };
+		DDB207461F695203007163CE /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207451F695203007163CE /* Gloss.framework */; };
+		DDB207FA1F695320007163CE /* ApiSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207901F695320007163CE /* ApiSession.swift */; };
+		DDB207FC1F695320007163CE /* HostsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207921F695320007163CE /* HostsProvider.swift */; };
+		DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207931F695320007163CE /* OAuthTokenProvider.swift */; };
+		DDB207FF1F695320007163CE /* ResponseWithCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207951F695320007163CE /* ResponseWithCustomError.swift */; };
+		DDB208001F695320007163CE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207961F695320007163CE /* Task.swift */; };
+		DDB208011F695320007163CE /* JwsEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207981F695320007163CE /* JwsEncoding.swift */; };
+		DDB208021F695320007163CE /* UrlEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207991F695320007163CE /* UrlEncoding.swift */; };
+		DDB208031F695320007163CE /* ApiResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB2079B1F695320007163CE /* ApiResponseError.swift */; };
+		DDB208251F695320007163CE /* TaskLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207C31F695320007163CE /* TaskLogger.swift */; };
+		DDB208271F69586B007163CE /* GMEllipticCurveCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB208261F69586B007163CE /* GMEllipticCurveCrypto.framework */; };
+		DDF949571F697355001A2D2B /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207421F694F1C007163CE /* Alamofire.framework */; };
+		DDF949581F697355001A2D2B /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207451F695203007163CE /* Gloss.framework */; };
+		DDF949591F697355001A2D2B /* GMEllipticCurveCrypto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB208261F69586B007163CE /* GMEllipticCurveCrypto.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +49,27 @@
 		DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YandexMoneyCoreApi.h; sourceTree = "<group>"; };
 		DD7681071F6817EA001C18CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DD76810C1F6817EA001C18CE /* YandexMoneyCoreApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YandexMoneyCoreApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DD7681111F6817EA001C18CE /* YandexMoneyCoreApiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YandexMoneyCoreApiTests.swift; sourceTree = "<group>"; };
 		DD7681131F6817EA001C18CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD7AFA861F6964580047E9DF /* IssuerClaim.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssuerClaim.swift; sourceTree = "<group>"; };
+		DD7AFA881F6964A50047E9DF /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		DD9234D31F6968DC00AFD229 /* ApiMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiMethod.swift; sourceTree = "<group>"; };
+		DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSessionRequestUrlTests.swift; sourceTree = "<group>"; };
+		DD9234DD1F696D6D00AFD229 /* JwsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JwsTests.swift; sourceTree = "<group>"; };
+		DD9234DF1F696D6D00AFD229 /* String+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Tools.swift"; sourceTree = "<group>"; };
+		DD9234E31F696E4D00AFD229 /* XCTTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XCTTools.swift; sourceTree = "<group>"; };
+		DD9234E51F696F7700AFD229 /* Dictionary+Tools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Tools.swift"; sourceTree = "<group>"; };
+		DDB207421F694F1C007163CE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		DDB207451F695203007163CE /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
+		DDB207901F695320007163CE /* ApiSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSession.swift; sourceTree = "<group>"; };
+		DDB207921F695320007163CE /* HostsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsProvider.swift; sourceTree = "<group>"; };
+		DDB207931F695320007163CE /* OAuthTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTokenProvider.swift; sourceTree = "<group>"; };
+		DDB207951F695320007163CE /* ResponseWithCustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseWithCustomError.swift; sourceTree = "<group>"; };
+		DDB207961F695320007163CE /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		DDB207981F695320007163CE /* JwsEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JwsEncoding.swift; sourceTree = "<group>"; };
+		DDB207991F695320007163CE /* UrlEncoding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UrlEncoding.swift; sourceTree = "<group>"; };
+		DDB2079B1F695320007163CE /* ApiResponseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponseError.swift; sourceTree = "<group>"; };
+		DDB207C31F695320007163CE /* TaskLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskLogger.swift; sourceTree = "<group>"; };
+		DDB208261F69586B007163CE /* GMEllipticCurveCrypto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GMEllipticCurveCrypto.framework; path = Carthage/Build/iOS/GMEllipticCurveCrypto.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +77,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDB207461F695203007163CE /* Gloss.framework in Frameworks */,
+				DDB207431F694F1C007163CE /* Alamofire.framework in Frameworks */,
+				DDB208271F69586B007163CE /* GMEllipticCurveCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +88,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD76810D1F6817EA001C18CE /* YandexMoneyCoreApi.framework in Frameworks */,
+				DDF949571F697355001A2D2B /* Alamofire.framework in Frameworks */,
+				DDF949581F697355001A2D2B /* Gloss.framework in Frameworks */,
+				DDF949591F697355001A2D2B /* GMEllipticCurveCrypto.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +103,7 @@
 				DD7681051F6817EA001C18CE /* YandexMoneyCoreApi */,
 				DD7681101F6817EA001C18CE /* YandexMoneyCoreApiTests */,
 				DD7681041F6817EA001C18CE /* Products */,
+				DDB207411F694F1C007163CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +119,11 @@
 		DD7681051F6817EA001C18CE /* YandexMoneyCoreApi */ = {
 			isa = PBXGroup;
 			children = (
+				DD7AFA881F6964A50047E9DF /* Result.swift */,
+				DDB2078C1F695320007163CE /* Core */,
+				DDB207971F695320007163CE /* Encoding */,
+				DDB2079A1F695320007163CE /* Error */,
+				DDB207BF1F695320007163CE /* Utility */,
 				DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */,
 				DD7681071F6817EA001C18CE /* Info.plist */,
 			);
@@ -80,10 +133,95 @@
 		DD7681101F6817EA001C18CE /* YandexMoneyCoreApiTests */ = {
 			isa = PBXGroup;
 			children = (
-				DD7681111F6817EA001C18CE /* YandexMoneyCoreApiTests.swift */,
+				DD9234D91F696D6D00AFD229 /* Tests */,
+				DD9234DE1F696D6D00AFD229 /* Utility */,
 				DD7681131F6817EA001C18CE /* Info.plist */,
 			);
 			path = YandexMoneyCoreApiTests;
+			sourceTree = "<group>";
+		};
+		DD9234D91F696D6D00AFD229 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				DD9234DA1F696D6D00AFD229 /* ApiSession */,
+				DD9234DC1F696D6D00AFD229 /* JWS */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		DD9234DA1F696D6D00AFD229 /* ApiSession */ = {
+			isa = PBXGroup;
+			children = (
+				DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */,
+			);
+			path = ApiSession;
+			sourceTree = "<group>";
+		};
+		DD9234DC1F696D6D00AFD229 /* JWS */ = {
+			isa = PBXGroup;
+			children = (
+				DD9234DD1F696D6D00AFD229 /* JwsTests.swift */,
+			);
+			path = JWS;
+			sourceTree = "<group>";
+		};
+		DD9234DE1F696D6D00AFD229 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DD9234E51F696F7700AFD229 /* Dictionary+Tools.swift */,
+				DD9234E31F696E4D00AFD229 /* XCTTools.swift */,
+				DD9234DF1F696D6D00AFD229 /* String+Tools.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
+		DDB207411F694F1C007163CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DDB208261F69586B007163CE /* GMEllipticCurveCrypto.framework */,
+				DDB207451F695203007163CE /* Gloss.framework */,
+				DDB207421F694F1C007163CE /* Alamofire.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DDB2078C1F695320007163CE /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				DDB207901F695320007163CE /* ApiSession.swift */,
+				DD9234D31F6968DC00AFD229 /* ApiMethod.swift */,
+				DDB207921F695320007163CE /* HostsProvider.swift */,
+				DDB207931F695320007163CE /* OAuthTokenProvider.swift */,
+				DDB207951F695320007163CE /* ResponseWithCustomError.swift */,
+				DDB207961F695320007163CE /* Task.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		DDB207971F695320007163CE /* Encoding */ = {
+			isa = PBXGroup;
+			children = (
+				DD7AFA861F6964580047E9DF /* IssuerClaim.swift */,
+				DDB207981F695320007163CE /* JwsEncoding.swift */,
+				DDB207991F695320007163CE /* UrlEncoding.swift */,
+			);
+			path = Encoding;
+			sourceTree = "<group>";
+		};
+		DDB2079A1F695320007163CE /* Error */ = {
+			isa = PBXGroup;
+			children = (
+				DDB2079B1F695320007163CE /* ApiResponseError.swift */,
+			);
+			path = Error;
+			sourceTree = "<group>";
+		};
+		DDB207BF1F695320007163CE /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DDB207C31F695320007163CE /* TaskLogger.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,6 +246,7 @@
 				DD7680FF1F6817EA001C18CE /* Frameworks */,
 				DD7681001F6817EA001C18CE /* Headers */,
 				DD7681011F6817EA001C18CE /* Resources */,
+				DDB207441F694F5A007163CE /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -125,6 +264,7 @@
 				DD7681081F6817EA001C18CE /* Sources */,
 				DD7681091F6817EA001C18CE /* Frameworks */,
 				DD76810A1F6817EA001C18CE /* Resources */,
+				DDF9495A1F697366001A2D2B /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -148,6 +288,7 @@
 				TargetAttributes = {
 					DD7681021F6817EA001C18CE = {
 						CreatedOnToolsVersion = 8.3.3;
+						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 					DD76810B1F6817EA001C18CE = {
@@ -191,11 +332,60 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		DDB207441F694F5A007163CE /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Gloss.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GMEllipticCurveCrypto.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+		DDF9495A1F697366001A2D2B /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Gloss.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/GMEllipticCurveCrypto.framework",
+			);
+			name = Carthage;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DD7680FE1F6817EA001C18CE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD7AFA891F6964A50047E9DF /* Result.swift in Sources */,
+				DD9234D41F6968DC00AFD229 /* ApiMethod.swift in Sources */,
+				DDB208031F695320007163CE /* ApiResponseError.swift in Sources */,
+				DDB208021F695320007163CE /* UrlEncoding.swift in Sources */,
+				DDB208011F695320007163CE /* JwsEncoding.swift in Sources */,
+				DDB207FA1F695320007163CE /* ApiSession.swift in Sources */,
+				DD7AFA871F6964580047E9DF /* IssuerClaim.swift in Sources */,
+				DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */,
+				DDB208001F695320007163CE /* Task.swift in Sources */,
+				DDB207FC1F695320007163CE /* HostsProvider.swift in Sources */,
+				DDB207FF1F695320007163CE /* ResponseWithCustomError.swift in Sources */,
+				DDB208251F695320007163CE /* TaskLogger.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,7 +393,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD7681121F6817EA001C18CE /* YandexMoneyCoreApiTests.swift in Sources */,
+				DD9234E21F696D6D00AFD229 /* String+Tools.swift in Sources */,
+				DD9234E01F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift in Sources */,
+				DD9234E61F696F7700AFD229 /* Dictionary+Tools.swift in Sources */,
+				DD9234E41F696E4D00AFD229 /* XCTTools.swift in Sources */,
+				DD9234E11F696D6D00AFD229 /* JwsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +454,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -308,7 +502,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -322,17 +516,23 @@
 		DD7681181F6817EA001C18CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YandexMoneyCoreApi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.YandexMoneyCoreApi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -340,11 +540,16 @@
 		DD7681191F6817EA001C18CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YandexMoneyCoreApi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -358,6 +563,11 @@
 		DD76811B1F6817EA001C18CE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YandexMoneyCoreApiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.YandexMoneyCoreApiTests;
@@ -369,6 +579,11 @@
 		DD76811C1F6817EA001C18CE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = YandexMoneyCoreApiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.YandexMoneyCoreApiTests;
@@ -396,6 +611,7 @@
 				DD7681191F6817EA001C18CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DD76811A1F6817EA001C18CE /* Build configuration list for PBXNativeTarget "YandexMoneyCoreApiTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +620,7 @@
 				DD76811C1F6817EA001C18CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

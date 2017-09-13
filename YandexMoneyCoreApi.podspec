@@ -14,7 +14,7 @@ Pod::Spec.new do |spec|
   }
   spec.module_name  = 'YandexMoneyCoreApi'
 
-  spec.ios.deployment_target  = '9.3'
+  spec.ios.deployment_target  = '9.0'
 
   spec.source_files  = 'YandexMoneyUI/**/*.swift'
 
