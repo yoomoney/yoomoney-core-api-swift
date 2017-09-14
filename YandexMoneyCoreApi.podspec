@@ -21,4 +21,5 @@ Pod::Spec.new do |spec|
   spec.dependency "Alamofire", "~> 4.5"
   spec.dependency "Gloss", "~> 1.2"
   spec.dependency 'GMEllipticCurveCrypto', :git => 'https://github.com/subtranix/GMEllipticCurveCrypto', :tag => '1.3.2'
+  spec.dependency 'FunctionalSwift'
 end

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD4D6A8B1F6AB52E00AFF5D7 /* FunctionalSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */; };
 		DD76810D1F6817EA001C18CE /* YandexMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YandexMoneyCoreApi.framework */; };
 		DD7681141F6817EA001C18CE /* YandexMoneyCoreApi.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD7AFA871F6964580047E9DF /* IssuerClaim.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7AFA861F6964580047E9DF /* IssuerClaim.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FunctionalSwift.framework; path = Carthage/Build/iOS/FunctionalSwift.framework; sourceTree = "<group>"; };
 		DD7681031F6817EA001C18CE /* YandexMoneyCoreApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YandexMoneyCoreApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YandexMoneyCoreApi.h; sourceTree = "<group>"; };
 		DD7681071F6817EA001C18CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				DDB207461F695203007163CE /* Gloss.framework in Frameworks */,
 				DDB207431F694F1C007163CE /* Alamofire.framework in Frameworks */,
 				DDB208271F69586B007163CE /* GMEllipticCurveCrypto.framework in Frameworks */,
+				DD4D6A8B1F6AB52E00AFF5D7 /* FunctionalSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +181,7 @@
 		DDB207411F694F1C007163CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */,
 				DDB208261F69586B007163CE /* GMEllipticCurveCrypto.framework */,
 				DDB207451F695203007163CE /* Gloss.framework */,
 				DDB207421F694F1C007163CE /* Alamofire.framework */,
@@ -342,6 +346,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/Gloss.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/GMEllipticCurveCrypto.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/FunctionalSwift.framework",
 			);
 			name = Carthage;
 			outputPaths = (
