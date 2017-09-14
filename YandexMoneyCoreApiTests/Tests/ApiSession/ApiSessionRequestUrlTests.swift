@@ -33,19 +33,29 @@ class ApiSessionRequestUrlCommonTests: XCTestCase {
         expected: String
     )
 
-    private let data: [Data] = [
-        (.components(host: "http://ya.ru", path: ""), "http://ya.ru"),
-        (.components(host: "https://ya.ru", path: ""), "https://ya.ru"),
-        (.components(host: "//ya.ru", path: ""), "https://ya.ru"),
-        (.components(host: "//ya.ru", path: "/api"), "https://ya.ru/api"),
-        (.components(host: "//ya.ru", path: "/api/v1"), "https://ya.ru/api/v1"),
+    private func data(for strings: [String]) -> [Data] {
+        let urls = strings.flatMap(URL.init)
+        if strings.count != urls.count {
+            assertionFailure("Can't parse some urls")
+        }
+        return zip(urls, strings)
+            .map { (.url($0), $1) }
+    }
 
-        // swiftlint:disable force_unwrapping
-        (.url(URL(string: "https://ya.ru")!), "https://ya.ru"),
-        (.url(URL(string: "https://ya.ru/api/v1")!), "https://ya.ru/api/v1"),
-        (.url(URL(string: "https://ya.ru/api/v1?p1=123&p2=qwe")!), "https://ya.ru/api/v1?p1=123&p2=qwe"),
-        // swiftlint:enable force_unwrapping
-    ]
+    private lazy var data: [Data] = {
+        return [
+            (.components(host: "http://ya.ru", path: ""), "http://ya.ru"),
+            (.components(host: "https://ya.ru", path: ""), "https://ya.ru"),
+            (.components(host: "//ya.ru", path: ""), "https://ya.ru"),
+            (.components(host: "//ya.ru", path: "/api"), "https://ya.ru/api"),
+            (.components(host: "//ya.ru", path: "/api/v1"), "https://ya.ru/api/v1"),
+            ] +
+            self.data(for: [
+                "https://ya.ru",
+                "https://ya.ru/api/v1",
+                "https://ya.ru/api/v1?p1=123&p2=qwe",
+                ])
+    }()
 
     func testApiMethodUrlInfo() {
         data.forEach(test)

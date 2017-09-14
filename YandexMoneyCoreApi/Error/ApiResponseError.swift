@@ -444,8 +444,8 @@ extension ApiResponseError: LocalizedError {
 
         // MARK: Status 500
         case .technicalError(nextRetry: let nextRetry):
-            // swiftlint:disable:next line_length
-            return "Technical Error. Request accepted or rejected, and should be repeated to get final status. Retry in \(nextRetry) ms"
+            return "Technical Error. Request accepted or rejected, and should be repeated to get final status." +
+            " Retry in \(nextRetry) ms"
 
         // MARK: OAuth2 API
         case .phoneNumberRefused: return "Phone number not allowed for Yandex.Wallet registration"

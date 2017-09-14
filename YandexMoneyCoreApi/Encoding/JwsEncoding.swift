@@ -60,9 +60,11 @@ class JwsEncoding {
 
     private func header() throws -> Data {
         guard let issuerClaim = issuerClaim else { throw JwsEncodingError.issuerClaimNotSet }
-        let header: [String: Any] = ["alg": "ES256",
-                                     "iat": NSNumber(value: UInt64(Date().timeIntervalSince1970 * 1000)),
-                                     "iss": String(describing: issuerClaim), ]
+        let header: [String: Any] = [
+            "alg": "ES256",
+            "iat": NSNumber(value: UInt64(Date().timeIntervalSince1970 * 1000)),
+            "iss": String(describing: issuerClaim),
+            ]
         return try JSONSerialization.data(withJSONObject: header, options: [])
     }
 
