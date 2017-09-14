@@ -20,7 +20,7 @@
 		DDB207431F694F1C007163CE /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207421F694F1C007163CE /* Alamofire.framework */; };
 		DDB207461F695203007163CE /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDB207451F695203007163CE /* Gloss.framework */; };
 		DDB207FA1F695320007163CE /* ApiSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207901F695320007163CE /* ApiSession.swift */; };
-		DDB207FC1F695320007163CE /* HostsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207921F695320007163CE /* HostsProvider.swift */; };
+		DDB207FC1F695320007163CE /* HostProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207921F695320007163CE /* HostProvider.swift */; };
 		DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207931F695320007163CE /* OAuthTokenProvider.swift */; };
 		DDB207FF1F695320007163CE /* ResponseWithCustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207951F695320007163CE /* ResponseWithCustomError.swift */; };
 		DDB208001F695320007163CE /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207961F695320007163CE /* Task.swift */; };
@@ -61,7 +61,7 @@
 		DDB207421F694F1C007163CE /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		DDB207451F695203007163CE /* Gloss.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Gloss.framework; path = Carthage/Build/iOS/Gloss.framework; sourceTree = "<group>"; };
 		DDB207901F695320007163CE /* ApiSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiSession.swift; sourceTree = "<group>"; };
-		DDB207921F695320007163CE /* HostsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostsProvider.swift; sourceTree = "<group>"; };
+		DDB207921F695320007163CE /* HostProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostProvider.swift; sourceTree = "<group>"; };
 		DDB207931F695320007163CE /* OAuthTokenProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OAuthTokenProvider.swift; sourceTree = "<group>"; };
 		DDB207951F695320007163CE /* ResponseWithCustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResponseWithCustomError.swift; sourceTree = "<group>"; };
 		DDB207961F695320007163CE /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 			children = (
 				DDB207901F695320007163CE /* ApiSession.swift */,
 				DD9234D31F6968DC00AFD229 /* ApiMethod.swift */,
-				DDB207921F695320007163CE /* HostsProvider.swift */,
+				DDB207921F695320007163CE /* HostProvider.swift */,
 				DDB207931F695320007163CE /* OAuthTokenProvider.swift */,
 				DDB207951F695320007163CE /* ResponseWithCustomError.swift */,
 				DDB207961F695320007163CE /* Task.swift */,
@@ -383,7 +383,7 @@
 				DD7AFA871F6964580047E9DF /* IssuerClaim.swift in Sources */,
 				DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */,
 				DDB208001F695320007163CE /* Task.swift in Sources */,
-				DDB207FC1F695320007163CE /* HostsProvider.swift in Sources */,
+				DDB207FC1F695320007163CE /* HostProvider.swift in Sources */,
 				DDB207FF1F695320007163CE /* ResponseWithCustomError.swift in Sources */,
 				DDB208251F695320007163CE /* TaskLogger.swift in Sources */,
 			);

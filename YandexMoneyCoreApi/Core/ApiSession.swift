@@ -55,7 +55,7 @@ public class ApiSession {
     // MARK: - Private properties
     private let manager: SessionManager
     fileprivate let tokenProvider: OAuthTokenProvider?
-    fileprivate let hostsProvider: HostsProvider
+    fileprivate let hostProvider: HostProvider
     fileprivate let userAgent: String?
     private let jwsEncoding = JwsEncoding()
     private let urlEncoding = URLEncoding()
@@ -66,17 +66,17 @@ public class ApiSession {
     ///
     /// - Parameters:
     ///   - tokenProvider: OAuth bearer token provider
-    ///   - hostsProvider: Hosts provider for all requests
+    ///   - hostProvider: Host provider for all requests
     ///   - userAgent: User agent header value
     ///   - configuration: Instance of NSURLSessionConfiguration
     ///   - logger: Gloss.Logger for API request-response
     public init(tokenProvider: OAuthTokenProvider? = nil,
-                hostsProvider: HostsProvider? = nil,
+                hostProvider: HostProvider,
                 userAgent: String? = nil,
                 configuration: URLSessionConfiguration? = nil,
                 logger: Gloss.Logger? = nil) {
         self.tokenProvider = tokenProvider
-        self.hostsProvider = hostsProvider ?? defaultHostsProvider()
+        self.hostProvider = hostProvider
         self.userAgent = userAgent
         manager = SessionManager(configuration: configuration ?? .default)
         self.logger = logger.map(TaskLogger.init)
@@ -141,6 +141,7 @@ public class ApiSession {
     public enum Error: Swift.Error {
         case illegalUrl(String)
         case jws(JwsEncodingError)
+        case host(HostProviderError)
     }
 }
 
@@ -148,7 +149,7 @@ public class ApiSession {
 // MARK: - Private
 private extension ApiSession {
     func url(for apiMethod: ApiMethod) throws -> URL {
-        switch apiMethod.urlInfo(from: hostsProvider) {
+        switch try apiMethod.urlInfo(from: hostProvider) {
         case let .url(url):
             return url
         case let .components(host, path):
@@ -197,12 +198,6 @@ private extension ApiSession {
             return ""
         #endif
     }
-
-    class defaultHostsProvider: HostsProvider {
-        var apiV1Host = "//money.yandex.ru"
-        var apiV2Host = "//payment.yandex.net"
-        var cardServiceHost = "//cardservice.yamoney.ru"
-    }
 }
 
 
@@ -212,6 +207,7 @@ extension ApiSession.Error: LocalizedError {
         switch self {
         case .illegalUrl(let url): return "Illegal URL '\(url)'"
         case .jws(let error as Swift.Error): return error.localizedDescription
+        case .host(let error): return error.localizedDescription
         }
     }
 }

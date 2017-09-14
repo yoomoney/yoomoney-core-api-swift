@@ -45,8 +45,35 @@ class ApiSessionRequestUrlCommonTests: XCTestCase {
         (.url(URL(string: "https://ya.ru/api/v1?p1=123&p2=qwe")!), "https://ya.ru/api/v1?p1=123&p2=qwe")
     ]
 
-    func test() {
+    func testApiMethodUrlInfo() {
         data.forEach(test)
+    }
+
+    func testHostForApiMethodWithKnownKey() {
+        let hostProvider = MockHostProvider()
+        let method = MockApiMethod()
+        do {
+            let urlInfo = try method.urlInfo(from: hostProvider)
+            guard case .components(host: "mock-host", path: "") = urlInfo else {
+                XCTFail("Bad method host for valid method key")
+                return
+            }
+        } catch {
+            XCTFail("Cant' get url info for valid method key")
+        }
+    }
+
+    func testHostForApiMethodWithBadKey() {
+        let hostProvider = MockHostProvider()
+        let method = MockApiMethodWithBadKey()
+        do {
+            _ = try method.urlInfo(from: hostProvider)
+            XCTFail("Getting urlInfo for not known key must throws errror")
+        } catch HostProviderError.unknownKey("method-bad-key") {
+            return
+        } catch {
+            XCTFail("Bad error type throws by getting urlInfo for api method for not known key")
+        }
     }
 }
 
@@ -58,11 +85,9 @@ private extension ApiSessionRequestUrlCommonTests {
     }
 
     private func url(apiMethod: ApiMethod) -> String? {
-
-        let session = ApiSession()
-
+        let hostProvider = MockHostProvider()
+        let session = ApiSession(hostProvider: hostProvider)
         let task = session.perform(apiMethod: apiMethod)
-
         switch task.request {
         case .success(let data):
             return data.request?.url?.absoluteString
@@ -76,21 +101,49 @@ private extension ApiSessionRequestUrlCommonTests {
 
 private class MockApiMethod {
 
-    fileprivate let _urlInfo: URLInfo
+    fileprivate let _urlInfo: URLInfo?
 
     init(urlInfo: URLInfo) {
         _urlInfo = urlInfo
     }
+
+    init() {
+        _urlInfo = nil
+    }
+}
+
+private class MockHostProvider: HostProvider {
+    func host(for key: String) throws -> String {
+        if key == "method-key" {
+            return "mock-host"
+        } else {
+            throw HostProviderError.unknownKey(key)
+        }
+    }
 }
 
 extension MockApiMethod: ApiMethod {
+    dynamic public var key: String {
+        return "method-key"
+    }
     public var httpMethod: HTTPMethod { return .post }
     public var parametersEncoding: ParametersEncoding { return .url }
     public var parameters: [String: Any]? {
         return nil
     }
-    public func urlInfo(from _: HostsProvider) -> URLInfo {
-        return _urlInfo
+    public func urlInfo(from hostProvider: HostProvider) throws -> URLInfo {
+        if let _urlInfo = _urlInfo {
+            return _urlInfo
+        } else {
+            let host = try hostProvider.host(for: key)
+            return .components(host: host, path: "")
+        }
+    }
+}
+
+private class MockApiMethodWithBadKey: MockApiMethod {
+    public override var key: String {
+        return "method-bad-key"
     }
 }
 

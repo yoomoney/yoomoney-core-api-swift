@@ -21,14 +21,26 @@
  * THE SOFTWARE.
  */
 
-public protocol HostsProvider {
+/// Error specified for host provider protocol
+public enum HostProviderError {
 
-    /// Host for API v1 methods. Examples: "//payment.yamoney.ru", "https://payment.yamoney.ru", "//payment.yamoney.ru:8080"
-    var apiV1Host: String { get }
+    /// Can't get host for the key
+    case unknownKey(String)
+}
 
-    /// Host for API v2 methods. Examples: "//payment.yamoney.ru", "https://payment.yamoney.ru", "//payment.yamoney.ru:8080"
-    var apiV2Host: String { get }
+extension HostProviderError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .unknownKey(let key): return "Unknown host key '\(key)'"
+        }
+    }
+}
 
-    /// Host for cardService methods. Examples: "//cardservice.yamoney.ru", "https://cardservice.yamoney.ru", "//cardservice.yamoney.ru:8080"
-    var cardServiceHost: String { get }
+/// Common protocol which describes host for api method
+public protocol HostProvider {
+
+    /// Host for method key. Examples: "//host.ru", "https://host.ru", "//host.ru:8080"
+    /// - Note: `https` sceme will be used if not specified
+    /// - Throws: `HostProviderError`
+    func host(for key: String) throws -> String
 }

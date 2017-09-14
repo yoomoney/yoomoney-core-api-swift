@@ -44,13 +44,16 @@ public enum URLInfo {
 
     /// Url components with `host` and `path`
     /// Examples:
-    /// `host` - "//payment.yamoney.ru", "https://payment.yamoney.ru", "//payment.yamoney.ru:8080"
-    /// `path` - "/api/v2/wallets/instance"
+    /// `host` - "//host.ru", "https://host.ru", "//host.ru:8080"
+    /// `path` - "/api/v1/wallets/instance"
     case components(host: String, path: String)
 }
 
 /// Common protocol which describes requirements for api method
 public protocol ApiMethod {
+
+    /// The key of method
+    var key: String { get }
 
     /// HTTP method: POST, GET, PUT, etc
     var httpMethod: HTTPMethod { get }
@@ -63,9 +66,10 @@ public protocol ApiMethod {
 
     /// Chooses url info
     ///
-    /// - Parameter hostsProvider: Hosts provider
+    /// - Parameter hostProvider: Host provider
     /// - Returns: Url info
-    func urlInfo(from hostsProvider: HostsProvider) -> URLInfo
+    /// - Throws: `HostProviderError`
+    func urlInfo(from hostProvider: HostProvider) throws -> URLInfo
 }
 
 
