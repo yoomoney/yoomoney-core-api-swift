@@ -64,14 +64,12 @@ class ApiSessionRequestUrlCommonTests: XCTestCase {
     func testHostForApiMethodWithKnownKey() {
         let hostProvider = MockHostProvider()
         let method = MockApiMethod()
-        do {
+        XCTCatch {
             let urlInfo = try method.urlInfo(from: hostProvider)
             guard case .components(host: "mock-host", path: "") = urlInfo else {
                 XCTFail("Bad method host for valid method key")
                 return
             }
-        } catch {
-            XCTFail("Cant' get url info for valid method key")
         }
     }
 
