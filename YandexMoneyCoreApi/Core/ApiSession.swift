@@ -138,6 +138,7 @@ public class ApiSession {
     ///
     /// - illegalUrl: Illegal URL
     /// - JWS encoding error
+    /// - host: host provider error
     public enum Error: Swift.Error {
         case illegalUrl(String)
         case jws(JwsEncodingError)
