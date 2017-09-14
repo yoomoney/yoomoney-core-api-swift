@@ -25,8 +25,6 @@ import Foundation
 import Alamofire
 import Gloss
 
-private let kScheme = "https"
-
 /// Provides convenience methods to work with requests.
 public class ApiSession {
 
@@ -164,7 +162,7 @@ private extension ApiSession {
         }
         var resultComponents = components
         if resultComponents.scheme?.isEmpty != false {
-            resultComponents.scheme = kScheme
+            resultComponents.scheme = Constants.defaultScheme
         }
         resultComponents.path = path
         guard let url = resultComponents.url else {
@@ -224,5 +222,12 @@ private extension Task {
     @discardableResult func trace(with logger: TaskLogger?) -> Task {
         logger?.trace(task: self)
         return self
+    }
+}
+
+// MARK: - Constants
+private extension ApiSession {
+    enum Constants {
+        static let defaultScheme = "https"
     }
 }
