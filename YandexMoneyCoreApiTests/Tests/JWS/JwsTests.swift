@@ -21,18 +21,19 @@
  * THE SOFTWARE.
  */
 
+import Alamofire
+import Gloss
+import GMEllipticCurveCrypto
 import XCTest
 @testable import YandexMoneyCoreApi
-import Alamofire
-import GMEllipticCurveCrypto
-import Gloss
 
 /// JWS Tests
 class JwsTests: XCTestCase {
 
     struct Jws {
         static let privateKey = "dpq3b8ki_YkBOQK2UPAfzL0MF829OTw4_Boy5SlfliI".dataFromBase64()
-        static let publicKey = "BGc2eJhI4rJskujJtazNCCL2VxHYJUOjk0sZPWKkNQQgqMRzebXyCrukf5U8Qua1gTyT7OeZ7nMhBedyscPM0v8".dataFromBase64()
+        static let publicKey =
+            "BGc2eJhI4rJskujJtazNCCL2VxHYJUOjk0sZPWKkNQQgqMRzebXyCrukf5U8Qua1gTyT7OeZ7nMhBedyscPM0v8".dataFromBase64()
 
         static let encoding: JwsEncoding = {
             let jwsEncoding = JwsEncoding()
@@ -56,9 +57,14 @@ class JwsTests: XCTestCase {
 
     func testJwsPayload() {
         guard let jwsParts = jwsParts(try? generateJws()) else { return }
-        guard let payload = (try? JSONSerialization.jsonObject(with: jwsParts[1].dataFromBase64()! as Data, options: [])) as? [String: Any] else {
-            XCTFail("Payload is not JSON")
+        guard let data = jwsParts[1].dataFromBase64() else {
+            XCTFail("Payload data is not JSON")
             return
+        }
+        guard let payload =
+            (try? JSONSerialization.jsonObject(with: data, options: [])) as? [String: Any] else {
+                XCTFail("Payload is not JSON")
+                return
         }
         XCTAssertEqual(Jws.payload, payload, "Payload broken")
     }
@@ -68,8 +74,18 @@ class JwsTests: XCTestCase {
 
         let crypto = GMEllipticCurveCrypto(curve: GMEllipticCurveSecp256r1)
         crypto?.publicKey = Jws.publicKey as Data!
-        XCTAssert((crypto?.hashSHA256AndVerifySignature(jwsParts[2].dataFromBase64() as Data!,
-                                                        for: (jwsParts[0] + "." + jwsParts[1]).data(using: .utf8)))!, "Signature not valid")
+
+        guard let data = jwsParts[2].dataFromBase64() else {
+            XCTFail("Signature data not valid")
+            return
+        }
+        guard let hash = crypto?.hashSHA256AndVerifySignature(
+            data,
+            for: (jwsParts[0] + "." + jwsParts[1]).data(using: .utf8)) else {
+                XCTFail("Signature not valid")
+                return
+        }
+        XCTAssert(hash, "Signature not valid")
     }
 
     fileprivate func generateJws() throws -> String {
@@ -77,12 +93,11 @@ class JwsTests: XCTestCase {
     }
 
     fileprivate func jwsParts(_ jws: String?) -> [String]? {
-        if let jwsParts = jws?.characters.split(separator: ".").map(String.init) , jwsParts.count == 3 {
+        if let jwsParts = jws?.characters.split(separator: ".").map(String.init), jwsParts.count == 3 {
             return jwsParts
         } else {
             return nil
         }
     }
-    
-}
 
+}

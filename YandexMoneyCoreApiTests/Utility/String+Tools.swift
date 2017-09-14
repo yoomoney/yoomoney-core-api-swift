@@ -43,7 +43,7 @@ extension String {
             case "_": return "/"
             default: return $0
             }
-            }) + ending
+        }) + ending
         return Data(base64Encoded: base64, options: [])
     }
 }

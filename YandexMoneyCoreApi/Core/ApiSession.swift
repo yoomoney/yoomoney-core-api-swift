@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import Foundation
 import Alamofire
+import Foundation
 import Gloss
 
 /// Provides convenience methods to work with requests.
@@ -42,7 +42,8 @@ public class ApiSession {
         get { return jwsEncoding.issuerClaim }
     }
 
-    /// Overrides all behavior for NSURLSessionTaskDelegate method `URLSession:task:didReceiveChallenge:completionHandler:` and requires the caller to call the `completionHandler`
+    /// Overrides all behavior for NSURLSessionTaskDelegate method 
+    /// `URLSession:task:didReceiveChallenge:completionHandler:` and requires the caller to call the `completionHandler`
     public var taskDidReceiveChallengeWithCompletion: ((_ session: URLSession,
         _ task: URLSessionTask,
         _ challenge: URLAuthenticationChallenge,
@@ -94,6 +95,7 @@ public class ApiSession {
             return Task(request: .error(.request(error))).trace(with: logger)
         } catch {
             assertionFailure("Unexpected error: \(error)")
+            // swiftlint:disable:next force_unwrapping
             url = URL(string: "https://yandex.ru")!
         }
 
@@ -145,7 +147,6 @@ public class ApiSession {
         case host(HostProviderError)
     }
 }
-
 
 // MARK: - Private
 private extension ApiSession {
@@ -201,7 +202,6 @@ private extension ApiSession {
     }
 }
 
-
 // MARK: - LocalizedError
 extension ApiSession.Error: LocalizedError {
     public var errorDescription: String? {
@@ -212,7 +212,6 @@ extension ApiSession.Error: LocalizedError {
         }
     }
 }
-
 
 // MARK: - API request-response logger
 private extension Task {

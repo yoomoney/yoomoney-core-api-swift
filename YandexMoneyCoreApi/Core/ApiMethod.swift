@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import Foundation
 import Alamofire
+import Foundation
 import Gloss
 
 /// Parameters encoding method
@@ -71,7 +71,6 @@ public protocol ApiMethod {
     /// - Throws: `HostProviderError`
     func urlInfo(from hostProvider: HostProvider) throws -> URLInfo
 }
-
 
 // MARK: - Default parameters for methods that confirm Encodable protocol
 extension ApiMethod where Self: Gloss.Encodable {

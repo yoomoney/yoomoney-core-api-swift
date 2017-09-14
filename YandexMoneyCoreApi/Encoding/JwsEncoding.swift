@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import Foundation
 import Alamofire
+import Foundation
 import GMEllipticCurveCrypto
 
 /// Encodes JWS
@@ -46,9 +46,15 @@ class JwsEncoding {
     private let crypto: GMEllipticCurveCrypto = { return GMEllipticCurveCrypto(curve: GMEllipticCurveSecp256r1) }()
 
     func makeJws(parameters: [String: Any]) throws -> String {
-        guard let payload = try? JSONSerialization.data(withJSONObject: parameters, options: []) else { throw JwsEncodingError.illegalParameters(parameters) }
+        guard let payload = try? JSONSerialization.data(withJSONObject: parameters, options: []) else {
+            throw JwsEncodingError.illegalParameters(parameters)
+        }
         let message = (try header()).base64UrlString() + "." + payload.base64UrlString()
-        let signature = try sign(data: message.data(using: String.Encoding.utf8)!)
+        guard let data = message.data(using: String.Encoding.utf8) else {
+            assertionFailure("Message data is nil")
+            return ""
+        }
+        let signature = try sign(data: data)
         return message + "." + signature.base64UrlString()
     }
 
@@ -56,8 +62,8 @@ class JwsEncoding {
         guard let issuerClaim = issuerClaim else { throw JwsEncodingError.issuerClaimNotSet }
         let header: [String: Any] = ["alg": "ES256",
                                      "iat": NSNumber(value: UInt64(Date().timeIntervalSince1970 * 1000)),
-                                     "iss": String(describing: issuerClaim)]
-        return try! JSONSerialization.data(withJSONObject: header, options: [])
+                                     "iss": String(describing: issuerClaim), ]
+        return try JSONSerialization.data(withJSONObject: header, options: [])
     }
 
     private func sign(data: Data) throws -> Data {
@@ -65,7 +71,6 @@ class JwsEncoding {
         return crypto.hashSHA256AndSign(data)
     }
 }
-
 
 /// JWS encoding error
 ///
@@ -78,7 +83,6 @@ public enum JwsEncodingError: Error {
     case issuerClaimNotSet
 }
 
-
 // MARK: - LocalizedError
 extension JwsEncodingError: LocalizedError {
     public var errorDescription: String? {
@@ -90,7 +94,6 @@ extension JwsEncodingError: LocalizedError {
     }
 }
 
-
 private extension Data {
     func base64UrlString() -> String {
         return String(base64EncodedString(options: []).characters.flatMap {
@@ -100,6 +103,6 @@ private extension Data {
             case "=": return nil
             default: return $0
             }
-            })
+        })
     }
 }

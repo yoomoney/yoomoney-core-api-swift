@@ -21,8 +21,8 @@
  * THE SOFTWARE.
  */
 
-import Foundation
 import Alamofire
+import Foundation
 import Gloss
 
 /// Provides interface to manage request lifecycle
@@ -57,7 +57,8 @@ public class Task {
     /// - Returns: Task object
     @discardableResult
     public func response(queue: DispatchQueue? = nil,
-                         completionHandler: @escaping (URLRequest?, HTTPURLResponse?, Data?, Swift.Error?) -> Void) -> Self {
+                         completionHandler: @escaping (URLRequest?, HTTPURLResponse?, Data?, Swift.Error?) -> Void)
+        -> Self {
         switch request {
         case .success(let request):
             request.response(queue: queue) { dataResponse in
@@ -78,7 +79,6 @@ public class Task {
         self.request = request
     }
 
-
     /// Adds a handler to be called once the request has finished.
     /// Handler provides result, if performing API Method is successed, else error
     ///
@@ -88,9 +88,11 @@ public class Task {
     ///   - completion: The code to be executed once the request has finished.
     /// - Returns: The Task
     @discardableResult
-    public func responseApi<ResponseType: Gloss.Decodable>(_: ResponseType.Type,
-                            queue: DispatchQueue? = nil,
-                            completion: @escaping (Result<ResponseType, Error>) -> Void) -> Self {
+    public func responseApi<ResponseType: Gloss.Decodable>(
+        _: ResponseType.Type,
+        queue: DispatchQueue? = nil,
+        completion: @escaping (Result<ResponseType, Error>) -> Void) -> Self {
+
         switch request {
         case .success(let dataRequest):
             dataRequest.responseJSON(queue: queue) { dataResponse in
@@ -104,7 +106,6 @@ public class Task {
         }
         return self
     }
-
 
     /// Task error
     ///
@@ -122,11 +123,12 @@ public class Task {
     }
 }
 
-
 // MARK: - Private
 private extension Task {
-    func processJsonResponse<ResponseType: Gloss.Decodable>(dataResponse: DataResponse<Any>,
-                             completion: @escaping (Result<ResponseType, Error>) -> Void) {
+    func processJsonResponse<ResponseType: Gloss.Decodable>(
+        dataResponse: DataResponse<Any>,
+        completion: @escaping (Result<ResponseType, Error>) -> Void) {
+
         var result: Result<ResponseType, Task.Error>
         defer {
             completion(result)
@@ -135,7 +137,8 @@ private extension Task {
             result = .error(.api(.technicalError(nextRetry: .milliseconds(5000))))
 
             // TODO: Remove when stop receiving TechnicalError + Refused
-            if case .success(let json) = dataResponse.result, ((json as? [String: Any])?["status"] as? String) == "Refused" {
+            if case .success(let json) = dataResponse.result,
+                ((json as? [String: Any])?["status"] as? String) == "Refused" {
                 result = .error(.api(.unknown("\(json)")))
             }
             // ..... . .. . .  ..  . .. . . .   .   .       .        .             .                        .
@@ -147,7 +150,7 @@ private extension Task {
             result = .error(.api(.invalidToken))
             return
         }
-        
+
         switch dataResponse.result {
         case .success(let json as JSON):
 
@@ -158,7 +161,6 @@ private extension Task {
             } else {
                 result = .error(.api(ApiResponseError(json: json) ?? .unknown("\(json)")))
             }
-
 
         case .success(let value):
             result = .error(.serializationFailed(text: "\(value)"))
@@ -177,7 +179,6 @@ private extension Task {
     }
 }
 
-
 // MARK: - LocalizedError
 extension Task.Error: LocalizedError {
     public var errorDescription: String? {
@@ -194,11 +195,9 @@ extension Task.Error: LocalizedError {
     }
 }
 
-
 private extension Error {
     var isSerializationFailed: Bool {
         let nsError = self as NSError
         return nsError.domain == NSCocoaErrorDomain && nsError.code == NSPropertyListReadCorruptError
     }
 }
-

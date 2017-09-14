@@ -53,7 +53,8 @@ import Gloss
 /// - illegalParameter: JWS payload missing or holds illegal values
 /// - intervalTooLarge: Too large selection interval requested
 /// - orderDuplication: Tryng to create different order with previously user order ID
-/// - amountRemainderTooLow: Not allowed partial refund amount. Partial amount should be reduced or total amount refunded
+/// - amountRemainderTooLow: Not allowed partial refund amount. 
+///                          Partial amount should be reduced or total amount refunded
 ///
 /// Errors for HTTP status 401 (Unauthorized). Authentication or authorization error. Request rejected
 ///
@@ -70,7 +71,8 @@ import Gloss
 /// - invalidScope: OAuth2 authorization scope not enough for requested operation
 /// - parameterNotAllowed: Parameter value not allowed
 ///
-/// Error for HTTP status 500 (Internal Server Error). Technical Error. Request accepted or rejected, and should be repeated to get final status
+/// Error for HTTP status 500 (Internal Server Error). 
+/// Technical Error. Request accepted or rejected, and should be repeated to get final status
 ///
 /// - technicalError: Technical Error. Request accepted or rejected, and should be repeated to get final status
 ///
@@ -143,6 +145,7 @@ public enum ApiResponseError: Error {
 
 // MARK: - Decodable
 extension ApiResponseError: Gloss.Decodable {
+    // swiftlint:disable:next cyclomatic_complexity
     public init?(json: JSON) {
         guard let error = json[Json.Keys.error.rawValue] as? String else { return nil }
 
@@ -151,7 +154,8 @@ extension ApiResponseError: Gloss.Decodable {
         case Json.Values.OrderRefused.rawValue: self = .orderRefused
         case Json.Values.AuthorizationRejected.rawValue: self = .authorizationRejected
         case Json.Values.AlreadyAuthorized.rawValue: self = .alreadyAuthorized
-        case Json.Values.InappropriateStatus.rawValue: self = .inappropriateStatus(status: json[Json.Keys.status.rawValue] as? String ?? "")
+        case Json.Values.InappropriateStatus.rawValue:
+            self = .inappropriateStatus(status: json[Json.Keys.status.rawValue] as? String ?? "")
         case Json.Values.OrderExpired.rawValue: self = .orderExpired
         case Json.Values.IdentificationRequired.rawValue: self = .identificationRequired
         case Json.Values.RecipientAccountClosed.rawValue: self = .recipientAccountClosed
@@ -162,14 +166,19 @@ extension ApiResponseError: Gloss.Decodable {
         case Json.Values.PayerNotFound.rawValue: self = .payerNotFound
 
         // MARK: Status 202
-        case Json.Values.RequestStateUnknown.rawValue: self = .requestStateUnknown(nextRetry: .milliseconds(json[Json.Keys.nextRetry.rawValue] as? Int ?? 5000))
+        case Json.Values.RequestStateUnknown.rawValue:
+            self = .requestStateUnknown(nextRetry: .milliseconds(json[Json.Keys.nextRetry.rawValue] as? Int ?? 5000))
 
         // MARK: Status 400
         case Json.Values.SyntaxError.rawValue: self = .syntaxError
-        case Json.Values.IllegalHeader.rawValue: self = .illegalHeader(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
-        case Json.Values.IllegalParameter.rawValue: self = .illegalParameter(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
-        case Json.Values.IntervalTooLarge.rawValue: self = .intervalTooLarge(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
-        case Json.Values.OrderDuplication.rawValue: self = .orderDuplication
+        case Json.Values.IllegalHeader.rawValue:
+            self = .illegalHeader(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
+        case Json.Values.IllegalParameter.rawValue:
+            self = .illegalParameter(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
+        case Json.Values.IntervalTooLarge.rawValue:
+            self = .intervalTooLarge(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
+        case Json.Values.OrderDuplication.rawValue:
+            self = .orderDuplication
         case Json.Values.AmountRemainderTooLow.rawValue: self = .amountRemainderTooLow
 
         // MARK: Status 401
@@ -183,10 +192,12 @@ extension ApiResponseError: Gloss.Decodable {
         case Json.Values.InstrumentNotAllowed.rawValue: self = .instrumentNotAllowed
         case Json.Values.OperationForbidden.rawValue: self = .operationForbidden
         case Json.Values.InvalidScope.rawValue: self = .invalidScope
-        case Json.Values.ParameterNotAllowed.rawValue: self = .parameterNotAllowed(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
+        case Json.Values.ParameterNotAllowed.rawValue:
+            self = .parameterNotAllowed(parameterName: json[Json.Keys.parameterName.rawValue] as? String ?? "")
 
         // MARK: Status 500
-        case Json.Values.TechnicalError.rawValue, Json.OAuth2.technicalError.rawValue: self = .technicalError(nextRetry: .milliseconds(json[Json.Keys.nextRetry.rawValue] as? Int ?? 5000))
+        case Json.Values.TechnicalError.rawValue, Json.OAuth2.technicalError.rawValue:
+            self = .technicalError(nextRetry: .milliseconds(json[Json.Keys.nextRetry.rawValue] as? Int ?? 5000))
 
         // MARK: OAuth2 API
         case Json.OAuth2.illegalParamOauthToken.rawValue: self = .illegalParameter(parameterName: "oauthToken")
@@ -213,7 +224,7 @@ extension ApiResponseError: Gloss.Decodable {
         case Json.History.illegalParamFavoriteId.rawValue: self = .illegalParameter(parameterName: "favorite_id")
         case Json.History.illegalParamFavoriteIndex.rawValue: self = .illegalParameter(parameterName: "index")
         case Json.History.illegalParamStartRecord.rawValue: self = .illegalParameter(parameterName: "start_record")
-            
+
         // MARK: API v1 payments
         case Json.ApiV1Payments.illegalParamLabel.rawValue: self = .illegalParameter(parameterName: "label")
         case Json.ApiV1Payments.illegalParamTo.rawValue: self = .illegalParameter(parameterName: "to")
@@ -221,21 +232,27 @@ extension ApiResponseError: Gloss.Decodable {
         case Json.ApiV1Payments.illegalParamAmountDue.rawValue: self = .illegalParameter(parameterName: "amount_due")
         case Json.ApiV1Payments.illegalParamComment.rawValue: self = .illegalParameter(parameterName: "comment")
         case Json.ApiV1Payments.illegalParamMessage.rawValue: self = .illegalParameter(parameterName: "message")
-        case Json.ApiV1Payments.illegalParamExpirePeriod.rawValue: self = .illegalParameter(parameterName: "expire_period")
+        case Json.ApiV1Payments.illegalParamExpirePeriod.rawValue:
+            self = .illegalParameter(parameterName: "expire_period")
         case Json.ApiV1Payments.notEnoughFunds.rawValue: self = .insufficientFunds
         case Json.ApiV1Payments.paymentRefused.rawValue: self = .orderRefused
         case Json.ApiV1Payments.payeeNotFound.rawValue: self = .recipientAccountClosed
         case Json.ApiV1Payments.authorizationReject.rawValue: self = .authorizationRejected
-        case Json.ApiV1Payments.accountBlocked.rawValue: self = .accountBlocked(uri: json[Json.Keys.accountUnblockUri.rawValue] as? String ?? "")
-        case Json.ApiV1Payments.extActionRequired.rawValue: self = .extActionRequired(uri: json[Json.Keys.extActionUri.rawValue] as? String ?? "")
+        case Json.ApiV1Payments.accountBlocked.rawValue:
+            self = .accountBlocked(uri: json[Json.Keys.accountUnblockUri.rawValue] as? String ?? "")
+        case Json.ApiV1Payments.extActionRequired.rawValue:
+            self = .extActionRequired(uri: json[Json.Keys.extActionUri.rawValue] as? String ?? "")
         case Json.ApiV1Payments.contractNotFound.rawValue: self = .illegalParameter(parameterName: "orderId")
         case Json.ApiV1Payments.moneySourceNotAvailable.rawValue: self = .sourceNotAllowed
         case Json.ApiV1Payments.illegalParamCsc.rawValue: self = .illegalParameter(parameterName: "csc")
         case Json.ApiV1Payments.accountClosed.rawValue: self = .recipientAccountClosed
-        case Json.ApiV1Payments.illegalParamExtAuthSuccessUri.rawValue: self = .illegalParameter(parameterName: "extAuthSuccessUri")
-        case Json.ApiV1Payments.illegalParamExtAuthFailUri.rawValue: self = .illegalParameter(parameterName: "extAuthFailUri")
+        case Json.ApiV1Payments.illegalParamExtAuthSuccessUri.rawValue:
+            self = .illegalParameter(parameterName: "extAuthSuccessUri")
+        case Json.ApiV1Payments.illegalParamExtAuthFailUri.rawValue:
+            self = .illegalParameter(parameterName: "extAuthFailUri")
         case Json.ApiV1Payments.illegalParamRequestId.rawValue: self = .illegalParameter(parameterName: "requestId")
-        case Json.ApiV1Payments.illegalParamMoneySourceToken.rawValue: self = .illegalParameter(parameterName: "moneySourceToken")
+        case Json.ApiV1Payments.illegalParamMoneySourceToken.rawValue:
+            self = .illegalParameter(parameterName: "moneySourceToken")
         case Json.ApiV1Payments.illegalParamClientId.rawValue: self = .illegalParameter(parameterName: "clientId")
 
         // MARK: - Search
@@ -324,7 +341,7 @@ extension ApiResponseError: Gloss.Decodable {
             case illegalParamLatitude = "illegal_param_latitude"
             case illegalParamLongitude = "illegal_param_longitude"
         }
-        
+
         enum History: String {
             case illegalParamType = "illegal_param_type"
             case illegalParamLabel = "illegal_param_label"
@@ -375,7 +392,6 @@ extension ApiResponseError: Gloss.Decodable {
     }
 }
 
-
 // MARK: - LocalizedError
 extension ApiResponseError: LocalizedError {
     public var errorDescription: String? {
@@ -397,15 +413,20 @@ extension ApiResponseError: LocalizedError {
         case .payerNotFound: return "Payer account not found in merchant's regester"
 
         // MARK: Status 202
-        case .requestStateUnknown(nextRetry: let nextRetry): return "Request state unknown and should be repeated to get final state. Retry in \(nextRetry) ms"
+        case .requestStateUnknown(nextRetry: let nextRetry):
+            return "Request state unknown and should be repeated to get final state. Retry in \(nextRetry) ms"
 
         // MARK: Status 400
         case .syntaxError: return "HTTP request or JWS parsing failed"
-        case .illegalHeader(parameterName: let parameterName): return "JWS header missing or holds illegal values for '\(parameterName)'"
-        case .illegalParameter(parameterName: let parameterName): return "JWS payload missing or holds illegal values for '\(parameterName)'"
-        case .intervalTooLarge(parameterName: let parameterName): return "Too large selection interval requested for '\(parameterName)'"
+        case .illegalHeader(parameterName: let parameterName):
+            return "JWS header missing or holds illegal values for '\(parameterName)'"
+        case .illegalParameter(parameterName: let parameterName):
+            return "JWS payload missing or holds illegal values for '\(parameterName)'"
+        case .intervalTooLarge(parameterName: let parameterName):
+            return "Too large selection interval requested for '\(parameterName)'"
         case .orderDuplication: return "Tryng to create different order with previously user order ID"
-        case .amountRemainderTooLow: return "Not allowed partial refund amount. Partial amount should be reduced or total amount refunded"
+        case .amountRemainderTooLow:
+            return "Not allowed partial refund amount. Partial amount should be reduced or total amount refunded"
 
         // MARK: Status 401
         case .invalidToken: return "OAuth2 wallet authorization invalid"
@@ -418,10 +439,13 @@ extension ApiResponseError: LocalizedError {
         case .instrumentNotAllowed: return "Order not allowed to be paid by this instrument"
         case .operationForbidden: return "Requested operation forbidden for this order"
         case .invalidScope: return "OAuth2 authorization scope not enough for requested operation"
-        case .parameterNotAllowed(parameterName: let parameterName): return "Parameter value not allowed for '\(parameterName)'"
+        case .parameterNotAllowed(parameterName: let parameterName):
+            return "Parameter value not allowed for '\(parameterName)'"
 
         // MARK: Status 500
-        case .technicalError(nextRetry: let nextRetry): return "Technical Error. Request accepted or rejected, and should be repeated to get final status. Retry in \(nextRetry) ms"
+        case .technicalError(nextRetry: let nextRetry):
+            // swiftlint:disable:next line_length
+            return "Technical Error. Request accepted or rejected, and should be repeated to get final status. Retry in \(nextRetry) ms"
 
         // MARK: OAuth2 API
         case .phoneNumberRefused: return "Phone number not allowed for Yandex.Wallet registration"
@@ -432,7 +456,8 @@ extension ApiResponseError: LocalizedError {
 
         // MARK: API v1 payments
         case .accountBlocked(uri: let uri): return "User account blocked. To unlock procceed to: " + uri
-        case .extActionRequired(uri: let uri): return "Requested payment not allowed until action on external page proceeded: " + uri
+        case .extActionRequired(uri: let uri):
+            return "Requested payment not allowed until action on external page proceeded: " + uri
 
         // MARK: Undefined
         case .unknown(let desctiption): return "Undefined error. " + desctiption

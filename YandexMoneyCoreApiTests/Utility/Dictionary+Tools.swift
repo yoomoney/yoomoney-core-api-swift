@@ -22,12 +22,11 @@
  * THE SOFTWARE.
  */
 
-
 import Foundation
 
 // MARK: - Equatable
 extension Dictionary: Equatable {
-    public static func ==(lhs: Dictionary, rhs: Dictionary) -> Bool {
+    public static func == (lhs: Dictionary, rhs: Dictionary) -> Bool {
         return NSDictionary(dictionary: lhs).isEqual(to: rhs)
     }
 }

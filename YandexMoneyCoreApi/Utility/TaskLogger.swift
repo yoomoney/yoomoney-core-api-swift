@@ -91,7 +91,7 @@ private extension TaskLogger {
             "\(response.statusCode) (",
             HTTPURLResponse.localizedString(forStatusCode: response.statusCode),
             ")",
-        ].joined())]
+        ].joined()), ]
         if let headers = response.allHeaderFields as? [String: Any] {
             responseLog += [("headers", log(from: headers))]
         }
