@@ -22,8 +22,6 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 // TODO: Remove this ! -> use FunctionalSwift Result, jira: IOS-748
 
 public enum Result<Value, Error> {

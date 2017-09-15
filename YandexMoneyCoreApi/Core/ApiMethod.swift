@@ -21,9 +21,9 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
-import Foundation
-import Gloss
+import enum Alamofire.HTTPMethod
+import protocol Gloss.Encodable
+import struct Foundation.URL
 
 /// Parameters encoding method
 ///

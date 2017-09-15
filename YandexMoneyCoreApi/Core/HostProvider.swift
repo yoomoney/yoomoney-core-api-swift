@@ -21,6 +21,8 @@
  * THE SOFTWARE.
  */
 
+import protocol Foundation.LocalizedError
+
 /// Error specified for host provider protocol
 public enum HostProviderError {
 

@@ -21,7 +21,10 @@
  * THE SOFTWARE.
  */
 
-import Gloss
+import struct Foundation.Data
+import struct Foundation.Date
+import protocol Gloss.Logger
+import Foundation.NSURLResponse
 
 /// API requests and Response logger
 class TaskLogger {

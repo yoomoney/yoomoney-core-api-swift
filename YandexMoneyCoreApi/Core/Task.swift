@@ -21,9 +21,15 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
-import Foundation
-import Gloss
+import class Alamofire.DataRequest
+import struct Alamofire.DataResponse
+import Dispatch
+import Foundation.NSError
+import Foundation.NSURLResponse
+import struct Foundation.Data
+import protocol Foundation.LocalizedError
+import protocol Gloss.Decodable
+import typealias Gloss.JSON
 
 /// Provides interface to manage request lifecycle
 public class Task {

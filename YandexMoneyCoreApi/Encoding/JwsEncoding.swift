@@ -21,8 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
-import Foundation
 import GMEllipticCurveCrypto
 
 /// Encodes JWS

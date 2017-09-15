@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for YandexMoneyCoreApi.
 FOUNDATION_EXPORT double YandexMoneyCoreApiVersionNumber;

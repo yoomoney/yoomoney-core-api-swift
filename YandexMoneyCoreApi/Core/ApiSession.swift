@@ -21,9 +21,16 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
-import Foundation
-import Gloss
+import class Alamofire.URLSessionConfiguration
+import class Alamofire.SessionManager
+import struct Alamofire.JSONEncoding
+import struct Alamofire.URLComponents
+import protocol Alamofire.ParameterEncoding
+import struct Foundation.Data
+import class Foundation.Bundle
+import Foundation.NSURLResponse
+import protocol Foundation.LocalizedError
+import protocol Gloss.Logger
 
 /// Provides convenience methods to work with requests.
 public class ApiSession {

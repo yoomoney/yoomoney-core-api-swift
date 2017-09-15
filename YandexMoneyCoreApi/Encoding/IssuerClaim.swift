@@ -21,8 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-
 /// IssuerClaim parameter for JWS
 ///
 /// - clientId: Identifier issued for registred app

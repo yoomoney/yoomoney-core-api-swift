@@ -21,7 +21,7 @@
  * THE SOFTWARE.
  */
 
-import Gloss
+import typealias Gloss.JSON
 
 /// Add support parse of response specific errors
 public protocol ResponseWithCustomError {

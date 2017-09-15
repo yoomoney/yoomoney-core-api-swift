@@ -21,8 +21,15 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
-import Foundation
+import protocol Alamofire.ParameterEncoding
+import protocol Alamofire.URLRequestConvertible
+import struct Alamofire.URLRequest
+import struct Alamofire.Parameters
+import struct Alamofire.URLComponents
+import enum Alamofire.AFError
+import enum Alamofire.HTTPMethod
+import Foundation.NSValue
+import struct Foundation.CharacterSet
 
 struct URLEncoding: ParameterEncoding {
 

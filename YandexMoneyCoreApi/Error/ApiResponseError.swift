@@ -21,8 +21,10 @@
  * THE SOFTWARE.
  */
 
-import Foundation
-import Gloss
+import Dispatch
+import protocol Foundation.LocalizedError
+import protocol Gloss.Decodable
+import typealias Gloss.JSON
 
 ///
 /// API response Error
