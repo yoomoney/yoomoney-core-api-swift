@@ -1,0 +1,4 @@
+git "ssh://git@bitbucket.browser.yandex-team.ru/ml/mobile-functional-library-swift.git" "0.0.4"
+github "Alamofire/Alamofire" "4.5.1"
+github "hkellaway/Gloss" "1.2.4"
+github "subtranix/GMEllipticCurveCrypto" "v1.3.2"
