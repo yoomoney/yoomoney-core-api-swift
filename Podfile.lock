@@ -1,0 +1,31 @@
+PODS:
+  - Alamofire (4.6.0)
+  - FunctionalSwift (1.0.1)
+  - Gloss (1.2.4)
+  - GMEllipticCurveCrypto (1.3)
+  - SwiftLint (0.24.0)
+  - YandexMoneyCoreApi (0.0.1):
+    - Alamofire (~> 4.5)
+    - FunctionalSwift
+    - Gloss (~> 1.2)
+    - GMEllipticCurveCrypto (~> 1.3)
+
+DEPENDENCIES:
+  - SwiftLint
+  - YandexMoneyCoreApi (from `./`)
+
+EXTERNAL SOURCES:
+  YandexMoneyCoreApi:
+    :path: ./
+
+SPEC CHECKSUMS:
+  Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
+  FunctionalSwift: 0d18e87af14481bbd85b24bd0db453223874aad1
+  Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
+  GMEllipticCurveCrypto: dff32bc22d2bfd73d6cbac841faeb40f8d79ce7f
+  SwiftLint: a014c92b4664e8b13f380f8640a51bb1733778ba
+  YandexMoneyCoreApi: 96550fd501dd45aad4db3d51527f644422f4cd51
+
+PODFILE CHECKSUM: 420f950eeed6dbfa2c8dde03cba88844a6893e97
+
+COCOAPODS: 1.3.1

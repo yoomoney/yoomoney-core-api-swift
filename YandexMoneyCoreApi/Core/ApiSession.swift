@@ -137,6 +137,7 @@ public class ApiSession {
     }
 
     /// Cancels all active tasks
+    @available(iOS 9.0, *)
     public func cancelAllTasks() {
         manager.session.getAllTasks { tasks in
             tasks.forEach { $0.cancel() }

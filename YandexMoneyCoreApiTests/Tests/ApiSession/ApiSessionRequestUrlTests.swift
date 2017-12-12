@@ -133,7 +133,7 @@ private class MockHostProvider: HostProvider {
 }
 
 extension MockApiMethod: ApiMethod {
-    dynamic public var key: String {
+    @objc dynamic public var key: String {
         return "method-key"
     }
     public var httpMethod: HTTPMethod { return .post }

@@ -1,1 +1,1 @@
-# Swift Money Core API library
+# Yandex Money Core API library

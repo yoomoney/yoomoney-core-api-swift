@@ -852,3 +852,4 @@ cyclomatic_complexity: 11
 excluded:
   - Pods
   - Carthage
+  - .idea
