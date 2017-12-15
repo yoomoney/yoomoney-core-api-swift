@@ -23,6 +23,8 @@
 
 import Alamofire
 import Foundation
+import FunctionalSwift
+import Gloss
 import XCTest
 @testable import YandexMoneyCoreApi
 
@@ -94,14 +96,14 @@ private extension ApiSessionRequestUrlCommonTests {
         XCTAssertEqual(self.url(apiMethod: apiMethod), expected, "Bad url")
     }
 
-    private func url(apiMethod: ApiMethod) -> String? {
+    private func url<M: ApiMethod>(apiMethod: M) -> String? {
         let hostProvider = MockHostProvider()
         let session = ApiSession(hostProvider: hostProvider)
         let task = session.perform(apiMethod: apiMethod)
         switch task.request {
-        case .success(let data):
+        case .right(let data):
             return data.request?.url?.absoluteString
-        case .error(let error):
+        case .left(let error):
             XCTFail("task error: \(error)")
             return nil
         }
@@ -132,16 +134,38 @@ private class MockHostProvider: HostProvider {
     }
 }
 
+final class MockApiMethodResponse: ApiResponse {
+    required init?(response: HTTPURLResponse, data: Data) {
+        return nil
+    }
+
+    class func process(response: HTTPURLResponse?,
+                       data: Data?,
+                       error: Error?) -> FunctionalSwift.Result<MockApiMethodResponse> {
+        fatalError("process(response:data:error:) has not been implemented")
+    }
+}
+
 extension MockApiMethod: ApiMethod {
+    typealias Response = MockApiMethodResponse
+
     @objc dynamic public var key: String {
         return "method-key"
     }
-    public var httpMethod: HTTPMethod { return .post }
-    public var parametersEncoding: ParametersEncoding { return .url }
-    public var parameters: [String: Any]? {
+
+    var httpMethod: HTTPMethod {
+        return .post
+    }
+
+    var parametersEncoding: ParametersEncoding {
+        return .url
+    }
+
+    var parameters: [String: Any]? {
         return nil
     }
-    public func urlInfo(from hostProvider: HostProvider) throws -> URLInfo {
+
+    func urlInfo(from hostProvider: HostProvider) throws -> URLInfo {
         if let _urlInfo = _urlInfo {
             return _urlInfo
         } else {

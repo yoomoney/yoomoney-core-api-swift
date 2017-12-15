@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'YandexMoneyCoreApi'
-  spec.version      = '0.0.1'  
+  spec.version      = '0.0.2'
   spec.homepage     = 'https://bitbucket.browser.yandex-team.ru/projects/ML/repos/mobile-money-api-core-swift/browse'
   spec.license = { 
     :type => "MIT", 

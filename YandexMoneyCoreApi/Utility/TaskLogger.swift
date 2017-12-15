@@ -34,7 +34,7 @@ class TaskLogger {
         self.logger = logger
     }
 
-    func trace(task: Task) {
+    func trace<R>(task: Task<R>) {
         task.response { request, response, data, error in
             var log: [LogEntity] = []
             if let request = request {

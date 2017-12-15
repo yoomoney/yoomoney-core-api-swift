@@ -21,9 +21,4 @@
  * THE SOFTWARE.
  */
 
-import typealias Gloss.JSON
-
-/// Add support parse of response specific errors
-public protocol ResponseWithCustomError {
-    static func error(from json: JSON) -> Swift.Error?
-}
+protocol ErrorApiResponse: Error, ApiResponse {}

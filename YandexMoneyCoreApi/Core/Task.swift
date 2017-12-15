@@ -21,36 +21,31 @@
  * THE SOFTWARE.
  */
 
-import class Alamofire.DataRequest
-import struct Alamofire.DataResponse
-import Dispatch
-import Foundation.NSError
-import Foundation.NSURLResponse
-import struct Foundation.Data
-import protocol Foundation.LocalizedError
-import protocol Gloss.Decodable
-import typealias Gloss.JSON
+import Alamofire
+import Foundation
+import FunctionalSwift
+import Gloss
 
 /// Provides interface to manage request lifecycle
-public class Task {
+public class Task<R: ApiResponse> {
 
     /// Cancel request
     public func cancel() {
-        if case .success(let request) = request {
+        if case .right(let request) = request {
             request.cancel()
         }
     }
 
     /// Resume request
     public func resume() {
-        if case .success(let request) = request {
+        if case .right(let request) = request {
             request.resume()
         }
     }
 
     /// Suspend request
     public func suspend() {
-        if case .success(let request) = request {
+        if case .right(let request) = request {
             request.suspend()
         }
     }
@@ -63,15 +58,17 @@ public class Task {
     /// - Returns: Task object
     @discardableResult
     public func response(queue: DispatchQueue? = nil,
-                         completionHandler: @escaping (URLRequest?, HTTPURLResponse?, Data?, Swift.Error?) -> Void)
-        -> Self {
+                         completionHandler: @escaping (URLRequest?,
+                                                       HTTPURLResponse?,
+                                                       Data?,
+                                                       Swift.Error?) -> Void) -> Self {
         switch request {
-        case .success(let request):
+        case .right(let request):
             request.response(queue: queue) { dataResponse in
                 completionHandler(dataResponse.request, dataResponse.response, dataResponse.data, dataResponse.error)
             }
 
-        case .error(let error):
+        case .left(let error):
             (queue ?? .main).async {
                 completionHandler(nil, nil, nil, error)
             }
@@ -79,9 +76,9 @@ public class Task {
         return self
     }
 
-    let request: Result<DataRequest, Error>
+    let request: FunctionalSwift.Result<DataRequest>
 
-    init(request: Result<DataRequest, Error>) {
+    init(request: FunctionalSwift.Result<DataRequest>) {
         self.request = request
     }
 
@@ -94,20 +91,18 @@ public class Task {
     ///   - completion: The code to be executed once the request has finished.
     /// - Returns: The Task
     @discardableResult
-    public func responseApi<ResponseType: Gloss.Decodable>(
-        _: ResponseType.Type,
-        queue: DispatchQueue? = nil,
-        completion: @escaping (Result<ResponseType, Error>) -> Void) -> Self {
-
+    public func responseApi(queue: DispatchQueue? = nil,
+                            completion: @escaping (FunctionalSwift.Result<R>) -> Void) -> Self {
         switch request {
-        case .success(let dataRequest):
-            dataRequest.responseJSON(queue: queue) { dataResponse in
-                self.processJsonResponse(dataResponse: dataResponse, completion: completion)
+        case .right(let dataRequest):
+            dataRequest.responseData(queue: queue) {
+                let responseModel = R.process(response: $0.response, data: $0.data, error: $0.error)
+                completion(responseModel)
             }
 
-        case .error(let error):
+        case .left(let error):
             (queue ?? .main).async {
-                completion(.error(error))
+                completion(.left(error))
             }
         }
         return self
@@ -116,72 +111,8 @@ public class Task {
     /// Task error
     ///
     /// - serializationFailed: Can't parse response data
-    /// - api: API returned error
-    /// - response: Network error
-    /// - request: Error in request forming
-    /// - responseSpecific: Response specific error
     public enum Error: Swift.Error {
         case serializationFailed(text: String)
-        case api(ApiResponseError)
-        case response(Swift.Error)
-        case request(ApiSession.Error)
-        case responseSpecific(Swift.Error)
-    }
-}
-
-// MARK: - Private
-private extension Task {
-    func processJsonResponse<ResponseType: Gloss.Decodable>(
-        dataResponse: DataResponse<Any>,
-        completion: @escaping (Result<ResponseType, Error>) -> Void) {
-
-        var result: Result<ResponseType, Task.Error>
-        defer {
-            completion(result)
-        }
-        guard dataResponse.response?.statusCode != 500 else {
-            result = .error(.api(.technicalError(nextRetry: .milliseconds(5000))))
-
-            // TODO: Remove when stop receiving TechnicalError + Refused
-            if case .success(let json) = dataResponse.result,
-                ((json as? [String: Any])?["status"] as? String) == "Refused" {
-                result = .error(.api(.unknown("\(json)")))
-            }
-            // ..... . .. . .  ..  . .. . . .   .   .       .        .             .                        .
-
-            return
-        }
-
-        guard dataResponse.response?.statusCode != 401 else {
-            result = .error(.api(.invalidToken))
-            return
-        }
-
-        switch dataResponse.result {
-        case .success(let json as JSON):
-
-            if let error = (ResponseType.self as? ResponseWithCustomError.Type)?.error(from: json) {
-                result = .error(.responseSpecific(error))
-            } else if let response = ResponseType(json: json) {
-                result = .success(response)
-            } else {
-                result = .error(.api(ApiResponseError(json: json) ?? .unknown("\(json)")))
-            }
-
-        case .success(let value):
-            result = .error(.serializationFailed(text: "\(value)"))
-
-        case .failure(let error):
-            if error.isSerializationFailed {
-                var string: String?
-                if let data = dataResponse.data {
-                    string = String(data: data, encoding: .utf8)
-                }
-                result = .error(.serializationFailed(text: string ?? ""))
-            } else {
-                result = .error(.response(error))
-            }
-        }
     }
 }
 
@@ -191,12 +122,6 @@ extension Task.Error: LocalizedError {
         switch self {
         case .serializationFailed(text: let text):
             return "Can’t parse response data: " + text
-
-        case .api(let error as Swift.Error),
-             .response(let error),
-             .request(let error as Swift.Error),
-             .responseSpecific(let error):
-            return error.localizedDescription
         }
     }
 }

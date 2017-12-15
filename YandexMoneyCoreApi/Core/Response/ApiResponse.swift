@@ -1,7 +1,6 @@
-/*
- * The MIT License (MIT)
+/* The MIT License
  *
- * Copyright (c) 2016 NBCO Yandex.Money LLC
+ * Copyright (c) 2017 NBCO Yandex.Money LLC
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +21,12 @@
  * THE SOFTWARE.
  */
 
-// TODO: Remove this ! -> use FunctionalSwift Result, jira: IOS-748
+import Foundation
+import typealias FunctionalSwift.Result
 
-public enum Result<Value, Error> {
-    case success(Value)
-    case error(Error)
+public protocol ApiResponse {
+    init?(response: HTTPURLResponse, data: Data)
+    static func process(response: HTTPURLResponse?,
+                        data: Data?,
+                        error: Error?) -> Result<Self>
 }

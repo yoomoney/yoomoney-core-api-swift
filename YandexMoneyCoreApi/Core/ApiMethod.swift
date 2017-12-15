@@ -52,6 +52,9 @@ public enum URLInfo {
 /// Common protocol which describes requirements for api method
 public protocol ApiMethod {
 
+    /// Api method response.
+    associatedtype Response: ApiResponse
+
     /// The key of method
     var key: String { get }
 
@@ -63,6 +66,9 @@ public protocol ApiMethod {
 
     /// URL parameters sent with HTTP request
     var parameters: [String: Any]? { get }
+
+    /// URL headers sent with HTTP request
+    var headers: Headers { get }
 
     /// Chooses url info
     ///
@@ -76,5 +82,12 @@ public protocol ApiMethod {
 extension ApiMethod where Self: Gloss.Encodable {
     public var parameters: [String: Any]? {
         return toJSON()
+    }
+}
+
+// MARK: - Default headers
+extension ApiMethod {
+    var headers: Headers {
+        return .mempty
     }
 }

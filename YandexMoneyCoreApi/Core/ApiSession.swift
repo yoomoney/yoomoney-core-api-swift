@@ -21,15 +21,9 @@
  * THE SOFTWARE.
  */
 
-import class Alamofire.URLSessionConfiguration
-import class Alamofire.SessionManager
-import struct Alamofire.JSONEncoding
-import struct Alamofire.URLComponents
-import protocol Alamofire.ParameterEncoding
-import struct Foundation.Data
-import class Foundation.Bundle
-import Foundation.NSURLResponse
-import protocol Foundation.LocalizedError
+import Alamofire
+import Foundation
+import FunctionalSwift
 import protocol Gloss.Logger
 
 /// Provides convenience methods to work with requests.
@@ -49,7 +43,7 @@ public class ApiSession {
         get { return jwsEncoding.issuerClaim }
     }
 
-    /// Overrides all behavior for NSURLSessionTaskDelegate method 
+    /// Overrides all behavior for NSURLSessionTaskDelegate method
     /// `URLSession:task:didReceiveChallenge:completionHandler:` and requires the caller to call the `completionHandler`
     public var taskDidReceiveChallengeWithCompletion: ((_ session: URLSession,
         _ task: URLSessionTask,
@@ -64,7 +58,6 @@ public class ApiSession {
     private let manager: SessionManager
     fileprivate let tokenProvider: OAuthTokenProvider?
     fileprivate let hostProvider: HostProvider
-    fileprivate let userAgent: String?
     private let jwsEncoding = JwsEncoding()
     private let urlEncoding = URLEncoding()
     private let jsonEncoding = JSONEncoding()
@@ -75,17 +68,14 @@ public class ApiSession {
     /// - Parameters:
     ///   - tokenProvider: OAuth bearer token provider
     ///   - hostProvider: Host provider for all requests
-    ///   - userAgent: User agent header value
     ///   - configuration: Instance of NSURLSessionConfiguration
     ///   - logger: Gloss.Logger for API request-response
     public init(tokenProvider: OAuthTokenProvider? = nil,
                 hostProvider: HostProvider,
-                userAgent: String? = nil,
                 configuration: URLSessionConfiguration? = nil,
                 logger: Gloss.Logger? = nil) {
         self.tokenProvider = tokenProvider
         self.hostProvider = hostProvider
-        self.userAgent = userAgent
         manager = SessionManager(configuration: configuration ?? .default)
         self.logger = logger.map(TaskLogger.init)
     }
@@ -94,12 +84,12 @@ public class ApiSession {
     ///
     /// - Parameter apiMethod: Instanse, which conforms protocol ApiMethod
     /// - Returns: Instance of Task class
-    public func perform(apiMethod: ApiMethod) -> Task {
+    public func perform<M: ApiMethod>(apiMethod: M) -> Task<M.Response> {
         let url: URL
         do {
             url = try self.url(for: apiMethod)
         } catch let error as ApiSession.Error {
-            return Task(request: .error(.request(error))).trace(with: logger)
+            return Task(request: .left(error)).trace(with: logger)
         } catch {
             assertionFailure("Unexpected error: \(error)")
             // swiftlint:disable:next force_unwrapping
@@ -121,7 +111,7 @@ public class ApiSession {
             do {
                 jws = try jwsEncoding.makeJws(parameters: apiMethod.parameters ?? [:])
             } catch let error as JwsEncodingError {
-                return Task(request: .error(.request(.jws(error)))).trace(with: logger)
+                return Task(request: .left(Error.jws(error))).trace(with: logger)
             } catch {
                 assertionFailure("Unexpected error: \(error)")
                 jws = ""
@@ -129,11 +119,13 @@ public class ApiSession {
             httpParameters = ["request": jws]
             encoding = urlEncoding
         }
-        return Task(request: .success(manager.request(url,
-                                                      method: apiMethod.httpMethod,
-                                                      parameters: httpParameters,
-                                                      encoding: encoding,
-                                                      headers: httpHeaders()))).trace(with: logger)
+        let headers = makeHeaders(token: tokenProvider?.token, apiMethod: apiMethod)
+        let request = manager.request(url,
+                                      method: apiMethod.httpMethod,
+                                      parameters: httpParameters,
+                                      encoding: encoding,
+                                      headers: headers.value)
+        return Task(request: .right(request)).trace(with: logger)
     }
 
     /// Cancels all active tasks
@@ -158,7 +150,7 @@ public class ApiSession {
 
 // MARK: - Private
 private extension ApiSession {
-    func url(for apiMethod: ApiMethod) throws -> URL {
+    func url<M: ApiMethod>(for apiMethod: M) throws -> URL {
         switch try apiMethod.urlInfo(from: hostProvider) {
         case let .url(url):
             return url
@@ -182,31 +174,10 @@ private extension ApiSession {
         return url
     }
 
-    func httpHeaders() -> [String: String] {
-        let agent = userAgent ?? (Bundle.main.bundleIdentifier ?? "Yandex.Money.SDK") + "/" + osName()
-        var headers = ["User-Agent": agent]
-        if let token = tokenProvider?.token {
-            headers["Authorization"] = "Bearer " + token
-        }
-        return headers
-    }
-
-    private func osName() -> String {
-        #if os(iOS)
-            return "iOS"
-        #elseif os(OSX)
-            return "OSX"
-        #elseif os(macOS)
-            return "macOS"
-        #elseif os(tvOS)
-            return "tvOS"
-        #elseif os(watchOS)
-            return "watchOS"
-        #elseif os(Linux)
-            return "Linux"
-        #else
-            return ""
-        #endif
+    func makeHeaders<M: ApiMethod>(token: String?, apiMethod: M) -> Headers {
+        let values = { ["Authorization": "Bearer " + $0] } <^> token
+        let defaultHeaders = (Headers.init <^> values) ?? .mempty
+        return [defaultHeaders, apiMethod.headers].mconcat()
     }
 }
 
