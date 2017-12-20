@@ -7,19 +7,19 @@ Pod::Spec.new do |spec|
     :file => "LICENSE" 
   }
   spec.authors      = 'YandexMoney' 
-  spec.summary      = 'Swift Money Core API library'
+  spec.summary      = 'Yandex Money Core API library'
   spec.source       = { 
     :git => 'ssh://git@bitbucket.browser.yandex-team.ru/ml/mobile-money-api-core-swift.git', 
     :tag => spec.version 
   }
   spec.module_name  = 'YandexMoneyCoreApi'
 
-  spec.ios.deployment_target  = '9.0'
+  spec.ios.deployment_target  = '8.0'
 
   spec.source_files  = 'YandexMoneyCoreApi/**/*.swift'
 
   spec.dependency "Alamofire", "~> 4.5"
   spec.dependency "Gloss", "~> 1.2"
-  spec.dependency 'GMEllipticCurveCrypto', :git => 'https://github.com/subtranix/GMEllipticCurveCrypto', :tag => '1.3.2'
+  spec.dependency 'GMEllipticCurveCrypto', '~> 1.3'
   spec.dependency 'FunctionalSwift'
 end
