@@ -56,7 +56,6 @@ public class ApiSession {
 
     // MARK: - Private properties
     private let manager: SessionManager
-    fileprivate let tokenProvider: OAuthTokenProvider?
     fileprivate let hostProvider: HostProvider
     private let jwsEncoding = JwsEncoding()
     private let urlEncoding = URLEncoding()
@@ -66,29 +65,26 @@ public class ApiSession {
     /// Creates instance of ApiSession class
     ///
     /// - Parameters:
-    ///   - tokenProvider: OAuth bearer token provider
     ///   - hostProvider: Host provider for all requests
     ///   - configuration: Instance of NSURLSessionConfiguration
     ///   - logger: Gloss.Logger for API request-response
-    public init(tokenProvider: OAuthTokenProvider? = nil,
-                hostProvider: HostProvider,
+    public init(hostProvider: HostProvider,
                 configuration: URLSessionConfiguration? = nil,
                 logger: Gloss.Logger? = nil) {
-        self.tokenProvider = tokenProvider
         self.hostProvider = hostProvider
         manager = SessionManager(configuration: configuration ?? .default)
         self.logger = logger.map(TaskLogger.init)
     }
 
-    /// Perfoms API method
+    /// Performs API method
     ///
-    /// - Parameter apiMethod: Instanse, which conforms protocol ApiMethod
+    /// - Parameter apiMethod: Instance, which conforms protocol ApiMethod
     /// - Returns: Instance of Task class
     public func perform<M: ApiMethod>(apiMethod: M) -> Task<M.Response> {
         let url: URL
         do {
             url = try self.url(for: apiMethod)
-        } catch let error as ApiSession.Error {
+        } catch let error as ApiSession.ErrorApiSession {
             return Task(request: .left(error)).trace(with: logger)
         } catch {
             assertionFailure("Unexpected error: \(error)")
@@ -111,7 +107,7 @@ public class ApiSession {
             do {
                 jws = try jwsEncoding.makeJws(parameters: apiMethod.parameters ?? [:])
             } catch let error as JwsEncodingError {
-                return Task(request: .left(Error.jws(error))).trace(with: logger)
+                return Task(request: .left(ErrorApiSession.jws(error))).trace(with: logger)
             } catch {
                 assertionFailure("Unexpected error: \(error)")
                 jws = ""
@@ -119,12 +115,11 @@ public class ApiSession {
             httpParameters = ["request": jws]
             encoding = urlEncoding
         }
-        let headers = makeHeaders(token: tokenProvider?.token, apiMethod: apiMethod)
         let request = manager.request(url,
                                       method: apiMethod.httpMethod,
                                       parameters: httpParameters,
                                       encoding: encoding,
-                                      headers: headers.value)
+                                      headers: apiMethod.headers.value)
         return Task(request: .right(request)).trace(with: logger)
     }
 
@@ -141,7 +136,7 @@ public class ApiSession {
     /// - illegalUrl: Illegal URL
     /// - JWS encoding error
     /// - host: host provider error
-    public enum Error: Swift.Error {
+    public enum ErrorApiSession: Error {
         case illegalUrl(String)
         case jws(JwsEncodingError)
         case host(HostProviderError)
@@ -161,7 +156,7 @@ private extension ApiSession {
 
     private func url(forHost host: String, andPath path: String) throws -> URL {
         guard let components = URLComponents(string: host) else {
-            throw Error.illegalUrl(host)
+            throw ErrorApiSession.illegalUrl(host)
         }
         var resultComponents = components
         if resultComponents.scheme?.isEmpty != false {
@@ -169,20 +164,14 @@ private extension ApiSession {
         }
         resultComponents.path = path
         guard let url = resultComponents.url else {
-            throw Error.illegalUrl(host + path)
+            throw ErrorApiSession.illegalUrl(host + path)
         }
         return url
-    }
-
-    func makeHeaders<M: ApiMethod>(token: String?, apiMethod: M) -> Headers {
-        let values = { ["Authorization": "Bearer " + $0] } <^> token
-        let defaultHeaders = (Headers.init <^> values) ?? .mempty
-        return [defaultHeaders, apiMethod.headers].mconcat()
     }
 }
 
 // MARK: - LocalizedError
-extension ApiSession.Error: LocalizedError {
+extension ApiSession.ErrorApiSession: LocalizedError {
     public var errorDescription: String? {
         switch self {
         case .illegalUrl(let url): return "Illegal URL '\(url)'"

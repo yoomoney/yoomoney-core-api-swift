@@ -29,23 +29,19 @@ import FunctionalSwift
 public struct DefaultHeadersFactory: HeadersFactory {
 
     private let userAgent: String?
-    private let token: String?
 
     /// Initializer of the default http headers factory.
     ///
     /// - Parameters:
     ///   - userAgent: Name of the user agent.
-    ///   - token: OAuth bearer token.
-    public init(userAgent: String? = nil, token: String? = nil) {
+    public init(userAgent: String? = nil) {
         self.userAgent = userAgent
-        self.token = token
     }
 
     public func makeHeaders() -> Headers {
-        var headers = [
+        let headers = [
             Constants.Key.userAgent: userAgent ?? Constants.Value.userAgent,
         ]
-        headers[Constants.Key.token] = { Constants.Value.tokenPrefix + $0 } <^> token
         return Headers(SessionManager.defaultHTTPHeaders).mappend(Headers(headers))
     }
 }
@@ -54,11 +50,9 @@ public struct DefaultHeadersFactory: HeadersFactory {
 private extension DefaultHeadersFactory {
     enum Constants {
         enum Key {
-            static let token = "Authorization"
             static let userAgent = "User-Agent"
         }
         enum Value {
-            static let tokenPrefix = "Bearer "
             static let userAgent = (Bundle.main.bundleIdentifier ?? "Yandex.Money.SDK") + "/" + osName
             private static var osName: String {
                 #if os(iOS)

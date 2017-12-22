@@ -21,4 +21,4 @@
  * THE SOFTWARE.
  */
 
-protocol ErrorApiResponse: Error, ApiResponse {}
+public protocol ErrorApiResponse: Error, ApiResponse {}

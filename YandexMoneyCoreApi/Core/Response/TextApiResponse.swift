@@ -27,3 +27,20 @@ public protocol TextApiResponse: ApiResponse {
     init?(text: String)
     init?(response: HTTPURLResponse, data: Data)
 }
+
+extension TextApiResponse {
+    init?(response: HTTPURLResponse, data: Data) {
+        var encoding: String.Encoding = .utf8
+
+        if let encodingName = response.textEncodingName as CFString! {
+            let cfStringEncoding = CFStringConvertIANACharSetNameToEncoding(encodingName)
+            let encodingRawValue = CFStringConvertEncodingToNSStringEncoding(cfStringEncoding)
+            encoding = String.Encoding(rawValue: encodingRawValue)
+        }
+
+        guard let text = String(data: data, encoding: encoding) else {
+            return nil
+        }
+        self.init(text: text)
+    }
+}
