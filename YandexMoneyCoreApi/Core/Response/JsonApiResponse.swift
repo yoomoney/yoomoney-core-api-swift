@@ -27,11 +27,10 @@ import typealias Gloss.JSON
 
 public protocol JsonApiResponse: ApiResponse {
     init?(json: JSON)
-    init?(response: HTTPURLResponse, data: Data)
 }
 
 extension JsonApiResponse {
-    init?(response: HTTPURLResponse, data: Data) {
+    public init?(response: HTTPURLResponse, data: Data) {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? JSON,
               let jsonObject = json else {
             return nil

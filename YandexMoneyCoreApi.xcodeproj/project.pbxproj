@@ -37,6 +37,7 @@
 		402EB47C58F5A0EAB9C39055 /* HeadersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBCC5B2BD66D050094332 /* HeadersFactory.swift */; };
 		402EB81F31CFE9A1DCFE48CD /* ErrorApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBF6B0728031A9497F5D4 /* ErrorApiResponse.swift */; };
 		402EB956680DF685D70ACAA4 /* Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA0D3103F89E14FA67D8 /* Headers.swift */; };
+		402EBC1A77AB60855CD4127F /* String+dataFromBase64.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB8ACC9E2C0B70238B465 /* String+dataFromBase64.swift */; };
 		402EBCB4DCC7673685E6608D /* ApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */; };
 		402EBF8BC4715593641E6EEF /* DefaultHeadersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB49AB0B6F269E2781D80 /* DefaultHeadersFactory.swift */; };
 		D82A6D823A660321BCBE778E /* Pods_YandexMoneyCoreApiExamplePods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B08D36B764EE465077D33F /* Pods_YandexMoneyCoreApiExamplePods.framework */; };
@@ -112,6 +113,7 @@
 		402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		402EB49AB0B6F269E2781D80 /* DefaultHeadersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultHeadersFactory.swift; sourceTree = "<group>"; };
 		402EB526B5C3A213E0636212 /* JsonApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonApiResponse.swift; sourceTree = "<group>"; };
+		402EB8ACC9E2C0B70238B465 /* String+dataFromBase64.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+dataFromBase64.swift"; sourceTree = "<group>"; };
 		402EBA0D3103F89E14FA67D8 /* Headers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Headers.swift; sourceTree = "<group>"; };
 		402EBA32ADC38766078E97EB /* TextApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextApiResponse.swift; sourceTree = "<group>"; };
 		402EBCC5B2BD66D050094332 /* HeadersFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeadersFactory.swift; sourceTree = "<group>"; };
@@ -210,12 +212,28 @@
 			path = YandexMoneyCoreApiExample;
 			sourceTree = "<group>";
 		};
+		402EB785233941D1EFA0EEA7 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				402EBC6FBC685A94A54B3198 /* String */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		402EBC5709640B0EC6A20AC3 /* Error */ = {
 			isa = PBXGroup;
 			children = (
 				402EBF6B0728031A9497F5D4 /* ErrorApiResponse.swift */,
 			);
 			path = Error;
+			sourceTree = "<group>";
+		};
+		402EBC6FBC685A94A54B3198 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				402EB8ACC9E2C0B70238B465 /* String+dataFromBase64.swift */,
+			);
+			path = String;
 			sourceTree = "<group>";
 		};
 		402EBDAF84515D5DF84668E4 /* Headers */ = {
@@ -270,6 +288,7 @@
 				DD7681061F6817EA001C18CE /* YandexMoneyCoreApi.h */,
 				DD7681071F6817EA001C18CE /* Info.plist */,
 				402EBC5709640B0EC6A20AC3 /* Error */,
+				402EB785233941D1EFA0EEA7 /* Categories */,
 			);
 			path = YandexMoneyCoreApi;
 			sourceTree = "<group>";
@@ -703,6 +722,7 @@
 				402EBCB4DCC7673685E6608D /* ApiResponse.swift in Sources */,
 				402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */,
 				402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */,
+				402EBC1A77AB60855CD4127F /* String+dataFromBase64.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

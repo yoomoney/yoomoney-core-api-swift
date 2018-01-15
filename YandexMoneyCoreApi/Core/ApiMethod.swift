@@ -87,7 +87,7 @@ extension ApiMethod where Self: Gloss.Encodable {
 
 // MARK: - Default headers
 extension ApiMethod {
-    var headers: Headers {
+    public var headers: Headers {
         return .mempty
     }
 }
