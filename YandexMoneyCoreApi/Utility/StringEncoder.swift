@@ -23,7 +23,7 @@
 
 import Foundation
 
-public struct StringEncoder {
+public enum StringEncoder {
 
     public static func data(fromBase64String string: String) -> Data? {
         let padding = String(repeating: "=", count: 4 - string.count % 4)
