@@ -23,10 +23,11 @@
 
 import Foundation
 
-extension String {
-    public func dataFromBase64() -> Data? {
-        let padding = String(repeating: "=", count: 4 - characters.count % 4)
-        let base64 = String(characters.map {
+public struct StringEncoder {
+
+    public static func data(fromBase64String string: String) -> Data? {
+        let padding = String(repeating: "=", count: 4 - string.count % 4)
+        let base64 = String(string.map {
             switch $0 {
             case "-": return "+"
             case "_": return "/"
