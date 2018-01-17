@@ -76,8 +76,8 @@ private extension TaskLogger {
             requestLog += []
             let jwsParts = body.replacingOccurrences(of: "request=", with: "").components(separatedBy: ".")
             if body.contains("request="), jwsParts.count == 3,
-                let headerData = jwsParts[0].dataFromBase64(),
-                let payloadData = jwsParts[1].dataFromBase64(),
+                let headerData = StringEncoder.data(fromBase64String: jwsParts[0]),
+                let payloadData = StringEncoder.data(fromBase64String: jwsParts[1]),
                 let header = String(data: headerData, encoding: .utf8),
                 let payload = String(data: payloadData, encoding: .utf8) {
                     requestLog += [("jws", logFromJws(header: header.removingZero, payload: payload.removingZero))]
@@ -172,18 +172,6 @@ private extension TaskLogger {
 
 // MARK: - Custom string tools
 private extension String {
-    func dataFromBase64() -> Data? {
-        let padding = String(repeating: "=", count: 4 - characters.count % 4)
-        let base64 = String(characters.map {
-            switch $0 {
-            case "-": return "+"
-            case "_": return "/"
-            default: return $0
-            }
-        }) + padding
-        return Data(base64Encoded: base64, options: [])
-    }
-
     var removingZero: String {
         return replacingOccurrences(of: "\0", with: "")
     }

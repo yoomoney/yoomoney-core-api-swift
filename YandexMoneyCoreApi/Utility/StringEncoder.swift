@@ -21,28 +21,19 @@
  * THE SOFTWARE.
  */
 
-import protocol Foundation.LocalizedError
+import Foundation
 
-/// Error specified for host provider protocol
-public enum HostProviderError {
+public enum StringEncoder {
 
-    /// Can't get host for the key
-    case unknownKey(String)
-}
-
-extension HostProviderError: LocalizedError {
-    public var errorDescription: String? {
-        switch self {
-        case .unknownKey(let key): return "Unknown host key '\(key)'"
-        }
+    public static func data(fromBase64String string: String) -> Data? {
+        let padding = String(repeating: "=", count: 4 - string.count % 4)
+        let base64 = String(string.map {
+            switch $0 {
+            case "-": return "+"
+            case "_": return "/"
+            default: return $0
+            }
+        }) + padding
+        return Data(base64Encoded: base64, options: [])
     }
-}
-
-/// Common protocol which describes host for api method
-public protocol HostProvider {
-
-    /// Host for method key. Examples: "//host.ru", "https://host.ru", "//host.ru:8080"
-    /// - Note: `https` scheme will be used if not specified
-    /// - Throws: `HostProviderError`
-    func host(for key: String) throws -> String
 }
