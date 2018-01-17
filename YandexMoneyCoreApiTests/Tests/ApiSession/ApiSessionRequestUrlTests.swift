@@ -149,7 +149,7 @@ final class MockApiMethodResponse: ApiResponse {
 extension MockApiMethod: ApiMethod {
     typealias Response = MockApiMethodResponse
 
-    @objc dynamic public var key: String {
+    @objc dynamic public var hostProviderKey: String {
         return "method-key"
     }
 
@@ -169,14 +169,14 @@ extension MockApiMethod: ApiMethod {
         if let _urlInfo = _urlInfo {
             return _urlInfo
         } else {
-            let host = try hostProvider.host(for: key)
+            let host = try hostProvider.host(for: hostProviderKey)
             return .components(host: host, path: "")
         }
     }
 }
 
 private class MockApiMethodWithBadKey: MockApiMethod {
-    public override var key: String {
+    public override var hostProviderKey: String {
         return "method-bad-key"
     }
 }
