@@ -55,8 +55,8 @@ public protocol ApiMethod {
     /// Api method response.
     associatedtype Response: ApiResponse
 
-    /// The key of method
-    var key: String { get }
+    /// Host provider key.
+    var hostProviderKey: String { get }
 
     /// HTTP method: POST, GET, PUT, etc
     var httpMethod: HTTPMethod { get }
