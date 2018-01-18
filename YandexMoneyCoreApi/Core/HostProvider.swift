@@ -24,7 +24,7 @@
 import protocol Foundation.LocalizedError
 
 /// Error specified for host provider protocol
-public enum HostProviderError {
+public enum HostProviderError: Error {
 
     /// Can't get host for the key
     case unknownKey(String)
