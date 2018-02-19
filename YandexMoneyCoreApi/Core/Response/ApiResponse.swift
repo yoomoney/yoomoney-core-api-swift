@@ -26,7 +26,12 @@ import typealias FunctionalSwift.Result
 
 public protocol ApiResponse {
     init?(response: HTTPURLResponse, data: Data)
-    static func process(response: HTTPURLResponse?,
-                        data: Data?,
-                        error: Error?) -> Result<Self>
+    static func process(response: HTTPURLResponse?, data: Data?, error: Error?) -> Result<Self>
+    static func makeSpecificError(response: HTTPURLResponse, data: Data) -> Error?
+}
+
+extension ApiResponse {
+    public static func makeSpecificError(response: HTTPURLResponse, data: Data) -> Error? {
+        return nil
+    }
 }
