@@ -93,7 +93,7 @@ class JwsTests: XCTestCase {
     }
 
     fileprivate func jwsParts(_ jws: String?) -> [String]? {
-        if let jwsParts = jws?.characters.split(separator: ".").map(String.init), jwsParts.count == 3 {
+        if let jwsParts = jws?.split(separator: ".").map(String.init), jwsParts.count == 3 {
             return jwsParts
         } else {
             return nil

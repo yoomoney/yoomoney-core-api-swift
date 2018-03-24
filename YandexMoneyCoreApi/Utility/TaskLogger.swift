@@ -111,7 +111,7 @@ private extension TaskLogger {
 
     private func mockOAuthToken(in dictionary: inout [String: String]) {
         guard let token = dictionary["Authorization"] else { return }
-        dictionary["Authorization"] = String(repeating: "*", count: token.characters.count)
+        dictionary["Authorization"] = String(repeating: "*", count: token.count)
     }
 
     private func logFromJws(header: String, payload: String) -> [LogEntity] {
@@ -123,7 +123,7 @@ private extension TaskLogger {
 
     private func log(fromUrlEncoded string: String) -> [LogEntity] {
         var log: [LogEntity] = []
-        string.removingPercentEncoding?.characters.split(separator: "&").map { $0.split(separator: "=") }.forEach {
+        string.removingPercentEncoding?.split(separator: "&").map { $0.split(separator: "=") }.forEach {
             switch $0.count {
             case 0: break
             case 1: log += [(String($0[0]), "")]
