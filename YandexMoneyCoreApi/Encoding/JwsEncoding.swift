@@ -96,7 +96,7 @@ extension JwsEncodingError: LocalizedError {
 
 private extension Data {
     func base64UrlString() -> String {
-        return String(base64EncodedString(options: []).characters.flatMap {
+        return String(base64EncodedString(options: []).flatMap {
             switch $0 {
             case "/": return "_"
             case "+": return "-"

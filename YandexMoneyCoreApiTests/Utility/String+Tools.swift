@@ -31,13 +31,13 @@ extension String {
      - returns: NSData object if decoded
      */
     func dataFromBase64() -> Data? {
-        let rem = characters.count % 4
+        let rem = count % 4
         var ending = ""
         if rem > 0 {
             let amount = 4 - rem
             ending = String(repeating: "=", count: amount)
         }
-        let base64 = String(characters.map {
+        let base64 = String(map {
             switch $0 {
             case "-": return "+"
             case "_": return "/"

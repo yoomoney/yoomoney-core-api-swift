@@ -22,7 +22,7 @@
  */
 
 import enum Alamofire.HTTPMethod
-import protocol Gloss.Encodable
+import protocol Gloss.JSONEncodable
 import struct Foundation.URL
 
 /// Parameters encoding method
@@ -78,8 +78,8 @@ public protocol ApiMethod {
     func urlInfo(from hostProvider: HostProvider) throws -> URLInfo
 }
 
-// MARK: - Default parameters for methods that confirm Encodable protocol
-extension ApiMethod where Self: Gloss.Encodable {
+// MARK: - Default parameters for methods that confirm JSONEncodable protocol
+extension ApiMethod where Self: Gloss.JSONEncodable {
     public var parameters: [String: Any]? {
         return toJSON()
     }

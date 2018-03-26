@@ -111,7 +111,7 @@ private extension ApiSessionRequestUrlCommonTests {
 
 }
 
-private class MockApiMethod {
+private class MockApiMethod: ApiMethod {
 
     fileprivate let _urlInfo: URLInfo?
 
@@ -122,34 +122,10 @@ private class MockApiMethod {
     init() {
         _urlInfo = nil
     }
-}
 
-private class MockHostProvider: HostProvider {
-    func host(for key: String) throws -> String {
-        if key == "method-key" {
-            return "mock-host"
-        } else {
-            throw HostProviderError.unknownKey(key)
-        }
-    }
-}
-
-final class MockApiMethodResponse: ApiResponse {
-    required init?(response: HTTPURLResponse, data: Data) {
-        return nil
-    }
-
-    class func process(response: HTTPURLResponse?,
-                       data: Data?,
-                       error: Error?) -> FunctionalSwift.Result<MockApiMethodResponse> {
-        fatalError("process(response:data:error:) has not been implemented")
-    }
-}
-
-extension MockApiMethod: ApiMethod {
     typealias Response = MockApiMethodResponse
 
-    @objc dynamic public var hostProviderKey: String {
+    public var hostProviderKey: String {
         return "method-key"
     }
 
@@ -172,6 +148,28 @@ extension MockApiMethod: ApiMethod {
             let host = try hostProvider.host(for: hostProviderKey)
             return .components(host: host, path: "")
         }
+    }
+}
+
+private class MockHostProvider: HostProvider {
+    func host(for key: String) throws -> String {
+        if key == "method-key" {
+            return "mock-host"
+        } else {
+            throw HostProviderError.unknownKey(key)
+        }
+    }
+}
+
+final class MockApiMethodResponse: ApiResponse {
+    required init?(response: HTTPURLResponse, data: Data) {
+        return nil
+    }
+
+    class func process(response: HTTPURLResponse?,
+                       data: Data?,
+                       error: Error?) -> FunctionalSwift.Result<MockApiMethodResponse> {
+        fatalError("process(response:data:error:) has not been implemented")
     }
 }
 

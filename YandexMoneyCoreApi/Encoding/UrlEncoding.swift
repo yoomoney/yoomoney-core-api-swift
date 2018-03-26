@@ -145,9 +145,10 @@ struct URLEncoding: ParameterEncoding {
                 let endIndex = string.index(index, offsetBy: batchSize, limitedBy: string.endIndex) ?? string.endIndex
                 let range = startIndex..<endIndex
 
-                let substring = string.substring(with: range)
+                let substring = string[range]
 
-                escaped += substring.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) ?? substring
+                escaped += substring.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet)
+                    ?? String(substring)
 
                 index = endIndex
             }
