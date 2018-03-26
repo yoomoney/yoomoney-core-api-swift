@@ -19,8 +19,8 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = 'YandexMoneyCoreApi/**/*.swift'
 
-  spec.dependency "Alamofire"
-  spec.dependency "Gloss"
-  spec.dependency 'GMEllipticCurveCrypto'
-  spec.dependency 'FunctionalSwift'
+  spec.dependency "Alamofire", '~> 4.7.0'
+  spec.dependency "Gloss", '~> 2.0.0'
+  spec.dependency 'GMEllipticCurveCrypto', '~> 1.3'
+  spec.dependency 'FunctionalSwift', '~> 1.0.5'
 end
