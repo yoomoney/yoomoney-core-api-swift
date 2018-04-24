@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'YandexMoneyCoreApi'
-  spec.version      = '0.0.7'
+  spec.version      = '0.1.0'
   spec.homepage     = 'https://bitbucket.browser.yandex-team.ru/projects/ML/repos/mobile-money-api-core-swift/browse'
   spec.license = { 
     :type => "MIT", 
@@ -19,8 +19,7 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = 'YandexMoneyCoreApi/**/*.swift'
 
-  spec.dependency "Alamofire", '~> 4.7.0'
-  spec.dependency "Gloss", '~> 2.0.0'
+  spec.dependency 'Gloss', '~> 2.0.0'
   spec.dependency 'GMEllipticCurveCrypto', '~> 1.3'
   spec.dependency 'FunctionalSwift', '~> 1.0.5'
 end

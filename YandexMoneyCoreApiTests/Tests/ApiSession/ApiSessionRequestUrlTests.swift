@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
 import Foundation
 import FunctionalSwift
 import Gloss
@@ -100,9 +99,9 @@ private extension ApiSessionRequestUrlCommonTests {
         let hostProvider = MockHostProvider()
         let session = ApiSession(hostProvider: hostProvider)
         let task = session.perform(apiMethod: apiMethod)
-        switch task.request {
+        switch task.requestData {
         case .right(let data):
-            return data.request?.url?.absoluteString
+            return data.request.url?.absoluteString
         case .left(let error):
             XCTFail("task error: \(error)")
             return nil
@@ -168,7 +167,7 @@ final class MockApiMethodResponse: ApiResponse {
 
     class func process(response: HTTPURLResponse?,
                        data: Data?,
-                       error: Error?) -> FunctionalSwift.Result<MockApiMethodResponse> {
+                       error: Error?) -> Result<MockApiMethodResponse> {
         fatalError("process(response:data:error:) has not been implemented")
     }
 }

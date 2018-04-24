@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
 import Gloss
 import GMEllipticCurveCrypto
 import XCTest
@@ -73,7 +72,7 @@ class JwsTests: XCTestCase {
         guard let jwsParts = jwsParts(try? generateJws()) else { return }
 
         let crypto = GMEllipticCurveCrypto(curve: GMEllipticCurveSecp256r1)
-        crypto?.publicKey = Jws.publicKey as Data!
+        crypto?.publicKey = Jws.publicKey
 
         guard let data = jwsParts[2].dataFromBase64() else {
             XCTFail("Signature data not valid")
