@@ -41,6 +41,12 @@ public typealias Parameters = [String: Any]
 
 struct URLEncoding: ParameterEncoding {
 
+    fileprivate let arrayEncoding: ParametersEncoding.ArrayEncoding
+
+    init(arrayEncoding: ParametersEncoding.ArrayEncoding) {
+        self.arrayEncoding = arrayEncoding
+    }
+
     /// Creates a URL request by encoding parameters and applying them onto an existing request.
     ///
     /// - parameter urlRequest: The request to have parameters applied.
@@ -91,8 +97,14 @@ struct URLEncoding: ParameterEncoding {
                 components += queryComponents(fromKey: "\(key)[\(nestedKey)]", value: value)
             }
         } else if let array = value as? [Any] {
-            for value in array {
-                components += queryComponents(fromKey: "\(key)[]", value: value)
+            switch arrayEncoding {
+            case .brackets:
+                for value in array {
+                    components += queryComponents(fromKey: "\(key)[]", value: value)
+                }
+            case .noBrackets:
+                let value = array.flatMap { escape("\($0)") }.joined(separator: ",")
+                components.append((escape(key), value))
             }
         } else if let value = value as? NSNumber {
             if value.isBool {

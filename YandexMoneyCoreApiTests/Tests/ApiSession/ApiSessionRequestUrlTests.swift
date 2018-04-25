@@ -133,7 +133,7 @@ private class MockApiMethod: ApiMethod {
     }
 
     var parametersEncoding: ParametersEncoding {
-        return .url
+        return .url(arrayEncoding: .brackets)
     }
 
     var parameters: [String: Any]? {

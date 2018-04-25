@@ -45,9 +45,20 @@ public enum HTTPMethod: String {
 /// - jws: JWS
 /// - json: application/json
 public enum ParametersEncoding {
-    case url
+    case url(arrayEncoding: ArrayEncoding)
     case jws
     case json
+}
+
+extension ParametersEncoding {
+    /// Configures how `Array` parameters are encoded.
+    ///
+    /// - brackets: An empty set of square brackets is appended to the key for every value.
+    /// - noBrackets: No brackets are appended. The key is encoded as is.
+    public enum ArrayEncoding {
+        case brackets
+        case noBrackets
+    }
 }
 
 /// Url information
