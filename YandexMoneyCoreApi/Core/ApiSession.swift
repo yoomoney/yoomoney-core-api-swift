@@ -125,7 +125,7 @@ public class ApiSession {
         }
 
         do {
-            let request = URLRequest(url: url, method: apiMethod.httpMethod, headers: apiMethod.headers.value)
+            let request = URLRequest(url: url, method: apiMethod.httpMethod, headers: apiMethod.headers)
             let encodedRequest = try encoding.encode(request, with: httpParameters)
             let requestData = RequestData(session: session, request: encodedRequest)
             return Task(requestData: .right(requestData)).trace(with: logger)
@@ -153,7 +153,7 @@ public class ApiSession {
         case host(HostProviderError)
     }
 
-    public static let defaultHTTPHeaders: HTTPHeaders = {
+    public static let defaultHTTPHeaders: Headers = {
         // Accept-Encoding HTTP Header; see https://tools.ietf.org/html/rfc7230#section-4.2.3
         let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
 
@@ -201,11 +201,13 @@ public class ApiSession {
             return "CoreApi"
         }()
 
-        return [
+        let value = [
             "Accept-Encoding": acceptEncoding,
             "Accept-Language": acceptLanguage,
             "User-Agent": userAgent,
         ]
+        let headers = Headers(value)
+        return headers
     }()
 }
 

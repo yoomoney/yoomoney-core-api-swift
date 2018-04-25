@@ -41,7 +41,7 @@ public struct DefaultHeadersFactory: HeadersFactory {
         let headers = [
             Constants.Key.userAgent: userAgent ?? Constants.Value.userAgent,
         ]
-        return Headers(ApiSession.defaultHTTPHeaders).mappend(Headers(headers))
+        return Headers(ApiSession.defaultHTTPHeaders.value).mappend(Headers(headers))
     }
 }
 

@@ -9,13 +9,13 @@ extension URLRequest {
     /// - parameter headers: The HTTP headers. `nil` by default.
     ///
     /// - returns: The new `URLRequest` instance.
-    public init(url: URL, method: HTTPMethod, headers: HTTPHeaders? = nil) {
+    public init(url: URL, method: HTTPMethod, headers: Headers? = nil) {
         self.init(url: url)
 
         httpMethod = method.rawValue
 
         if let headers = headers {
-            for (headerField, headerValue) in headers {
+            for (headerField, headerValue) in headers.value {
                 setValue(headerValue, forHTTPHeaderField: headerField)
             }
         }

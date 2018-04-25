@@ -24,9 +24,6 @@
 import protocol Gloss.JSONEncodable
 import struct Foundation.URL
 
-/// A dictionary of headers to apply to a `URLRequest`.
-public typealias HTTPHeaders = [String: String]
-
 /// HTTP method definitions.
 ///
 /// See https://tools.ietf.org/html/rfc7231#section-4.3
