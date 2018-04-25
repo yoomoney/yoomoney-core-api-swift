@@ -57,7 +57,7 @@ private extension TaskLogger {
     typealias LogEntity = (key: String, value: Any)
 }
 
-// MARK: - Pasing objects to Log
+// MARK: - Parsing objects to Log
 private extension TaskLogger {
     func log(from request: URLRequest) -> [LogEntity] {
         var requestLog: [LogEntity] = []

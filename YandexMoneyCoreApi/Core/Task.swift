@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
 import Foundation
 import FunctionalSwift
 import Gloss
@@ -31,23 +30,17 @@ public class Task<R: ApiResponse> {
 
     /// Cancel request
     public func cancel() {
-        if case .right(let request) = request {
-            request.cancel()
-        }
+        task?.cancel()
     }
 
     /// Resume request
     public func resume() {
-        if case .right(let request) = request {
-            request.resume()
-        }
+        task?.resume()
     }
 
     /// Suspend request
     public func suspend() {
-        if case .right(let request) = request {
-            request.suspend()
-        }
+        task?.suspend()
     }
 
     /// Adds a handler to be called once the request has finished.
@@ -62,10 +55,15 @@ public class Task<R: ApiResponse> {
                                                        HTTPURLResponse?,
                                                        Data?,
                                                        Swift.Error?) -> Void) -> Self {
-        switch request {
-        case .right(let request):
-            request.response(queue: queue) { dataResponse in
-                completionHandler(dataResponse.request, dataResponse.response, dataResponse.data, dataResponse.error)
+        switch requestData {
+        case .right(let requestData):
+            (queue ?? .main).async {
+                let task = requestData.session.dataTask(
+                    with: requestData.request) { (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
+                    completionHandler(requestData.request, (response as? HTTPURLResponse), data, error)
+                }
+                self.task = task
+                task.resume()
             }
 
         case .left(let error):
@@ -73,13 +71,8 @@ public class Task<R: ApiResponse> {
                 completionHandler(nil, nil, nil, error)
             }
         }
+
         return self
-    }
-
-    let request: FunctionalSwift.Result<DataRequest>
-
-    init(request: FunctionalSwift.Result<DataRequest>) {
-        self.request = request
     }
 
     /// Adds a handler to be called once the request has finished.
@@ -92,12 +85,20 @@ public class Task<R: ApiResponse> {
     /// - Returns: The Task
     @discardableResult
     public func responseApi(queue: DispatchQueue? = nil,
-                            completion: @escaping (FunctionalSwift.Result<R>) -> Void) -> Self {
-        switch request {
-        case .right(let dataRequest):
-            dataRequest.responseData(queue: queue) {
-                let responseModel = R.process(response: $0.response, data: $0.data, error: $0.error)
-                completion(responseModel)
+                            completion: @escaping (Result<R>) -> Void) -> Self {
+        switch requestData {
+        case .right(let requestData):
+            (queue ?? .main).async {
+                let task = requestData.session.dataTask(
+                    with: requestData.request) { (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
+                    let response = response as? HTTPURLResponse
+                    let result = R.process(response: response,
+                                           data: data,
+                                           error: error)
+                    completion(result)
+                }
+                self.task = task
+                task.resume()
             }
 
         case .left(let error):
@@ -105,6 +106,7 @@ public class Task<R: ApiResponse> {
                 completion(.left(error))
             }
         }
+
         return self
     }
 
@@ -113,6 +115,13 @@ public class Task<R: ApiResponse> {
     /// - serializationFailed: Can't parse response data
     public enum Error: Swift.Error {
         case serializationFailed(text: String)
+    }
+
+    let requestData: Result<RequestData>
+    private var task: URLSessionTask?
+
+    init(requestData: Result<RequestData>) {
+        self.requestData = requestData
     }
 }
 

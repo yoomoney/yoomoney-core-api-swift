@@ -22,7 +22,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
 import FunctionalSwift
 
 /// Default http headers factory
@@ -42,7 +41,7 @@ public struct DefaultHeadersFactory: HeadersFactory {
         let headers = [
             Constants.Key.userAgent: userAgent ?? Constants.Value.userAgent,
         ]
-        return Headers(SessionManager.defaultHTTPHeaders).mappend(Headers(headers))
+        return Headers(ApiSession.defaultHTTPHeaders.value).mappend(Headers(headers))
     }
 }
 

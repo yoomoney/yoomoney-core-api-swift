@@ -21,15 +21,23 @@
  * THE SOFTWARE.
  */
 
-import protocol Alamofire.ParameterEncoding
-import protocol Alamofire.URLRequestConvertible
-import struct Alamofire.URLRequest
-import struct Alamofire.Parameters
-import struct Alamofire.URLComponents
-import enum Alamofire.AFError
-import enum Alamofire.HTTPMethod
-import Foundation.NSValue
-import struct Foundation.CharacterSet
+import Foundation
+
+/// A type used to define how a set of parameters are applied to a `URLRequest`.
+public protocol ParameterEncoding {
+    /// Creates a URL request by encoding parameters and applying them onto an existing request.
+    ///
+    /// - parameter urlRequest: The request to have parameters applied.
+    /// - parameter parameters: The parameters to apply.
+    ///
+    /// - throws: An `AFError.parameterEncodingFailed` error if encoding fails.
+    ///
+    /// - returns: The encoded request.
+    func encode(_ urlRequest: URLRequest, with parameters: Parameters?) throws -> URLRequest
+}
+
+/// A dictionary of parameters to apply to a `URLRequest`.
+public typealias Parameters = [String: Any]
 
 struct URLEncoding: ParameterEncoding {
 
@@ -41,14 +49,15 @@ struct URLEncoding: ParameterEncoding {
     /// - throws: An `Error` if the encoding process encounters an error.
     ///
     /// - returns: The encoded request.
-    func encode(_ urlRequest: URLRequestConvertible, with parameters: Parameters?) throws -> URLRequest {
-        var urlRequest = try urlRequest.asURLRequest()
+    func encode(_ urlRequest: URLRequest, with parameters: Parameters?) throws -> URLRequest {
 
         guard let parameters = parameters else { return urlRequest }
 
+        var urlRequest = urlRequest
+
         if let method = HTTPMethod(rawValue: urlRequest.httpMethod ?? "GET"), encodesParametersInURL(with: method) {
             guard let url = urlRequest.url else {
-                throw AFError.parameterEncodingFailed(reason: .missingURL)
+                throw CoreApiError.urlEncodingMissingUrl
             }
 
             if var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false), !parameters.isEmpty {

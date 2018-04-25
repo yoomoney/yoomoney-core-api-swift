@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-import Alamofire
 import Foundation
 import FunctionalSwift
 import protocol Gloss.Logger
@@ -46,34 +45,43 @@ public class ApiSession {
     /// Overrides all behavior for NSURLSessionTaskDelegate method
     /// `URLSession:task:didReceiveChallenge:completionHandler:` and requires the caller to call the `completionHandler`
     public var taskDidReceiveChallengeWithCompletion: ((_ session: URLSession,
-        _ task: URLSessionTask,
-        _ challenge: URLAuthenticationChallenge,
-        _ completionHandler: (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void)? {
+                                                        _ challenge: URLAuthenticationChallenge,
+                                                        _ completionHandler: (URLSession.AuthChallengeDisposition,
+                                                                              URLCredential?) -> Void) -> Void)? {
         didSet {
-            manager.delegate.taskDidReceiveChallengeWithCompletion = taskDidReceiveChallengeWithCompletion
+            delegate.taskDidReceiveChallengeWithCompletion = taskDidReceiveChallengeWithCompletion
         }
     }
 
     // MARK: - Private properties
-    private let manager: SessionManager
-    fileprivate let hostProvider: HostProvider
+
+    private let session: URLSession
+    private let delegate: ApiSessionDelegate
+    private let hostProvider: HostProvider
+    private let logger: TaskLogger?
+
     private let jwsEncoding = JwsEncoding()
     private let urlEncoding = URLEncoding()
     private let jsonEncoding = JSONEncoding()
-    private let logger: TaskLogger?
 
     /// Creates instance of ApiSession class
     ///
     /// - Parameters:
     ///   - hostProvider: Host provider for all requests
-    ///   - configuration: Instance of NSURLSessionConfiguration
+    ///   - configuration: Instance of URLSessionConfiguration
     ///   - logger: Gloss.Logger for API request-response
     public init(hostProvider: HostProvider,
-                configuration: URLSessionConfiguration? = nil,
+                configuration: URLSessionConfiguration = .default,
                 logger: Gloss.Logger? = nil) {
         self.hostProvider = hostProvider
-        manager = SessionManager(configuration: configuration ?? .default)
+
         self.logger = logger.map(TaskLogger.init)
+        self.delegate = ApiSessionDelegate()
+        self.session = URLSession(configuration: configuration, delegate: delegate, delegateQueue: nil)
+    }
+
+    deinit {
+        session.invalidateAndCancel()
     }
 
     /// Performs API method
@@ -85,7 +93,7 @@ public class ApiSession {
         do {
             url = try self.url(for: apiMethod)
         } catch let error as ApiSession.ErrorApiSession {
-            return Task(request: .left(error)).trace(with: logger)
+            return Task(requestData: .left(error)).trace(with: logger)
         } catch {
             assertionFailure("Unexpected error: \(error)")
             // swiftlint:disable:next force_unwrapping
@@ -107,7 +115,7 @@ public class ApiSession {
             do {
                 jws = try jwsEncoding.makeJws(parameters: apiMethod.parameters ?? [:])
             } catch let error as JwsEncodingError {
-                return Task(request: .left(ErrorApiSession.jws(error))).trace(with: logger)
+                return Task(requestData: .left(ErrorApiSession.jws(error))).trace(with: logger)
             } catch {
                 assertionFailure("Unexpected error: \(error)")
                 jws = ""
@@ -115,18 +123,21 @@ public class ApiSession {
             httpParameters = ["request": jws]
             encoding = urlEncoding
         }
-        let request = manager.request(url,
-                                      method: apiMethod.httpMethod,
-                                      parameters: httpParameters,
-                                      encoding: encoding,
-                                      headers: apiMethod.headers.value)
-        return Task(request: .right(request)).trace(with: logger)
+
+        do {
+            let request = URLRequest(url: url, method: apiMethod.httpMethod, headers: apiMethod.headers)
+            let encodedRequest = try encoding.encode(request, with: httpParameters)
+            let requestData = RequestData(session: session, request: encodedRequest)
+            return Task(requestData: .right(requestData)).trace(with: logger)
+        } catch {
+            return Task(requestData: .left(error)).trace(with: logger)
+        }
     }
 
     /// Cancels all active tasks
     @available(iOS 9.0, *)
     public func cancelAllTasks() {
-        manager.session.getAllTasks { tasks in
+        session.getAllTasks { tasks in
             tasks.forEach { $0.cancel() }
         }
     }
@@ -141,9 +152,67 @@ public class ApiSession {
         case jws(JwsEncodingError)
         case host(HostProviderError)
     }
+
+    public static let defaultHTTPHeaders: Headers = {
+        // Accept-Encoding HTTP Header; see https://tools.ietf.org/html/rfc7230#section-4.2.3
+        let acceptEncoding: String = "gzip;q=1.0, compress;q=0.5"
+
+        // Accept-Language HTTP Header; see https://tools.ietf.org/html/rfc7231#section-5.3.5
+        let acceptLanguage = Locale.preferredLanguages.prefix(6).enumerated().map { index, languageCode in
+            let quality = 1.0 - (Double(index) * 0.1)
+            return "\(languageCode);q=\(quality)"
+        }.joined(separator: ", ")
+
+        // User-Agent Header; see https://tools.ietf.org/html/rfc7231#section-5.5.3
+        // Example: `iOS Example/1.0 (org.alamofire.iOS-Example; build:1; iOS 10.0.0) Alamofire/4.0.0`
+        let userAgent: String = {
+            if let info = Bundle.main.infoDictionary {
+                let executable = info[kCFBundleExecutableKey as String] as? String ?? "Unknown"
+                let bundle = info[kCFBundleIdentifierKey as String] as? String ?? "Unknown"
+                let appVersion = info["CFBundleShortVersionString"] as? String ?? "Unknown"
+                let appBuild = info[kCFBundleVersionKey as String] as? String ?? "Unknown"
+
+                let osNameVersion: String = {
+                    let version = ProcessInfo.processInfo.operatingSystemVersion
+                    let versionString = "\(version.majorVersion).\(version.minorVersion).\(version.patchVersion)"
+
+                    let osName: String = {
+                        #if os(iOS)
+                            return "iOS"
+                        #elseif os(watchOS)
+                            return "watchOS"
+                        #elseif os(tvOS)
+                            return "tvOS"
+                        #elseif os(macOS)
+                            return "OS X"
+                        #elseif os(Linux)
+                            return "Linux"
+                        #else
+                            return "Unknown"
+                        #endif
+                    }()
+
+                    return "\(osName) \(versionString)"
+                }()
+
+                return "\(executable)/\(appVersion) (\(bundle); build:\(appBuild); \(osNameVersion))"
+            }
+
+            return "CoreApi"
+        }()
+
+        let value = [
+            "Accept-Encoding": acceptEncoding,
+            "Accept-Language": acceptLanguage,
+            "User-Agent": userAgent,
+        ]
+        let headers = Headers(value)
+        return headers
+    }()
 }
 
 // MARK: - Private
+
 private extension ApiSession {
     func url<M: ApiMethod>(for apiMethod: M) throws -> URL {
         switch try apiMethod.urlInfo(from: hostProvider) {
@@ -171,6 +240,7 @@ private extension ApiSession {
 }
 
 // MARK: - LocalizedError
+
 extension ApiSession.ErrorApiSession: LocalizedError {
     public var errorDescription: String? {
         switch self {
@@ -182,6 +252,7 @@ extension ApiSession.ErrorApiSession: LocalizedError {
 }
 
 // MARK: - API request-response logger
+
 private extension Task {
     @discardableResult func trace(with logger: TaskLogger?) -> Task {
         logger?.trace(task: self)
@@ -190,6 +261,7 @@ private extension Task {
 }
 
 // MARK: - Constants
+
 private extension ApiSession {
     enum Constants {
         static let defaultScheme = "https"
