@@ -61,7 +61,6 @@ public class ApiSession {
     private let logger: TaskLogger?
 
     private let jwsEncoding = JwsEncoding()
-    private let urlEncoding = URLEncoding()
     private let jsonEncoding = JSONEncoding()
 
     /// Creates instance of ApiSession class
@@ -104,9 +103,9 @@ public class ApiSession {
         let encoding: ParameterEncoding
         switch apiMethod.parametersEncoding {
 
-        case .url:
+        case .url(let arrayEncoding):
             httpParameters = apiMethod.parameters
-            encoding = urlEncoding
+            encoding = URLEncoding(arrayEncoding: arrayEncoding)
         case .json:
             httpParameters = apiMethod.parameters
             encoding = jsonEncoding
@@ -121,7 +120,7 @@ public class ApiSession {
                 jws = ""
             }
             httpParameters = ["request": jws]
-            encoding = urlEncoding
+            encoding = URLEncoding(arrayEncoding: .brackets)
         }
 
         do {
