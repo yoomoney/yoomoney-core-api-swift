@@ -23,14 +23,32 @@
 
 import Foundation
 
-public struct RequestData {
+public class RequestData {
 
-    let session: URLSession
+    let queue: OperationQueue = {
+        let operationQueue = OperationQueue()
+
+        operationQueue.maxConcurrentOperationCount = 1
+        operationQueue.isSuspended = true
+        operationQueue.qualityOfService = .utility
+
+        return operationQueue
+    }()
+
+    var task: URLSessionTask?
+    var response: URLResponse?
+    var data: Data?
+    var error: Error?
+
     let request: URLRequest
 
-    public init(session: URLSession,
-                request: URLRequest) {
-        self.session = session
+    public init(request: URLRequest) {
         self.request = request
+    }
+
+    func response(completion: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        queue.addOperation {
+            completion(self.data, self.response, self.error)
+        }
     }
 }
