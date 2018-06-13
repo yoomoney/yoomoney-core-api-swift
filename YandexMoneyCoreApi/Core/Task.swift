@@ -30,17 +30,23 @@ public class Task<R: ApiResponse> {
 
     /// Cancel request
     public func cancel() {
-        task?.cancel()
+        if case .right(let requestData) = requestData {
+            requestData.task?.cancel()
+        }
     }
 
     /// Resume request
     public func resume() {
-        task?.resume()
+        if case .right(let requestData) = requestData {
+            requestData.task?.resume()
+        }
     }
 
     /// Suspend request
     public func suspend() {
-        task?.suspend()
+        if case .right(let requestData) = requestData {
+            requestData.task?.suspend()
+        }
     }
 
     /// Adds a handler to be called once the request has finished.
@@ -58,12 +64,9 @@ public class Task<R: ApiResponse> {
         switch requestData {
         case .right(let requestData):
             (queue ?? .main).async {
-                let task = requestData.session.dataTask(
-                    with: requestData.request) { (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
-                    completionHandler(requestData.request, (response as? HTTPURLResponse), data, error)
+                requestData.response { data, response, error in
+                    completionHandler(requestData.request, response as? HTTPURLResponse, data, error)
                 }
-                self.task = task
-                task.resume()
             }
 
         case .left(let error):
@@ -89,16 +92,10 @@ public class Task<R: ApiResponse> {
         switch requestData {
         case .right(let requestData):
             (queue ?? .main).async {
-                let task = requestData.session.dataTask(
-                    with: requestData.request) { (data: Data?, response: URLResponse?, error: Swift.Error?) -> Void in
-                    let response = response as? HTTPURLResponse
-                    let result = R.process(response: response,
-                                           data: data,
-                                           error: error)
+                requestData.response { data, response, error in
+                    let result = R.process(response: response as? HTTPURLResponse, data: data, error: error)
                     completion(result)
                 }
-                self.task = task
-                task.resume()
             }
 
         case .left(let error):
@@ -118,7 +115,6 @@ public class Task<R: ApiResponse> {
     }
 
     let requestData: Result<RequestData>
-    private var task: URLSessionTask?
 
     init(requestData: Result<RequestData>) {
         self.requestData = requestData
@@ -129,7 +125,7 @@ public class Task<R: ApiResponse> {
 extension Task.Error: LocalizedError {
     public var errorDescription: String? {
         switch self {
-        case .serializationFailed(text: let text):
+        case .serializationFailed(let text):
             return "Can’t parse response data: " + text
         }
     }

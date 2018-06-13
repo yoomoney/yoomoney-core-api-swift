@@ -123,14 +123,31 @@ public class ApiSession {
             encoding = URLEncoding(arrayEncoding: .brackets)
         }
 
+        let task: Task<M.Response>
+
         do {
             let request = URLRequest(url: url, method: apiMethod.httpMethod, headers: apiMethod.headers)
             let encodedRequest = try encoding.encode(request, with: httpParameters)
-            let requestData = RequestData(session: session, request: encodedRequest)
-            return Task(requestData: .right(requestData)).trace(with: logger)
+            let requestData = RequestData(request: encodedRequest)
+
+            let dataTask = session.dataTask(
+                with: encodedRequest) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
+
+                requestData.data = data
+                requestData.response = response
+                requestData.error = error
+                requestData.queue.isSuspended = false
+            }
+
+            requestData.task = dataTask
+            dataTask.resume()
+
+            task = Task(requestData: .right(requestData)).trace(with: logger)
         } catch {
-            return Task(requestData: .left(error)).trace(with: logger)
+            task = Task(requestData: .left(error)).trace(with: logger)
         }
+
+        return task
     }
 
     /// Cancels all active tasks
