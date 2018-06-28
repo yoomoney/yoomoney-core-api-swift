@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>ApiSession Class Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Class/ApiSession" class="dashAnchor"></a>
+    <a title="ApiSession Class Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">YandexMoneyCoreApi Docs</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/yandex-money/core-api-swift"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right"><a href="dash-feed://https%3A%2F%2Fyandex%2Dmoney%2Egithub%2Eio%2Fdocsets%2FYandexMoneyCoreApi%2Exml"><img src="../img/dash.png"/>Install in Dash</a></p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html">YandexMoneyCoreApi Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        ApiSession Class Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/ApiSession.html">ApiSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ApiSession/ErrorApiSession.html">– ErrorApiSession</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/ApiSessionDelegate.html">ApiSessionDelegate</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/JsonParametersEncoder.html">JsonParametersEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/QueryParametersEncoder.html">QueryParametersEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/RequestData.html">RequestData</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Task.html">Task</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Classes/Task/Error.html">– Error</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Enums/CoreApiError.html">CoreApiError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/HTTPMethod.html">HTTPMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/HostProviderError.html">HostProviderError</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/StringEncoder.html">StringEncoder</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Enums/URLInfo.html">URLInfo</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/URLRequest.html">URLRequest</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/ApiMethod.html">ApiMethod</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ApiResponse.html">ApiResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols.html#/s:18YandexMoneyCoreApi05ErrorD8ResponseP">ErrorApiResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HeadersFactory.html">HeadersFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/HostProvider.html">HostProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/JsonApiResponse.html">JsonApiResponse</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/Logger.html">Logger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/OAuthTokenProvider.html">OAuthTokenProvider</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/ParametersEncoding.html">ParametersEncoding</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/TextApiResponse.html">TextApiResponse</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Structs.html">Structures</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Structs/ConsoleLogger.html">ConsoleLogger</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/DefaultHeadersFactory.html">DefaultHeadersFactory</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Structs/Headers.html">Headers</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>ApiSession</h1>
+              <div class="declaration">
+                <div class="language">
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">ApiSession</span></code></pre>
+
+                </div>
+              </div>
+            <p>Provides convenience methods to work with requests.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionC37taskDidReceiveChallengeWithCompletionySo10URLSessionC_So017URLAuthenticationI0CyAF04AuthI11DispositionO_So13URLCredentialCSgtctcSgv"></a>
+                    <a name="//apple_ref/swift/Property/taskDidReceiveChallengeWithCompletion" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionC37taskDidReceiveChallengeWithCompletionySo10URLSessionC_So017URLAuthenticationI0CyAF04AuthI11DispositionO_So13URLCredentialCSgtctcSgv">taskDidReceiveChallengeWithCompletion</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Overrides all behavior for NSURLSessionTaskDelegate method
+<code>URLSession:task:didReceiveChallenge:completionHandler:</code> and requires the caller to call the <code>completionHandler</code></p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">taskDidReceiveChallengeWithCompletion</span><span class="p">:</span> <span class="p">((</span><span class="n">_</span> <span class="nv">session</span><span class="p">:</span> <span class="kt">URLSession</span><span class="p">,</span>
+                                                    <span class="n">_</span> <span class="nv">challenge</span><span class="p">:</span> <span class="kt">URLAuthenticationChallenge</span><span class="p">,</span>
+                                                    <span class="n">_</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="p">(</span><span class="kt">URLSession</span><span class="o">.</span><span class="kt">AuthChallengeDisposition</span><span class="p">,</span>
+                                                                          <span class="kt">URLCredential</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)?</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Private%20properties"></a>
+                <a name="//apple_ref/swift/Section/Private properties" class="dashAnchor"></a>
+                <a href="#/Private%20properties">
+                  <h3 class="section-name">Private properties</h3>
+                </a>
+              </div>
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionCAcA12HostProvider_p04hostG0_So23URLSessionConfigurationC13configurationAA6Logger_pSg6loggertcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(hostProvider:configuration:logger:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionCAcA12HostProvider_p04hostG0_So23URLSessionConfigurationC13configurationAA6Logger_pSg6loggertcfc">init(hostProvider:configuration:logger:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Creates instance of ApiSession class</p>
+
+<p>Returns: Instance of ApiSession class</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">hostProvider</span><span class="p">:</span> <span class="kt"><a href="../Protocols/HostProvider.html">HostProvider</a></span><span class="p">,</span>
+            <span class="nv">configuration</span><span class="p">:</span> <span class="kt">URLSessionConfiguration</span> <span class="o">=</span> <span class="o">.</span><span class="k">default</span><span class="p">,</span>
+            <span class="nv">logger</span><span class="p">:</span> <span class="kt"><a href="../Protocols/Logger.html">Logger</a></span><span class="p">?</span> <span class="o">=</span> <span class="kc">nil</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>hostProvider</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Host provider for all requests</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>configuration</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance of URLSessionConfiguration</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>logger</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Logger for API request-response</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionC7performAA4TaskCy8ResponseQzGx9apiMethod_tAA0dJ0RzlF"></a>
+                    <a name="//apple_ref/swift/Method/perform(apiMethod:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionC7performAA4TaskCy8ResponseQzGx9apiMethod_tAA0dJ0RzlF">perform(apiMethod:)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Performs API method</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="n">perform</span><span class="o">&lt;</span><span class="kt">M</span><span class="o">&gt;</span><span class="p">(</span><span class="nv">apiMethod</span><span class="p">:</span> <span class="kt">M</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Classes/Task.html">Task</a></span><span class="o">&lt;</span><span class="kt">M</span><span class="o">.</span><span class="kt">Response</span><span class="o">&gt;</span> <span class="k">where</span> <span class="kt">M</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/ApiMethod.html">ApiMethod</a></span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>apiMethod</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Instance, which conforms protocol ApiMethod</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>Instance of Task class</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionC14cancelAllTasksyyF"></a>
+                    <a name="//apple_ref/swift/Method/cancelAllTasks()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionC14cancelAllTasksyyF">cancelAllTasks()</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Cancels all active tasks</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">cancelAllTasks</span><span class="p">()</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionC05ErrordE0O"></a>
+                    <a name="//apple_ref/swift/Enum/ErrorApiSession" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionC05ErrordE0O">ErrorApiSession</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>API Session errors</p>
+
+<ul>
+<li>illegalUrl: Illegal URL</li>
+<li>host: host provider error</li>
+</ul>
+
+                        <a href="../Classes/ApiSession/ErrorApiSession.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">ErrorApiSession</span> <span class="p">:</span> <span class="kt">Error</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:18YandexMoneyCoreApi0D7SessionC18defaultHTTPHeadersAA7HeadersVvZ"></a>
+                    <a name="//apple_ref/swift/Variable/defaultHTTPHeaders" class="dashAnchor"></a>
+                    <a class="token" href="#/s:18YandexMoneyCoreApi0D7SessionC18defaultHTTPHeadersAA7HeadersVvZ">defaultHTTPHeaders</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Makes default HTTP headers.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">static</span> <span class="k">let</span> <span class="nv">defaultHTTPHeaders</span><span class="p">:</span> <span class="kt"><a href="../Structs/Headers.html">Headers</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2018 <a class="link" href="https://github.com/yandex-money" target="_blank" rel="external">Yandex Money</a>. All rights reserved. (Last updated: 2018-06-28)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
