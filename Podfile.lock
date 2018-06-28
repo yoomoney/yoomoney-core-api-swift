@@ -1,0 +1,22 @@
+PODS:
+  - FunctionalSwift (1.0.5)
+  - SwiftLint (0.25.1)
+  - YandexMoneyCoreApi (1.0.0):
+    - FunctionalSwift (~> 1.0.5)
+
+DEPENDENCIES:
+  - SwiftLint
+  - YandexMoneyCoreApi (from `./`)
+
+EXTERNAL SOURCES:
+  YandexMoneyCoreApi:
+    :path: ./
+
+SPEC CHECKSUMS:
+  FunctionalSwift: 89cef31016cbc9fcdd49ec04e5831ed5f51244bb
+  SwiftLint: ce933681be10c3266e82576dad676fa815a602e9
+  YandexMoneyCoreApi: 494777841c8ac44db06f3f672c796b43914ea201
+
+PODFILE CHECKSUM: 194388a2604fb4f25585ebcbd0ad9c6a1feb8dcc
+
+COCOAPODS: 1.4.0
