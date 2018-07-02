@@ -1,0 +1,10 @@
+language: objective-c
+osx_image: xcode9.2
+xcode_workspace: YandexMoneyCoreApi.xcworkspace
+xcode_scheme: YandexMoneyCoreApiExamplePods
+
+before_install:
+  - brew update && brew bundle
+
+before_script:
+  - carthage bootstrap --platform iOS --cache-builds
