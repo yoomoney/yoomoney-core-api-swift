@@ -396,7 +396,6 @@
 			buildConfigurationList = 300100371FE2AA2900BB5966 /* Build configuration list for PBXNativeTarget "YandexMoneyCoreApiExamplePods" */;
 			buildPhases = (
 				A5034F940E445D03DAAE5169 /* [CP] Check Pods Manifest.lock */,
-				3001004B1FE2BCC900BB5966 /* Swift Lint */,
 				3001002F1FE2AA2900BB5966 /* Sources */,
 				300100321FE2AA2900BB5966 /* Frameworks */,
 				300100331FE2AA2900BB5966 /* Resources */,

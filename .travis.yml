@@ -5,10 +5,19 @@ xcode_scheme: YandexMoneyCoreApiExamplePods
 
 before_install:
   - brew update && brew bundle
+  - bundle install --jobs=3 --retry=3 --deployment
+  - pushd .
   - bundle exec pod repo update
+  - bundle exec pod install
+
+install: true
+
+after_script:
 
 before_script:
   - carthage bootstrap --platform iOS --cache-builds
 
 script:
   - swiftlint
+  - bundle exec fastlane gym
+  - bundle exec fastlane scan
