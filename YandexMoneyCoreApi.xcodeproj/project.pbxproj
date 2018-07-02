@@ -84,8 +84,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				3001003E1FE2ABAC00BB5966 /* FunctionalSwift.framework in Embed Frameworks */,
-				300100401FE2ABAC00BB5966 /* GMEllipticCurveCrypto.framework in Embed Frameworks */,
-				300100421FE2ABAC00BB5966 /* Gloss.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +92,8 @@
 
 /* Begin PBXFileReference section */
 		244F70685350C8AA16323B9C /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
+		244F73CA4C0291550333ED92 /* Brewfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Brewfile; sourceTree = "<group>"; };
+		244F79786F5C3F98E4AA1CD9 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		244F7CEE66DAEC7D4E29F917 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		3001001B1FE2AA1800BB5966 /* YandexMoneyCoreApiExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YandexMoneyCoreApiExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3001001D1FE2AA1800BB5966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -247,6 +247,8 @@
 				DD7681041F6817EA001C18CE /* Products */,
 				DDB207411F694F1C007163CE /* Frameworks */,
 				05F08CA7FAF47D7D7B8AF0A5 /* Pods */,
+				244F79786F5C3F98E4AA1CD9 /* .travis.yml */,
+				244F73CA4C0291550333ED92 /* Brewfile */,
 			);
 			sourceTree = "<group>";
 		};
