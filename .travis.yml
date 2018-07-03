@@ -4,8 +4,8 @@ xcode_workspace: YandexMoneyCoreApi.xcworkspace
 xcode_scheme: YandexMoneyCoreApiExamplePods
 
 cache:
-  - bundler
-  - cocoapods
+  bundler: true
+  cocoapods: true
   directories:
     - Carthage
 
