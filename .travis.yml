@@ -2,26 +2,24 @@ language: objective-c
 osx_image: xcode9.2
 xcode_workspace: YandexMoneyCoreApi.xcworkspace
 xcode_scheme: YandexMoneyCoreApiExamplePods
-
 cache:
   bundler: true
   cocoapods: true
   directories:
-    - Carthage
-
+  - Carthage
+notifications:
+  slack:
+    secure: $SLACK_KEY
 before_install:
-  - brew update && brew bundle
-  - bundle install --jobs=3 --retry=3 --deployment
-  - pushd .
-  - bundle exec pod repo update
-  - bundle exec pod install
-
+- brew update && brew bundle
+- bundle install --jobs=3 --retry=3 --deployment
+- pushd .
+- bundle exec pod repo update
+- bundle exec pod install
 install: true
-
 before_script:
-  - carthage bootstrap --platform iOS --cache-builds
-
+- carthage bootstrap --platform iOS --cache-builds
 script:
-  - swiftlint
-  - bundle exec fastlane build
-  - bundle exec fastlane scan
+- swiftlint
+- bundle exec fastlane build
+- bundle exec fastlane scan
