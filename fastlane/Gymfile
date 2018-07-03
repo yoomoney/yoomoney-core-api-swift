@@ -1,4 +1,0 @@
-scheme("YandexMoneyCoreApiExampleFull")
-skip_package_ipa(true)
-clean(true)
-output_directory("tmp")
