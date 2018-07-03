@@ -9,7 +9,7 @@ Pod::Spec.new do |spec|
   spec.authors      = 'YandexMoney' 
   spec.summary      = 'Yandex Money Core API library'
   spec.source       = { 
-    :git => 'git@github.com:yandex-money/core-api-swift.git',
+    :git => 'https://github.com/yandex-money/core-api-swift.git',
     :tag => spec.version 
   }
   spec.module_name  = 'YandexMoneyCoreApi'
