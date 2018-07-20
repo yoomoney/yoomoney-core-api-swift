@@ -39,7 +39,7 @@ extension TextApiResponse {
     public static func makeResponse(response: HTTPURLResponse, data: Data) -> Self? {
         var encoding: String.Encoding = .utf8
 
-        if let encodingName = response.textEncodingName as CFString! {
+        if let encodingName = response.textEncodingName as CFString? {
             let cfStringEncoding = CFStringConvertIANACharSetNameToEncoding(encodingName)
             let encodingRawValue = CFStringConvertEncodingToNSStringEncoding(cfStringEncoding)
             encoding = String.Encoding(rawValue: encodingRawValue)
