@@ -32,4 +32,4 @@ EXPORT_METHOD_Debug="development"
 EXPORT_METHOD_AdHoc="enterprise"
 EXPORT_METHOD_AppStore="app-store"
 
-CARTHAGE_PLATFORMS="iOS"
+CARTHAGE_PLATFORMS="iOS,watchOS"
