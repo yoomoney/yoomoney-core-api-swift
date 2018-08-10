@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'YandexMoneyCoreApi'
-  spec.version      = '1.0.2'
+  spec.version      = '1.1.0'
   spec.homepage     = 'https://github.com/yandex-money/core-api-swift'
   spec.license = { 
     :type => "MIT", 
@@ -15,6 +15,8 @@ Pod::Spec.new do |spec|
   spec.module_name  = 'YandexMoneyCoreApi'
 
   spec.ios.deployment_target  = '8.0'
+  spec.watchos.deployment_target = '2.0'
+
   spec.swift_version = '4.0'
 
   spec.source_files  = 'YandexMoneyCoreApi/**/*.swift'

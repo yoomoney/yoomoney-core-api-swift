@@ -1,6 +1,6 @@
 PODS:
   - FunctionalSwift (1.0.5)
-  - YandexMoneyCoreApi (1.0.2):
+  - YandexMoneyCoreApi (1.1.0):
     - FunctionalSwift (~> 1.0.5)
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FunctionalSwift: 89cef31016cbc9fcdd49ec04e5831ed5f51244bb
-  YandexMoneyCoreApi: ea0fdbc3e9ec8978d42665788e5f393104367a11
+  YandexMoneyCoreApi: 9e24781e7b523ce818e8754ed79c4bd8bab20a83
 
 PODFILE CHECKSUM: 6e7c5c48060c013a57828b8bdba56efae76bd68f
 
