@@ -29,13 +29,13 @@ public class ApiSession {
 
     /// Overrides all behavior for NSURLSessionTaskDelegate method
     /// `URLSession:task:didReceiveChallenge:completionHandler:` and requires the caller to call the `completionHandler`
-    public var taskDidReceiveChallengeWithCompletion: ((_ session: URLSession,
-                                                        _ challenge: URLAuthenticationChallenge,
-                                                        _ completionHandler: (URLSession.AuthChallengeDisposition,
-                                                                              URLCredential?) -> Void) -> Void)? {
-        didSet {
-            delegate.taskDidReceiveChallengeWithCompletion = taskDidReceiveChallengeWithCompletion
-        }
+    public var taskDidReceiveChallengeWithCompletion: ((
+        _ session: URLSession,
+        _ challenge: URLAuthenticationChallenge,
+        _ completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) -> Void)? {
+            didSet {
+                delegate.taskDidReceiveChallengeWithCompletion = taskDidReceiveChallengeWithCompletion
+            }
     }
 
     // MARK: - Private properties
