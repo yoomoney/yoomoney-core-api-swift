@@ -22,6 +22,7 @@
  */
 
 import struct Foundation.URL
+import Foundation
 
 /// HTTP method definitions.
 ///
@@ -51,6 +52,12 @@ public enum HTTPMethod: String {
 public protocol ParametersEncoding {
 
     // TODO: Use Encoder protocol
+
+    /// Date encoding strategy
+    var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy { get set }
+
+    /// Data encoding strategy
+    var dataEncodingStrategy: JSONEncoder.DataEncodingStrategy { get set }
 
     /// Encodes the given top-level value.
     ///

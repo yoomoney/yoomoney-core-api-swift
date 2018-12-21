@@ -27,6 +27,12 @@ import typealias FunctionalSwift.Result
 /// The response from the server.
 public protocol ApiResponse {
 
+    /// Date decoding strategy
+    static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy { get }
+
+    /// Data decoding strategy
+    static var dataDecodingStrategy: JSONDecoder.DataDecodingStrategy { get }
+
     /// Creates response.
     ///
     /// - Parameters:
@@ -60,5 +66,12 @@ extension ApiResponse {
 
     public static func makeSpecificError(response: HTTPURLResponse, data: Data) -> Error? {
         return nil
+    }
+
+    public static var dateDecodingStrategy: JSONDecoder.DateDecodingStrategy {
+        return .deferredToDate
+    }
+    public static var dataDecodingStrategy: JSONDecoder.DataDecodingStrategy {
+        return .base64
     }
 }

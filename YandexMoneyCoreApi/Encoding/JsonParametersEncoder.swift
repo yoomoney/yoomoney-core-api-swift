@@ -38,6 +38,12 @@ public final class JsonParametersEncoder: ParametersEncoding {
     /// The options for writing the parameters as JSON data.
     public let encoder: JSONEncoder
 
+    /// Date encoding strategy
+    public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .deferredToDate
+
+    /// Data encoding strategy
+    public var dataEncodingStrategy: JSONEncoder.DataEncodingStrategy = .base64
+
     private var body = Data()
 
     // MARK: Initialization
@@ -50,6 +56,8 @@ public final class JsonParametersEncoder: ParametersEncoding {
     /// - Returns: The new `JSONEncoding` instance.
     public init(options: JSONEncoder.OutputFormatting = []) {
         encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = dateEncodingStrategy
+        encoder.dataEncodingStrategy = dataEncodingStrategy
         encoder.outputFormatting = options
     }
 
