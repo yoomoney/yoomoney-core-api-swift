@@ -21,7 +21,6 @@
  * THE SOFTWARE.
  */
 
-import struct Foundation.URL
 import Foundation
 
 /// HTTP method definitions.
