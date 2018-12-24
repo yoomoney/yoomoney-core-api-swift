@@ -46,7 +46,7 @@ extension ApiSessionDelegate: URLSessionDelegate {
     ///   - challenge:         An object that contains the request for authentication.
     ///   - completionHandler: A handler that your delegate method must call providing the disposition
     ///                        and credential.
-    open func urlSession(
+    public func urlSession(
         _ session: URLSession,
         didReceive challenge: URLAuthenticationChallenge,
         completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {

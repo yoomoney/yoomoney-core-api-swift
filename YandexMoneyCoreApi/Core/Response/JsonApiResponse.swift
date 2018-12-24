@@ -30,7 +30,10 @@ public protocol JsonApiResponse: ApiResponse, Decodable { }
 extension JsonApiResponse {
 
     public static func makeResponse(response: HTTPURLResponse, data: Data) -> Self? {
-        guard let object = try? JSONDecoder().decode(Self.self, from: data) else { return nil }
+        let decoder = JSONDecoder()
+        decoder.dataDecodingStrategy = dataDecodingStrategy
+        decoder.dateDecodingStrategy = dateDecodingStrategy
+        guard let object = try? decoder.decode(Self.self, from: data) else { return nil }
         return object
     }
 }

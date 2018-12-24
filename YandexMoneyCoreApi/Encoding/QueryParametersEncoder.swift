@@ -30,6 +30,12 @@ private typealias QueryParameters = [String: Any]
 /// the HTTP body depends on the destination of the encoding.
 public final class QueryParametersEncoder: ParametersEncoding {
 
+    /// Date encoding strategy
+    public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .deferredToDate
+
+    /// Data encoding strategy
+    public var dataEncodingStrategy: JSONEncoder.DataEncodingStrategy = .base64
+
     /// Makes new query parameters encoder
     public init() { }
 
@@ -40,11 +46,14 @@ public final class QueryParametersEncoder: ParametersEncoding {
     /// - Parameters:
     ///   - value: The value to encode.
     ///
-    /// - throws: `EncodingError.invalidValue` if a non-comforming floating-point value is encountered during encoding,
+    /// - throws: `EncodingError.invalidValue` if a non-conforming floating-point value is encountered during encoding,
     ///           and the encoding strategy is `.throw`.
     ///           An error if any value throws an error during encoding.
     public func encode<T>(_ value: T) throws where T: Encodable {
-        let data = try JSONEncoder().encode(value)
+        let encoder = JSONEncoder()
+        encoder.dateEncodingStrategy = dateEncodingStrategy
+        encoder.dataEncodingStrategy = dataEncodingStrategy
+        let data = try encoder.encode(value)
         let parameters = try JSONSerialization.jsonObject(with: data)
         self.parameters = parameters as? [String: Any] ?? [:]
     }
