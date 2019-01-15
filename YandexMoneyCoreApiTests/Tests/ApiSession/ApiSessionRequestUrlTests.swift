@@ -34,7 +34,7 @@ class ApiSessionRequestUrlCommonTests: XCTestCase {
     )
 
     private func data(for strings: [String]) -> [Data] {
-        let urls = strings.flatMap(URL.init)
+        let urls = strings.compactMap(URL.init)
         if strings.count != urls.count {
             assertionFailure("Can't parse some urls")
         }
