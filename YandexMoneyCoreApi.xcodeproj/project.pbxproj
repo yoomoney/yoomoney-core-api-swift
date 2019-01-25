@@ -26,6 +26,7 @@
 		3072C4AD1FE317330019D598 /* ApiSessionRequestUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */; };
 		3072C4B01FE317330019D598 /* XCTTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E31F696E4D00AFD229 /* XCTTools.swift */; };
 		3072C4B11FE317330019D598 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DF1F696D6D00AFD229 /* String+Tools.swift */; };
+		392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DFB9121FB06CB005F87BA /* DataApiResponse.swift */; };
 		402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA32ADC38766078E97EB /* TextApiResponse.swift */; };
 		402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB526B5C3A213E0636212 /* JsonApiResponse.swift */; };
 		402EB1CB5B7DA6E266AC24D9 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB9D63DAA17383629CF5E /* RequestData.swift */; };
@@ -105,6 +106,7 @@
 		3001003C1FE2AA2900BB5966 /* PodsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PodsInfo.plist; path = "/Users/tverdokhleb/Documents/dev-ios-yamoney/mobile-money-api-core-swift-2/YandexMoneyCoreApiExample/PodsInfo.plist"; sourceTree = "<absolute>"; };
 		3072C4A11FE316130019D598 /* YandexMoneyCoreApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YandexMoneyCoreApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3072C4A51FE316130019D598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		392DFB9121FB06CB005F87BA /* DataApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiResponse.swift; sourceTree = "<group>"; };
 		402EB01BEEBD13A7F055A764 /* JsonParametersEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParametersEncoder.swift; sourceTree = "<group>"; };
 		402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		402EB3EC6F2B91E6CC8BE674 /* StringEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEncoder.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */,
 				402EB526B5C3A213E0636212 /* JsonApiResponse.swift */,
 				402EBA32ADC38766078E97EB /* TextApiResponse.swift */,
+				392DFB9121FB06CB005F87BA /* DataApiResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */,
 				DDB208001F695320007163CE /* Task.swift in Sources */,
 				DDB207FC1F695320007163CE /* HostProvider.swift in Sources */,
+				392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */,
 				DDB208251F695320007163CE /* TaskLogger.swift in Sources */,
 				402EB81F31CFE9A1DCFE48CD /* ErrorApiResponse.swift in Sources */,
 				402EB956680DF685D70ACAA4 /* Headers.swift in Sources */,
