@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'YandexMoneyCoreApi'
-  spec.version      = '1.3.1'
+  spec.version      = '1.4.0'
   spec.homepage     = 'https://github.com/yandex-money/core-api-swift'
   spec.license = { 
     :type => "MIT", 
