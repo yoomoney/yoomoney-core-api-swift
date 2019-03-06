@@ -30,14 +30,33 @@ private typealias QueryParameters = [String: Any]
 /// the HTTP body depends on the destination of the encoding.
 public final class QueryParametersEncoder: ParametersEncoding {
 
+    /// Configures how `Array` parameters are encoded.
+    ///
+    /// - brackets:        An empty set of square brackets is appended to the key for every value.
+    ///                    This is the default behavior.
+    /// - noBrackets:      No brackets are appended. The key is encoded as is.
+    public enum ArrayEncoding {
+        case brackets
+        case noBrackets
+    }
+
     /// Date encoding strategy
     public var dateEncodingStrategy: JSONEncoder.DateEncodingStrategy = .deferredToDate
 
     /// Data encoding strategy
     public var dataEncodingStrategy: JSONEncoder.DataEncodingStrategy = .base64
 
-    /// Makes new query parameters encoder
-    public init() { }
+    /// The encoding to use for `Array` parameters.
+    public let arrayEncoding: ArrayEncoding
+
+    /// Creates a `QueryParametersEncoder`.
+    ///
+    /// - parameter arrayEncoding: The encoding to use for `Array` parameters.
+    ///
+    /// - returns: The new `URLEncoding` instance.
+    public init(arrayEncoding: ArrayEncoding = .brackets) {
+        self.arrayEncoding = arrayEncoding
+    }
 
     private var parameters: QueryParameters = [:]
 
@@ -100,8 +119,14 @@ public final class QueryParametersEncoder: ParametersEncoding {
                 components += queryComponents(fromKey: "\(key)[\(nestedKey)]", value: value)
             }
         } else if let array = value as? [Any] {
-            for value in array {
-                components += queryComponents(fromKey: "\(key)[]", value: value)
+            switch arrayEncoding {
+            case .brackets:
+                for value in array {
+                    components += queryComponents(fromKey: "\(key)[]", value: value)
+                }
+            case .noBrackets:
+                let value = array.compactMap { escape("\($0)") }.joined(separator: ",")
+                components.append((escape(key), value))
             }
         } else if let value = value as? NSNumber {
             if value.isBool {
