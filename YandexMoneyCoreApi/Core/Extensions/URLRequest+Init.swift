@@ -29,13 +29,14 @@ extension URLRequest {
     /// Creates an instance with the specified `method`, `urlString` and `headers`.
     ///
     /// - Parameters:
-    ///   - url:     The URL.
-    ///   - method:  The HTTP method.
+    ///   - url: The URL.
+    ///   - cachePolicy: The request’s cache policy.
+    ///   - method: The HTTP method.
     ///   - headers: The HTTP headers. `nil` by default.
     ///
     /// - Returns: The new `URLRequest` instance.
-    public init(url: URL, method: HTTPMethod, headers: Headers? = nil) {
-        self.init(url: url)
+    public init(url: URL, cachePolicy: URLRequest.CachePolicy, method: HTTPMethod, headers: Headers? = nil) {
+        self.init(url: url, cachePolicy: cachePolicy)
 
         httpMethod = method.rawValue
 

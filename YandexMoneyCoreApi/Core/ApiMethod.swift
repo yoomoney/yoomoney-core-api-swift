@@ -113,6 +113,9 @@ public protocol ApiMethod: Encodable {
     /// URL headers sent with HTTP request.
     var headers: Headers { get }
 
+    /// The request’s cache policy.
+    var cachePolicy: URLRequest.CachePolicy { get }
+
     /// Chooses URL info.
     ///
     /// - Parameters:
@@ -130,5 +133,14 @@ extension ApiMethod {
     /// URL headers sent with HTTP request.
     public var headers: Headers {
         return .mempty
+    }
+}
+
+// MARK: - Default cache policy
+
+extension ApiMethod {
+    /// The request’s cache policy.
+    public var cachePolicy: URLRequest.CachePolicy {
+        return .useProtocolCachePolicy
     }
 }
