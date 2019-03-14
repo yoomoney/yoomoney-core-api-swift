@@ -91,7 +91,10 @@ public class ApiSession {
         let task: Task<M.Response>
 
         do {
-            var request = URLRequest(url: url, method: apiMethod.httpMethod, headers: apiMethod.headers)
+            var request = URLRequest(url: url,
+                                     cachePolicy: apiMethod.cachePolicy,
+                                     method: apiMethod.httpMethod,
+                                     headers: apiMethod.headers)
             let parametersEncoding = apiMethod.parametersEncoding
             try parametersEncoding.encode(apiMethod)
             try parametersEncoding.passParameters(to: &request)

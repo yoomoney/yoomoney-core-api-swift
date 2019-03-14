@@ -11,9 +11,11 @@ notifications:
   slack:
     secure: c8D/ORnagb+cuRJr9yc1vlsTKJv1H8OCBX6tMDREQedtZwf5KTYvDwIIPDpLM0EYaSUB2lWQguMZcULQJrt03pnNCbWP0VQ6F3hYomoCj32rxhvkRJFqw4IdDx/R55+sw1HpkYZAytiaxifaPIQkWuR0VcetPN0ZZUoVUeujQN1CCSyBrWnKlpC7LwliY/9JLEXXCc8LO7nUI6Kv9+eEtRp6aavBgo1QK4UVVvkAZaYmifmDaWtYs7J4qt3cRBaGdPEBh1aofUDBrzUMf1R+eE7MPLvJ+cQHvyU/v1lkbDSg1o/RtjAk8d3lBp8TDCrLzpP24RSGV7Wa5QKOwt7a8yYJVic552dg+f8ea9MaR27X2VZGoU9fwVWPHSk9t+SpMgTkVBWabcxulSzaXjW+bfPTeLAJ3wjc6CuOA1F3DcV2ZAeYzBrmQkt02KFhz/eLtmU1UCrhjaEXBzA39htJLxYtECxO/6NDVJP2s8lWZ3Z0N/jOf7lG+No7X8F9SkBGfN1aBSgibvGF+GJTaRqgYse8JIIdiepVEIMaC0fkfU69+Zr54htYHdyyi+2PQUWPkGLHGO0SLbpZkWTXY4GNpzXLWCpUYvTXEusECsqiSSRYoBuXgX2EpUPURFrOwpjSlNqXpQKozvtqi6Q1iWmqygPb0tgXAfUnBY1s02jqn0Y=
 before_install:
+- rvm use 2.5.0 --default --install --fuzzy
 - brew update && brew bundle
 - bundle install --jobs=3 --retry=3 --deployment
 - pushd .
+- rvm use default
 - bundle exec pod repo update
 - bundle exec pod install
 install: true
