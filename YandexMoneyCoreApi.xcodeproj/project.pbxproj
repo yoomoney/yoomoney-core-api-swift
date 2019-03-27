@@ -27,6 +27,7 @@
 		3072C4B01FE317330019D598 /* XCTTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E31F696E4D00AFD229 /* XCTTools.swift */; };
 		3072C4B11FE317330019D598 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DF1F696D6D00AFD229 /* String+Tools.swift */; };
 		392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DFB9121FB06CB005F87BA /* DataApiResponse.swift */; };
+		39727EA9224BBB3F00C9F23C /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39727EA8224BBB3F00C9F23C /* LossyArray.swift */; };
 		402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA32ADC38766078E97EB /* TextApiResponse.swift */; };
 		402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB526B5C3A213E0636212 /* JsonApiResponse.swift */; };
 		402EB1CB5B7DA6E266AC24D9 /* RequestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB9D63DAA17383629CF5E /* RequestData.swift */; };
@@ -107,6 +108,7 @@
 		3072C4A11FE316130019D598 /* YandexMoneyCoreApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YandexMoneyCoreApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3072C4A51FE316130019D598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		392DFB9121FB06CB005F87BA /* DataApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiResponse.swift; sourceTree = "<group>"; };
+		39727EA8224BBB3F00C9F23C /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		402EB01BEEBD13A7F055A764 /* JsonParametersEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParametersEncoder.swift; sourceTree = "<group>"; };
 		402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
 		402EB3EC6F2B91E6CC8BE674 /* StringEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringEncoder.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 		DDB207BF1F695320007163CE /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				39727EA8224BBB3F00C9F23C /* LossyArray.swift */,
 				DDB207C31F695320007163CE /* TaskLogger.swift */,
 				402EB3EC6F2B91E6CC8BE674 /* StringEncoder.swift */,
 			);
@@ -655,6 +658,7 @@
 				402EB47C58F5A0EAB9C39055 /* HeadersFactory.swift in Sources */,
 				402EBF8BC4715593641E6EEF /* DefaultHeadersFactory.swift in Sources */,
 				402EBCB4DCC7673685E6608D /* ApiResponse.swift in Sources */,
+				39727EA9224BBB3F00C9F23C /* LossyArray.swift in Sources */,
 				402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */,
 				402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */,
 				402EB39C0C0F49E44AD89602 /* StringEncoder.swift in Sources */,
