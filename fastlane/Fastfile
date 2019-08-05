@@ -8,7 +8,7 @@ platform :ios do
       build: true,
       scheme: "YandexMoneyCoreApiExampleFull",
       workspace: "YandexMoneyCoreApi.xcworkspace",
-      xcargs: "CODE_SIGN_IDENTITY=\"\" CODE_SIGNING_REQUIRED=\"NO\""
+      xcargs: "CODE_SIGNING_ALLOWED=NO"
     )
   end
 end
