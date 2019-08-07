@@ -1,1 +1,1 @@
-github "yandex-money/functional-swift.git"
+github "yandex-money/functional-swift.git" ~> 1.1.0

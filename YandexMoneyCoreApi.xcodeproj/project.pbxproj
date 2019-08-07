@@ -403,7 +403,6 @@
 				300100321FE2AA2900BB5966 /* Frameworks */,
 				300100331FE2AA2900BB5966 /* Resources */,
 				E9F1C4F3DDF532F05CD08DD9 /* [CP] Embed Pods Frameworks */,
-				F58A5F255D103EB44F4F65A4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -580,7 +579,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-YandexMoneyCoreApiExamplePods/Pods-YandexMoneyCoreApiExamplePods-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-YandexMoneyCoreApiExamplePods/Pods-YandexMoneyCoreApiExamplePods-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FunctionalSwift/FunctionalSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/YandexMoneyCoreApi/YandexMoneyCoreApi.framework",
 			);
@@ -591,26 +590,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YandexMoneyCoreApiExamplePods/Pods-YandexMoneyCoreApiExamplePods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		F58A5F255D103EB44F4F65A4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-YandexMoneyCoreApiExamplePods/Pods-YandexMoneyCoreApiExamplePods-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-YandexMoneyCoreApiExamplePods/Pods-YandexMoneyCoreApiExamplePods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
