@@ -26,6 +26,7 @@
 		3072C4AD1FE317330019D598 /* ApiSessionRequestUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */; };
 		3072C4B01FE317330019D598 /* XCTTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E31F696E4D00AFD229 /* XCTTools.swift */; };
 		3072C4B11FE317330019D598 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DF1F696D6D00AFD229 /* String+Tools.swift */; };
+		343BF28C2343ACE300C54D15 /* AnyDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF28B2343ACE300C54D15 /* AnyDecoding.swift */; };
 		392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DFB9121FB06CB005F87BA /* DataApiResponse.swift */; };
 		39727EA9224BBB3F00C9F23C /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39727EA8224BBB3F00C9F23C /* LossyArray.swift */; };
 		402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA32ADC38766078E97EB /* TextApiResponse.swift */; };
@@ -107,6 +108,7 @@
 		3001003C1FE2AA2900BB5966 /* PodsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PodsInfo.plist; path = "/Users/tverdokhleb/Documents/dev-ios-yamoney/mobile-money-api-core-swift-2/YandexMoneyCoreApiExample/PodsInfo.plist"; sourceTree = "<absolute>"; };
 		3072C4A11FE316130019D598 /* YandexMoneyCoreApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YandexMoneyCoreApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3072C4A51FE316130019D598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		343BF28B2343ACE300C54D15 /* AnyDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecoding.swift; sourceTree = "<group>"; };
 		392DFB9121FB06CB005F87BA /* DataApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiResponse.swift; sourceTree = "<group>"; };
 		39727EA8224BBB3F00C9F23C /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		402EB01BEEBD13A7F055A764 /* JsonParametersEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParametersEncoder.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				402EBD9241FB9D7F7ECD44B1 /* URLRequest+Init.swift */,
+				343BF28B2343ACE300C54D15 /* AnyDecoding.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				Base,
 			);
 			mainGroup = DD7680F91F6817EA001C18CE;
@@ -649,6 +653,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9234D41F6968DC00AFD229 /* ApiMethod.swift in Sources */,
+				343BF28C2343ACE300C54D15 /* AnyDecoding.swift in Sources */,
 				DDB208021F695320007163CE /* QueryParametersEncoder.swift in Sources */,
 				DDB207FA1F695320007163CE /* ApiSession.swift in Sources */,
 				DDB207FD1F695320007163CE /* OAuthTokenProvider.swift in Sources */,
