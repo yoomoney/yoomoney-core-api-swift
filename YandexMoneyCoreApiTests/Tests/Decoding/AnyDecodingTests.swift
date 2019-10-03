@@ -54,12 +54,12 @@ final class AnyDecodingTests: XCTestCase {
         {
             "value": [
                 {
-                    "key-string-1": [
+                    "key-any-1": [
                         {
-                            "key-string-11": 0.5
+                            "key-double-1": 0.5
                         },
                         {
-                            "key-string-12": true
+                            "key-bool-2": true
                         }
                     ]
                 },
@@ -67,13 +67,13 @@ final class AnyDecodingTests: XCTestCase {
                     "key-string-2": "value-string-1"
                 },
                 {
-                    "key-string-3": false
+                    "key-bool-3": false
                 },
                 {
-                    "key-string-4": 2.6
+                    "key-double-4": 2.6
                 },
                 {
-                    "key-string-5": 5
+                    "key-int-5": 5
                 }
             ]
         }
@@ -83,12 +83,12 @@ final class AnyDecodingTests: XCTestCase {
         
         let value = object.value
         XCTAssertEqual(value?.count, 5)
-        XCTAssertEqual((value?[0]["key-string-1"] as? [[String: Any]])?.count, 2)
-        XCTAssertEqual((value?[0]["key-string-1"] as? [[String: Any]])?[0]["key-string-11"] as? Double, 0.5)
-        XCTAssertEqual((value?[0]["key-string-1"] as? [[String: Any]])?[1]["key-string-12"] as? Bool, true)
+        XCTAssertEqual((value?[0]["key-any-1"] as? [[String: Any]])?.count, 2)
+        XCTAssertEqual((value?[0]["key-any-1"] as? [[String: Any]])?[0]["key-double-1"] as? Double, 0.5)
+        XCTAssertEqual((value?[0]["key-any-1"] as? [[String: Any]])?[1]["key-bool-2"] as? Bool, true)
         XCTAssertEqual(value?[1]["key-string-2"] as? String, "value-string-1")
-        XCTAssertEqual(value?[2]["key-string-3"] as? Bool, false)
-        XCTAssertEqual(value?[3]["key-string-4"] as? Double, 2.6)
-        XCTAssertEqual(value?[4]["key-string-5"] as? Int, 5)
+        XCTAssertEqual(value?[2]["key-bool-3"] as? Bool, false)
+        XCTAssertEqual(value?[3]["key-double-4"] as? Double, 2.6)
+        XCTAssertEqual(value?[4]["key-int-5"] as? Int, 5)
     }
 }
