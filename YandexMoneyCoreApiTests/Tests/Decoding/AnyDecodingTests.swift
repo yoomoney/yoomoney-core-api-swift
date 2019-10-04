@@ -26,30 +26,29 @@ import FunctionalSwift
 import XCTest
 @testable import YandexMoneyCoreApi
 
-private struct Mock: Decodable {
-    
-    let value: [[String: Any]]?
-    
-    init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: Keys.self)
-        let value = try container.decodeIfPresent([Any].self, forKey: .value) as? [[String: Any]]
-        self.value = value
-    }
-    
-    private enum Keys: String, CodingKey {
-        case value
-    }
-}
-
 final class AnyDecodingTests: XCTestCase {
-    
+
+    private struct Mock: Decodable {
+
+        let value: [[String: Any]]?
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: Keys.self)
+            let value = try container.decodeIfPresent([Any].self, forKey: .value) as? [[String: Any]]
+            self.value = value
+        }
+
+        private enum Keys: String, CodingKey {
+            case value
+        }
+    }
+
     override func setUp() {
         super.setUp()
         continueAfterFailure = false
     }
-    
+
     func testDecodeIfPresentArrayWithNestedDictionary() {
-        
         let json = """
         {
             "value": [
@@ -78,9 +77,11 @@ final class AnyDecodingTests: XCTestCase {
             ]
         }
         """
+        // swiftlint:disable force_unwrapping
         let data = json.data(using: .utf8)!
+        // swiftlint:enable force_unwrapping
+        // swiftlint:disable:next force_try
         let object = try! JSONDecoder().decode(Mock.self, from: data)
-        
         let value = object.value
         XCTAssertEqual(value?.count, 5)
         XCTAssertEqual((value?[0]["key-any-1"] as? [[String: Any]])?.count, 2)
