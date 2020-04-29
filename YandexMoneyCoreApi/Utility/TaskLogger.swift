@@ -70,21 +70,16 @@ private extension TaskLogger {
         if let method = request.httpMethod {
             requestLog += [("method", method)]
         }
-        if var headers = request.allHTTPHeaderFields {
+        let headers = request.allHTTPHeaderFields
+        if var headers = headers {
             mockOAuthToken(in: &headers)
             requestLog += [("headers", log(from: headers))]
         }
         if let bodyData = request.httpBody, let body = String(data: bodyData, encoding: .utf8) {
-            requestLog += []
-            let jwsParts = body.replacingOccurrences(of: "request=", with: "").components(separatedBy: ".")
-            if body.contains("request="), jwsParts.count == 3,
-                let headerData = StringEncoder.data(fromBase64String: jwsParts[0]),
-                let payloadData = StringEncoder.data(fromBase64String: jwsParts[1]),
-                let header = String(data: headerData, encoding: .utf8),
-                let payload = String(data: payloadData, encoding: .utf8) {
-                    requestLog += [("jws", logFromJws(header: header.removingZero, payload: payload.removingZero))]
-            } else {
+            if headers?["Content-Type"]?.hasPrefix("application/x-www-form-urlencoded") ?? false {
                 requestLog += [("body", log(fromUrlEncoded: body))]
+            } else {
+                requestLog += [("body", body)]
             }
         }
         return requestLog
@@ -114,13 +109,6 @@ private extension TaskLogger {
     private func mockOAuthToken(in dictionary: inout [String: String]) {
         guard let token = dictionary["Authorization"] else { return }
         dictionary["Authorization"] = String(repeating: "*", count: token.count)
-    }
-
-    private func logFromJws(header: String, payload: String) -> [LogEntity] {
-        return [
-            ("header", header),
-            ("payload", payload),
-        ]
     }
 
     private func log(fromUrlEncoded string: String) -> [LogEntity] {
