@@ -6,8 +6,8 @@ platform :ios do
     xcodebuild(
       clean: true,
       build: true,
-      scheme: "YandexMoneyCoreApiExampleFull",
-      workspace: "YandexMoneyCoreApi.xcworkspace",
+      scheme: "YooMoneyCoreApiExampleFull",
+      workspace: "YooMoneyCoreApi.xcworkspace",
       xcargs: "CODE_SIGNING_ALLOWED=NO"
     )
   end

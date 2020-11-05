@@ -3,8 +3,9 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 use_frameworks!
 
-target 'YandexMoneyCoreApiExamplePods' do
-  pod 'YandexMoneyCoreApi', :path => './'
+target 'YooMoneyCoreApiExamplePods' do
+  pod 'SwiftLint'
+  pod 'YooMoneyCoreApi', :path => './'
 end
 
 post_install do |installer|

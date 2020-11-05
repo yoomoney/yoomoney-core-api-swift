@@ -1,2 +1,2 @@
-scheme("YandexMoneyCoreApiTests")
+scheme("YooMoneyCoreApiTests")
 clean(true)
