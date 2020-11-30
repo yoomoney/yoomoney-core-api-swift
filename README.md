@@ -1,11 +1,11 @@
 # YooMoney Core API library
 
-[![Build Status](https://travis-ci.org/yoomoney/core-api-swift.svg?branch=master)](https://travis-ci.org/yoomoney/core-api-swift)
+[![Build Status](https://travis-ci.org/yoomoney/yoomoney-core-api-swift.svg?branch=master)](https://travis-ci.org/yoomoney/yoomoney-core-api-swift)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![GitHub tag](https://img.shields.io/github/tag/yoomoney/core-api-swift.svg)](https://img.shields.io/github/tag/yoomoney/core-api-swift.svg)
-[![CocoaPods](https://img.shields.io/cocoapods/v/yoomoney/core-api-swift.svg)](https://img.shields.io/cocoapods/v/yoomoney/core-api-swift.svg)
-[![CocoaPods](https://img.shields.io/cocoapods/at/yoomoney/core-api-swift.svg)](https://img.shields.io/cocoapods/at/yoomoney/core-api-swift.svg)
-[![license](https://img.shields.io/github/license/yoomoney/core-api-swift.svg)](https://img.shields.io/github/license/yoomoney/core-api-swift.svg)
+[![GitHub tag](https://img.shields.io/github/tag/yoomoney/yoomoney-core-api-swift.svg)](https://img.shields.io/github/tag/yoomoney/yoomoney-core-api-swift.svg)
+[![CocoaPods](https://img.shields.io/cocoapods/v/yoomoney/yoomoney-core-api-swift.svg)](https://img.shields.io/cocoapods/v/yoomoney/yoomoney-core-api-swift.svg)
+[![CocoaPods](https://img.shields.io/cocoapods/at/yoomoney/yoomoney-core-api-swift.svg)](https://img.shields.io/cocoapods/at/yoomoney/yoomoney-core-api-swift.svg)
+[![license](https://img.shields.io/github/license/yoomoney/yoomoney-core-api-swift.svg)](https://img.shields.io/github/license/yoomoney/yoomoney-core-api-swift.svg)
 
 
 ### Concept
@@ -24,7 +24,7 @@
 > разный `HostProvider` в `ApiSession`.
 #### ApiMethod
 
-`ApiMethod` - модель вашего запроса на сервер. Каждому `ApiMethod` долже быть выставлен свой `Response`.
+`ApiMethod` - модель вашего запроса на сервер. Каждому `ApiMethod` должен быть выставлен свой `Response`.
 => для каждого метода можно описать только один ответ от сервера.
 
 Для реализации `ApiMethod` вам необходимо определить следующие свойства:
@@ -102,6 +102,8 @@ extension WalletApiResponse {
 ни один из стандартных протоколов вам не подошёл. К примеру если вам надо парсить XML при ответе.
 
 #### Пример
+
+Пример интеграции в проект можно посмотреть [тут](https://github.com/yoomoney/yookassa-payments-api-swift/blob/master/YooKassaPaymentsApi/Source/Response/PaymentsApiResponse.swift).
 
 ```swift
 /// Модель ответа от сервера.
