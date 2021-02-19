@@ -43,10 +43,11 @@ public struct DefaultHeadersFactory: HeadersFactory {
     ///
     /// - Returns: HTTP default headers.
     public func makeHeaders() -> Headers {
-        let headers = [
+        Headers([
             Constants.Key.userAgent: userAgent ?? Constants.Value.userAgent,
-        ]
-        return Headers(ApiSession.defaultHTTPHeaders.value).mappend(Headers(headers))
+            Constants.Key.acceptEncoding: Constants.Value.acceptEncoding,
+            Constants.Key.acceptLanguage: Constants.Value.acceptLanguage,
+        ])
     }
 }
 
@@ -56,6 +57,8 @@ private extension DefaultHeadersFactory {
     enum Constants {
         enum Key {
             static let userAgent = "User-Agent"
+            static let acceptEncoding = "Accept-Encoding"
+            static let acceptLanguage = "Accept-Language"
         }
         enum Value {
             static let userAgent = (Bundle.main.bundleIdentifier ?? "YooMoney.SDK") + "/" + osName
@@ -76,6 +79,11 @@ private extension DefaultHeadersFactory {
                     return ""
                 #endif
             }
+            static let acceptEncoding = "gzip;q=1.0, compress;q=0.5"
+            static let acceptLanguage = Locale.preferredLanguages.prefix(6).enumerated().map { index, languageCode in
+                let quality = 1.0 - (Double(index) * 0.1)
+                return "\(languageCode);q=\(quality)"
+            }.joined(separator: ", ")
         }
     }
 }
