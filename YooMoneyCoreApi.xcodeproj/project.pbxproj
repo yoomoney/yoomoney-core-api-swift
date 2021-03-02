@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -19,8 +19,6 @@
 		300100341FE2AA2900BB5966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300100261FE2AA1800BB5966 /* LaunchScreen.storyboard */; };
 		300100351FE2AA2900BB5966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300100241FE2AA1800BB5966 /* Assets.xcassets */; };
 		300100361FE2AA2900BB5966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300100211FE2AA1800BB5966 /* Main.storyboard */; };
-		3001003D1FE2ABAC00BB5966 /* FunctionalSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */; };
-		3001003E1FE2ABAC00BB5966 /* FunctionalSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		300100461FE2ABD600BB5966 /* YooMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YooMoneyCoreApi.framework */; };
 		3072C4A61FE316130019D598 /* YooMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YooMoneyCoreApi.framework */; };
 		3072C4AD1FE317330019D598 /* ApiSessionRequestUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */; };
@@ -29,6 +27,9 @@
 		343BF28C2343ACE300C54D15 /* AnyDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF28B2343ACE300C54D15 /* AnyDecoding.swift */; };
 		3470AE742344CA5F00ED48CB /* AnyDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470AE732344CA5F00ED48CB /* AnyDecodingTests.swift */; };
 		392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DFB9121FB06CB005F87BA /* DataApiResponse.swift */; };
+		39300ECB25EE728B007CAB02 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
+		39300ECC25EE728B007CAB02 /* FunctionalSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39300ED225EE729E007CAB02 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
 		39727EA9224BBB3F00C9F23C /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39727EA8224BBB3F00C9F23C /* LossyArray.swift */; };
 		402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA32ADC38766078E97EB /* TextApiResponse.swift */; };
 		402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB526B5C3A213E0636212 /* JsonApiResponse.swift */; };
@@ -44,7 +45,6 @@
 		402EBF67EB41289A029174FF /* URLRequest+Init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBD9241FB9D7F7ECD44B1 /* URLRequest+Init.swift */; };
 		402EBF8BC4715593641E6EEF /* DefaultHeadersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB49AB0B6F269E2781D80 /* DefaultHeadersFactory.swift */; };
 		D82A6D823A660321BCBE778E /* Pods_YooMoneyCoreApiExamplePods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F2B08D36B764EE465077D33F /* Pods_YooMoneyCoreApiExamplePods.framework */; };
-		DD4D6A8B1F6AB52E00AFF5D7 /* FunctionalSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */; };
 		DD7681141F6817EA001C18CE /* YooMoneyCoreApi.h in Headers */ = {isa = PBXBuildFile; fileRef = DD7681061F6817EA001C18CE /* YooMoneyCoreApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DD9234D41F6968DC00AFD229 /* ApiMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234D31F6968DC00AFD229 /* ApiMethod.swift */; };
 		DDB207FA1F695320007163CE /* ApiSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB207901F695320007163CE /* ApiSession.swift */; };
@@ -79,7 +79,6 @@
 		E0E34AF024D8417900FD0E85 /* StringEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB3EC6F2B91E6CC8BE674 /* StringEncoder.swift */; };
 		E0E34AF124D8417D00FD0E85 /* ErrorApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBF6B0728031A9497F5D4 /* ErrorApiResponse.swift */; };
 		E0E34AF224D8417D00FD0E85 /* CoreApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB60E33A90E36568CA799 /* CoreApiError.swift */; };
-		E0E34AF424D841D900FD0E85 /* FunctionalSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E0E34AF324D841D900FD0E85 /* FunctionalSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -107,13 +106,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		300100451FE2ABAC00BB5966 /* Embed Frameworks */ = {
+		39300ECD25EE728B007CAB02 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				3001003E1FE2ABAC00BB5966 /* FunctionalSwift.framework in Embed Frameworks */,
+				39300ECC25EE728B007CAB02 /* FunctionalSwift.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,6 +139,7 @@
 		343BF28B2343ACE300C54D15 /* AnyDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecoding.swift; sourceTree = "<group>"; };
 		3470AE732344CA5F00ED48CB /* AnyDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodingTests.swift; sourceTree = "<group>"; };
 		392DFB9121FB06CB005F87BA /* DataApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiResponse.swift; sourceTree = "<group>"; };
+		39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = FunctionalSwift.xcframework; path = Carthage/Build/FunctionalSwift.xcframework; sourceTree = "<group>"; };
 		39727EA8224BBB3F00C9F23C /* LossyArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LossyArray.swift; sourceTree = "<group>"; };
 		402EB01BEEBD13A7F055A764 /* JsonParametersEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonParametersEncoder.swift; sourceTree = "<group>"; };
 		402EB01E8DA1DCA8C2490E6A /* ApiResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiResponse.swift; sourceTree = "<group>"; };
@@ -157,7 +157,6 @@
 		41C0544B9934BAE9C4B45AF6 /* Pods-YooMoneyCoreApiExamplePods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YooMoneyCoreApiExamplePods.debug.xcconfig"; path = "Pods/Target Support Files/Pods-YooMoneyCoreApiExamplePods/Pods-YooMoneyCoreApiExamplePods.debug.xcconfig"; sourceTree = "<group>"; };
 		84519E472F8AE9A5C8DC8F37 /* Pods-YooMoneyCoreApiExamplePods.appstore.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YooMoneyCoreApiExamplePods.appstore.xcconfig"; path = "Pods/Target Support Files/Pods-YooMoneyCoreApiExamplePods/Pods-YooMoneyCoreApiExamplePods.appstore.xcconfig"; sourceTree = "<group>"; };
 		C249C474486721247532CCCB /* Pods-YooMoneyCoreApiExamplePods.adhoc.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-YooMoneyCoreApiExamplePods.adhoc.xcconfig"; path = "Pods/Target Support Files/Pods-YooMoneyCoreApiExamplePods/Pods-YooMoneyCoreApiExamplePods.adhoc.xcconfig"; sourceTree = "<group>"; };
-		DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FunctionalSwift.framework; path = Carthage/Build/iOS/FunctionalSwift.framework; sourceTree = "<group>"; };
 		DD7681031F6817EA001C18CE /* YooMoneyCoreApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YooMoneyCoreApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD7681061F6817EA001C18CE /* YooMoneyCoreApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YooMoneyCoreApi.h; sourceTree = "<group>"; };
 		DD7681071F6817EA001C18CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -174,7 +173,6 @@
 		E0E34AD124D8414B00FD0E85 /* YooMoneyCoreApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = YooMoneyCoreApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0E34AD324D8414B00FD0E85 /* YooMoneyCoreApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YooMoneyCoreApi.h; sourceTree = "<group>"; };
 		E0E34AD424D8414B00FD0E85 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E0E34AF324D841D900FD0E85 /* FunctionalSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FunctionalSwift.framework; path = Carthage/Build/watchOS/FunctionalSwift.framework; sourceTree = "<group>"; };
 		F2B08D36B764EE465077D33F /* Pods_YooMoneyCoreApiExamplePods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_YooMoneyCoreApiExamplePods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -183,8 +181,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39300ECB25EE728B007CAB02 /* FunctionalSwift.xcframework in Frameworks */,
 				300100461FE2ABD600BB5966 /* YooMoneyCoreApi.framework in Frameworks */,
-				3001003D1FE2ABAC00BB5966 /* FunctionalSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,7 +206,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD4D6A8B1F6AB52E00AFF5D7 /* FunctionalSwift.framework in Frameworks */,
+				39300ED225EE729E007CAB02 /* FunctionalSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +214,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E0E34AF424D841D900FD0E85 /* FunctionalSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,8 +371,7 @@
 		DDB207411F694F1C007163CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				DD4D6A8A1F6AB52E00AFF5D7 /* FunctionalSwift.framework */,
-				E0E34AF324D841D900FD0E85 /* FunctionalSwift.framework */,
+				39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */,
 				F2B08D36B764EE465077D33F /* Pods_YooMoneyCoreApiExamplePods.framework */,
 			);
 			name = Frameworks;
@@ -457,7 +453,7 @@
 				300100171FE2AA1800BB5966 /* Sources */,
 				300100181FE2AA1800BB5966 /* Frameworks */,
 				300100191FE2AA1800BB5966 /* Resources */,
-				300100451FE2ABAC00BB5966 /* Embed Frameworks */,
+				39300ECD25EE728B007CAB02 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -883,7 +879,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -909,7 +906,11 @@
 				);
 				INFOPLIST_FILE = YooMoneyCoreApi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -937,7 +938,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = YooMoneyCoreApiExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -995,13 +999,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = YooMoneyCoreApiExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1058,13 +1066,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = YooMoneyCoreApiExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1092,7 +1104,10 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "$(SRCROOT)/YooMoneyCoreApiExample/PodsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExamplePods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1151,13 +1166,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/YooMoneyCoreApiExample/PodsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExamplePods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1215,13 +1234,17 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/YooMoneyCoreApiExample/PodsInfo.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreExamplePods;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1248,7 +1271,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = YooMoneyCoreApiTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1307,14 +1334,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = YooMoneyCoreApiTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1370,14 +1402,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = YooMoneyCoreApiTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.coreTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1496,7 +1533,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1522,7 +1560,11 @@
 				);
 				INFOPLIST_FILE = YooMoneyCoreApi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1548,7 +1590,11 @@
 				);
 				INFOPLIST_FILE = YooMoneyCoreApi/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -1575,7 +1621,11 @@
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = "YooMoneyCoreApi-watchOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
@@ -1645,14 +1695,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "YooMoneyCoreApi-watchOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = YooMoneyCoreApi;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
@@ -1719,14 +1774,19 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "YooMoneyCoreApi-watchOS/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = YooMoneyCoreApi;
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
