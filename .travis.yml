@@ -1,5 +1,5 @@
 language: swift
-osx_image: xcode11.3
+osx_image: xcode12.1
 xcode_workspace: YooMoneyCoreApi.xcworkspace
 xcode_scheme: YooMoneyCoreApiExamplePods
 cache:
@@ -19,7 +19,7 @@ before_install:
 - travis_wait bundle exec pod install --repo-update
 install: true
 before_script:
-- carthage bootstrap --platform iOS --cache-builds
+- carthage bootstrap --use-xcframeworks --cache-builds
 script:
 - swiftlint
 - bundle exec fastlane build

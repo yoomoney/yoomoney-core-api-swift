@@ -29,9 +29,11 @@ import Foundation.NSURLResponse
 class TaskLogger {
 
     private let logger: Logger
+    private let additionalSessionHeaders: [String: String]?
 
-    init(logger: Logger) {
+    init(logger: Logger, additionalSessionHeaders: [String: String]?) {
         self.logger = logger
+        self.additionalSessionHeaders = additionalSessionHeaders
     }
 
     func trace<R>(task: Task<R>) {
@@ -70,13 +72,14 @@ private extension TaskLogger {
         if let method = request.httpMethod {
             requestLog += [("method", method)]
         }
-        let headers = request.allHTTPHeaderFields
-        if var headers = headers {
-            mockOAuthToken(in: &headers)
-            requestLog += [("headers", log(from: headers))]
+        var headers = additionalSessionHeaders ?? [:]
+        if let requestHeadres = request.allHTTPHeaderFields {
+            headers.merge(requestHeadres) { $1 }
         }
+        mockOAuthToken(in: &headers)
+        requestLog += [("headers", log(from: headers))]
         if let bodyData = request.httpBody, let body = String(data: bodyData, encoding: .utf8) {
-            if headers?["Content-Type"]?.hasPrefix("application/x-www-form-urlencoded") ?? false {
+            if headers["Content-Type"]?.hasPrefix("application/x-www-form-urlencoded") ?? false {
                 requestLog += [("body", log(fromUrlEncoded: body))]
             } else {
                 requestLog += [("body", body)]
@@ -108,7 +111,7 @@ private extension TaskLogger {
 
     private func mockOAuthToken(in dictionary: inout [String: String]) {
         guard let token = dictionary["Authorization"] else { return }
-        dictionary["Authorization"] = String(repeating: "*", count: token.count)
+        dictionary["Authorization"] = "<\(token.count) bytes>"
     }
 
     private func log(fromUrlEncoded string: String) -> [LogEntity] {
