@@ -1,8 +1,8 @@
 PODS:
-  - FunctionalSwift (1.2.0)
+  - FunctionalSwift (1.5.0)
   - SwiftLint (0.40.3)
-  - YooMoneyCoreApi (1.9.0):
-    - FunctionalSwift (~> 1.2.0)
+  - YooMoneyCoreApi (1.10.0):
+    - FunctionalSwift (~> 1.5.0)
 
 DEPENDENCIES:
   - SwiftLint
@@ -18,9 +18,9 @@ EXTERNAL SOURCES:
     :path: "./"
 
 SPEC CHECKSUMS:
-  FunctionalSwift: 1b839fcf50b8db067885938df54f818518356dbb
+  FunctionalSwift: 42cd92452fbd4da9a7a15b5772f6a19806101747
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
-  YooMoneyCoreApi: 4f40673a79d11e95af850bb97f264995ac47a873
+  YooMoneyCoreApi: 0f1a98a0260ff2f13833be501ab4cba60693bba1
 
 PODFILE CHECKSUM: d8185dc3cc6c5ac7adab4cdd728783414060c8e8
 
