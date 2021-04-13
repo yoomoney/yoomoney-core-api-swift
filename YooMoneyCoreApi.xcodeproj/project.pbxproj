@@ -19,17 +19,19 @@
 		300100341FE2AA2900BB5966 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300100261FE2AA1800BB5966 /* LaunchScreen.storyboard */; };
 		300100351FE2AA2900BB5966 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300100241FE2AA1800BB5966 /* Assets.xcassets */; };
 		300100361FE2AA2900BB5966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300100211FE2AA1800BB5966 /* Main.storyboard */; };
-		300100461FE2ABD600BB5966 /* YooMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YooMoneyCoreApi.framework */; };
-		3072C4A61FE316130019D598 /* YooMoneyCoreApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD7681031F6817EA001C18CE /* YooMoneyCoreApi.framework */; };
 		3072C4AD1FE317330019D598 /* ApiSessionRequestUrlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DB1F696D6D00AFD229 /* ApiSessionRequestUrlTests.swift */; };
 		3072C4B01FE317330019D598 /* XCTTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234E31F696E4D00AFD229 /* XCTTools.swift */; };
 		3072C4B11FE317330019D598 /* String+Tools.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD9234DF1F696D6D00AFD229 /* String+Tools.swift */; };
+		30CE25F82625A9E800FFEB36 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
+		30CE26022625A9F100FFEB36 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
+		30CE261A2625AF2800FFEB36 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
+		30CE261B2625AF2800FFEB36 /* FunctionalSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30CE26262625AF2800FFEB36 /* YooMoneyCoreApi.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30CE26252625AF2800FFEB36 /* YooMoneyCoreApi.xcframework */; };
+		30CE26272625AF2800FFEB36 /* YooMoneyCoreApi.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 30CE26252625AF2800FFEB36 /* YooMoneyCoreApi.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		30CE262C2625AFAA00FFEB36 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
 		343BF28C2343ACE300C54D15 /* AnyDecoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 343BF28B2343ACE300C54D15 /* AnyDecoding.swift */; };
 		3470AE742344CA5F00ED48CB /* AnyDecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3470AE732344CA5F00ED48CB /* AnyDecodingTests.swift */; };
 		392DFB9221FB06CB005F87BA /* DataApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 392DFB9121FB06CB005F87BA /* DataApiResponse.swift */; };
-		39300ECB25EE728B007CAB02 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
-		39300ECC25EE728B007CAB02 /* FunctionalSwift.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		39300ED225EE729E007CAB02 /* FunctionalSwift.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */; };
 		39727EA9224BBB3F00C9F23C /* LossyArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39727EA8224BBB3F00C9F23C /* LossyArray.swift */; };
 		402EB0177F250339F6962DE9 /* TextApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EBA32ADC38766078E97EB /* TextApiResponse.swift */; };
 		402EB09FB8595386589612DA /* JsonApiResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 402EB526B5C3A213E0636212 /* JsonApiResponse.swift */; };
@@ -82,13 +84,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		300100491FE2B67C00BB5966 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DD7680FA1F6817EA001C18CE /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DD7681021F6817EA001C18CE;
-			remoteInfo = YooMoneyCoreApi;
-		};
 		3072C4A71FE316130019D598 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DD7680FA1F6817EA001C18CE /* Project object */;
@@ -106,13 +101,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		39300ECD25EE728B007CAB02 /* Embed Frameworks */ = {
+		30CE261C2625AF2800FFEB36 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				39300ECC25EE728B007CAB02 /* FunctionalSwift.xcframework in Embed Frameworks */,
+				30CE26272625AF2800FFEB36 /* YooMoneyCoreApi.xcframework in Embed Frameworks */,
+				30CE261B2625AF2800FFEB36 /* FunctionalSwift.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -121,7 +117,6 @@
 
 /* Begin PBXFileReference section */
 		244F70685350C8AA16323B9C /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
-		244F737AF8685D7F9D3CDC35 /* Buildfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Buildfile; sourceTree = "<group>"; };
 		244F73CA4C0291550333ED92 /* Brewfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Brewfile; sourceTree = "<group>"; };
 		244F79786F5C3F98E4AA1CD9 /* .travis.yml */ = {isa = PBXFileReference; lastKnownFileType = file.yml; path = .travis.yml; sourceTree = "<group>"; };
 		244F7CEE66DAEC7D4E29F917 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
@@ -136,6 +131,7 @@
 		3001003C1FE2AA2900BB5966 /* PodsInfo.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = PodsInfo.plist; path = "/Users/tverdokhleb/Documents/dev-ios-yamoney/mobile-money-api-core-swift-2/YooMoneyCoreApiExample/PodsInfo.plist"; sourceTree = "<absolute>"; };
 		3072C4A11FE316130019D598 /* YooMoneyCoreApiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = YooMoneyCoreApiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3072C4A51FE316130019D598 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		30CE26252625AF2800FFEB36 /* YooMoneyCoreApi.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = YooMoneyCoreApi.xcframework; path = Carthage/Build/YooMoneyCoreApi.xcframework; sourceTree = "<group>"; };
 		343BF28B2343ACE300C54D15 /* AnyDecoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecoding.swift; sourceTree = "<group>"; };
 		3470AE732344CA5F00ED48CB /* AnyDecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyDecodingTests.swift; sourceTree = "<group>"; };
 		392DFB9121FB06CB005F87BA /* DataApiResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataApiResponse.swift; sourceTree = "<group>"; };
@@ -181,8 +177,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39300ECB25EE728B007CAB02 /* FunctionalSwift.xcframework in Frameworks */,
-				300100461FE2ABD600BB5966 /* YooMoneyCoreApi.framework in Frameworks */,
+				30CE26262625AF2800FFEB36 /* YooMoneyCoreApi.xcframework in Frameworks */,
+				30CE261A2625AF2800FFEB36 /* FunctionalSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +194,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3072C4A61FE316130019D598 /* YooMoneyCoreApi.framework in Frameworks */,
+				30CE262C2625AFAA00FFEB36 /* FunctionalSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +202,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				39300ED225EE729E007CAB02 /* FunctionalSwift.xcframework in Frameworks */,
+				30CE25F82625A9E800FFEB36 /* FunctionalSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -214,6 +210,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				30CE26022625A9F100FFEB36 /* FunctionalSwift.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +300,6 @@
 				05F08CA7FAF47D7D7B8AF0A5 /* Pods */,
 				244F79786F5C3F98E4AA1CD9 /* .travis.yml */,
 				244F73CA4C0291550333ED92 /* Brewfile */,
-				244F737AF8685D7F9D3CDC35 /* Buildfile */,
 			);
 			sourceTree = "<group>";
 		};
@@ -371,6 +367,7 @@
 		DDB207411F694F1C007163CE /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				30CE26252625AF2800FFEB36 /* YooMoneyCoreApi.xcframework */,
 				39300ECA25EE728B007CAB02 /* FunctionalSwift.xcframework */,
 				F2B08D36B764EE465077D33F /* Pods_YooMoneyCoreApiExamplePods.framework */,
 			);
@@ -453,12 +450,11 @@
 				300100171FE2AA1800BB5966 /* Sources */,
 				300100181FE2AA1800BB5966 /* Frameworks */,
 				300100191FE2AA1800BB5966 /* Resources */,
-				39300ECD25EE728B007CAB02 /* Embed Frameworks */,
+				30CE261C2625AF2800FFEB36 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3001004A1FE2B67C00BB5966 /* PBXTargetDependency */,
 			);
 			name = YooMoneyCoreApiExample;
 			productName = YooMoneyCoreApiExample;
@@ -491,7 +487,6 @@
 				3072C49D1FE316130019D598 /* Sources */,
 				3072C49E1FE316130019D598 /* Frameworks */,
 				3072C49F1FE316130019D598 /* Resources */,
-				3072C4C41FE319590019D598 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -642,21 +637,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3072C4C41FE319590019D598 /* Carthage */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/FunctionalSwift.framework",
-			);
-			name = Carthage;
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
 		A5034F940E445D03DAAE5169 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -794,11 +774,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3001004A1FE2B67C00BB5966 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DD7681021F6817EA001C18CE /* YooMoneyCoreApi */;
-			targetProxy = 300100491FE2B67C00BB5966 /* PBXContainerItemProxy */;
-		};
 		3072C4A81FE316130019D598 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DD7681021F6817EA001C18CE /* YooMoneyCoreApi */;
@@ -893,6 +868,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -1547,6 +1523,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				DEFINES_MODULE = YES;
@@ -1577,6 +1554,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -1606,6 +1584,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
@@ -1643,6 +1622,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1722,6 +1702,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				APPLICATION_EXTENSION_API_ONLY = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
