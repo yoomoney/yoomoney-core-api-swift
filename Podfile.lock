@@ -1,27 +1,16 @@
 PODS:
-  - FunctionalSwift (1.5.0)
   - SwiftLint (0.40.3)
-  - YooMoneyCoreApi (1.10.0):
-    - FunctionalSwift (~> 1.5.0)
 
 DEPENDENCIES:
   - SwiftLint
-  - YooMoneyCoreApi (from `./`)
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
-    - FunctionalSwift
     - SwiftLint
 
-EXTERNAL SOURCES:
-  YooMoneyCoreApi:
-    :path: "./"
-
 SPEC CHECKSUMS:
-  FunctionalSwift: 42cd92452fbd4da9a7a15b5772f6a19806101747
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
-  YooMoneyCoreApi: 0f1a98a0260ff2f13833be501ab4cba60693bba1
 
-PODFILE CHECKSUM: d8185dc3cc6c5ac7adab4cdd728783414060c8e8
+PODFILE CHECKSUM: bb1aa15dc6aa00fd8df5ac1fcf3ac3f8f5509d3b
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

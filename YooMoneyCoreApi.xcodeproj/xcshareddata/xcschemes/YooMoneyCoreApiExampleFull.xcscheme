@@ -20,20 +20,6 @@
                ReferencedContainer = "container:YooMoneyCoreApi.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3001002E1FE2AA2900BB5966"
-               BuildableName = "YooMoneyCoreApiExamplePods.app"
-               BlueprintName = "YooMoneyCoreApiExamplePods"
-               ReferencedContainer = "container:YooMoneyCoreApi.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

@@ -54,4 +54,5 @@ fastlane/test_output
 # Appcode
 .idea/
 
+build/
 .DS_Store
