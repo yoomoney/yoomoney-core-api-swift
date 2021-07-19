@@ -404,12 +404,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3001002A1FE2AA1800BB5966 /* Build configuration list for PBXNativeTarget "YooMoneyCoreApiExample" */;
 			buildPhases = (
-				C6FDFAACE8D90740619EE40B /* Timing START */,
 				300100171FE2AA1800BB5966 /* Sources */,
 				300100181FE2AA1800BB5966 /* Frameworks */,
 				300100191FE2AA1800BB5966 /* Resources */,
 				30CE261C2625AF2800FFEB36 /* Embed Frameworks */,
-				3873B880DFA1CD897039DCD5 /* Timing END */,
 			);
 			buildRules = (
 			);
@@ -424,11 +422,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3072C4A91FE316130019D598 /* Build configuration list for PBXNativeTarget "YooMoneyCoreApiTests" */;
 			buildPhases = (
-				37731ECF03988B29AC461A55 /* Timing START */,
 				3072C49D1FE316130019D598 /* Sources */,
 				3072C49E1FE316130019D598 /* Frameworks */,
 				3072C49F1FE316130019D598 /* Resources */,
-				2E902AE7B97E0FCF49F12625 /* Timing END */,
 			);
 			buildRules = (
 			);
@@ -444,12 +440,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DD7681171F6817EA001C18CE /* Build configuration list for PBXNativeTarget "YooMoneyCoreApi" */;
 			buildPhases = (
-				0032BBDB185ED8F390CCE974 /* Timing START */,
 				DD7680FE1F6817EA001C18CE /* Sources */,
 				DD7680FF1F6817EA001C18CE /* Frameworks */,
 				DD7681001F6817EA001C18CE /* Headers */,
 				DD7681011F6817EA001C18CE /* Resources */,
-				48E39A9A9C07EF2EE9B4211B /* Timing END */,
 			);
 			buildRules = (
 			);
@@ -464,12 +458,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E0E34AD924D8414B00FD0E85 /* Build configuration list for PBXNativeTarget "YooMoneyCoreApi-watchOS" */;
 			buildPhases = (
-				B0F706C1BAE0834DA8BA84C1 /* Timing START */,
 				E0E34ACD24D8414B00FD0E85 /* Sources */,
 				E0E34ACE24D8414B00FD0E85 /* Frameworks */,
 				E0E34ACC24D8414B00FD0E85 /* Headers */,
 				E0E34ACF24D8414B00FD0E85 /* Resources */,
-				307445E388950B657E3C3A76 /* Timing END */,
 			);
 			buildRules = (
 			);
@@ -569,153 +561,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0032BBDB185ED8F390CCE974 /* Timing START */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing START";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"start\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		2E902AE7B97E0FCF49F12625 /* Timing END */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing END";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"end\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		307445E388950B657E3C3A76 /* Timing END */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing END";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"end\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		37731ECF03988B29AC461A55 /* Timing START */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing START";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"start\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		3873B880DFA1CD897039DCD5 /* Timing END */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing END";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"end\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		48E39A9A9C07EF2EE9B4211B /* Timing END */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing END";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"end\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		B0F706C1BAE0834DA8BA84C1 /* Timing START */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing START";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"start\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-		C6FDFAACE8D90740619EE40B /* Timing START */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Timing START";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "      DATE=`date \"+%Y-%m-%dT%H:%M:%S.%s\"`\n      echo \"{\\\"date\\\":\\\"$DATE\\\", \\\"taskName\\\":\\\"$TARGETNAME\\\", \\\"event\\\":\\\"start\\\"},\" >> /var/folders/zq/fn06mpq901q5y5qhjrt17hjw0000gp/T/event.tmp\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		300100171FE2AA1800BB5966 /* Sources */ = {
@@ -897,6 +742,7 @@
 				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = 2752592HU5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -916,6 +762,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -1594,7 +1441,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
