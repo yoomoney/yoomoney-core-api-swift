@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name         = 'YooMoneyCoreApi'
-  spec.version      = '1.11.4'
+  spec.version      = '1.11.5'
   spec.homepage     = 'https://github.com/yoomoney/yoomoney-core-api-swift'
   spec.license = {
     :type => "MIT",
@@ -8,7 +8,7 @@ Pod::Spec.new do |spec|
   }
   spec.authors      = 'YooMoney'
   spec.summary      = 'YooMoney Core API library'
-  spec.source       = { :git => "https://github.com/yoomoney/yoomoney-core-api-swift.git", :tag => "1.11.4" }
+  spec.source       = { :git => "https://github.com/yoomoney/yoomoney-core-api-swift.git", :tag => "1.11.5" }
   spec.module_name  = 'YooMoneyCoreApi'
 
   spec.ios.deployment_target  = '8.0'
@@ -18,5 +18,5 @@ Pod::Spec.new do |spec|
 
   spec.source_files  = 'YooMoneyCoreApi/**/*.swift'
 
-  spec.dependency 'FunctionalSwift', '~> 1.6.7'
+  spec.dependency 'FunctionalSwift', '~> 1.6'
 end

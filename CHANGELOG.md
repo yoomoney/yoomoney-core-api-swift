@@ -5,6 +5,10 @@
 ### NEXT_VERSION_DESCRIPTION_BEGIN
 ### NEXT_VERSION_DESCRIPTION_END
 
+## [1.11.5] (02-09-2021)
+
+* Обновлены зависимости FunctionalSwift
+
 ## [1.11.4] (19-07-2021)
 
 * Изменена подпись для сборки xcframework
