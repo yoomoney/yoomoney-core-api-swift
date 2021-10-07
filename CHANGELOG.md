@@ -5,6 +5,10 @@
 ### NEXT_VERSION_DESCRIPTION_BEGIN
 ### NEXT_VERSION_DESCRIPTION_END
 
+## [2.0.1] (07-10-2021)
+
+* Update Functional swift dependency
+
 ## [2.0.0] (07-09-2021)
 
 * Обьновлены версии ios deployment target  = 10.0, watchos deployment target = 3.0

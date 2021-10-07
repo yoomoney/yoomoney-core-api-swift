@@ -22,7 +22,7 @@
  */
 
 import Foundation
-import typealias FunctionalSwift.Result
+import FunctionalSwift
 
 /// The response from the server.
 public protocol ApiResponse {

@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-import protocol FunctionalSwift.Monoid
+import FunctionalSwift
 
 /// HTTP headers.
 public struct Headers {

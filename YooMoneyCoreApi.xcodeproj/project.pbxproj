@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		244F723074A13EB99F59AFC2 /* ConsoleLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F70685350C8AA16323B9C /* ConsoleLogger.swift */; };
 		244F75CC6FBE7B028BA58C5D /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 244F7CEE66DAEC7D4E29F917 /* Logger.swift */; };
+		25911AB0270C852E0033F0B1 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 25911AAF270C852E0033F0B1 /* Cartfile */; };
+		25911AB2270C858F0033F0B1 /* YooMoneyCoreApi.podspec in Resources */ = {isa = PBXBuildFile; fileRef = 25911AB1270C858F0033F0B1 /* YooMoneyCoreApi.podspec */; };
+		25911AB4270C85990033F0B1 /* CHANGELOG.md in Resources */ = {isa = PBXBuildFile; fileRef = 25911AB3270C85990033F0B1 /* CHANGELOG.md */; };
 		3001001E1FE2AA1800BB5966 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001001D1FE2AA1800BB5966 /* AppDelegate.swift */; };
 		300100201FE2AA1800BB5966 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3001001F1FE2AA1800BB5966 /* ViewController.swift */; };
 		300100231FE2AA1800BB5966 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 300100211FE2AA1800BB5966 /* Main.storyboard */; };
@@ -105,6 +108,9 @@
 /* Begin PBXFileReference section */
 		244F70685350C8AA16323B9C /* ConsoleLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConsoleLogger.swift; sourceTree = "<group>"; };
 		244F7CEE66DAEC7D4E29F917 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		25911AAF270C852E0033F0B1 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		25911AB1270C858F0033F0B1 /* YooMoneyCoreApi.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = YooMoneyCoreApi.podspec; sourceTree = "<group>"; };
+		25911AB3270C85990033F0B1 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		3001001B1FE2AA1800BB5966 /* YooMoneyCoreApiExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = YooMoneyCoreApiExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3001001D1FE2AA1800BB5966 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3001001F1FE2AA1800BB5966 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -253,6 +259,9 @@
 		DD7680F91F6817EA001C18CE = {
 			isa = PBXGroup;
 			children = (
+				25911AAF270C852E0033F0B1 /* Cartfile */,
+				25911AB1270C858F0033F0B1 /* YooMoneyCoreApi.podspec */,
+				25911AB3270C85990033F0B1 /* CHANGELOG.md */,
 				DD7681051F6817EA001C18CE /* YooMoneyCoreApi */,
 				E0E34AD224D8414B00FD0E85 /* YooMoneyCoreApi-watchOS */,
 				DD7681101F6817EA001C18CE /* YooMoneyCoreApiTests */,
@@ -550,6 +559,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25911AB0270C852E0033F0B1 /* Cartfile in Resources */,
+				25911AB4270C85990033F0B1 /* CHANGELOG.md in Resources */,
+				25911AB2270C858F0033F0B1 /* YooMoneyCoreApi.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,7 +775,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=macosx*]" = "";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = AdHoc;
@@ -1253,7 +1265,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1284,7 +1296,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 			};
 			name = AppStore;
@@ -1319,7 +1331,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = YooMoneyCoreApi;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				WATCHOS_DEPLOYMENT_TARGET = 3.0;
@@ -1394,7 +1406,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.yoo.money.api.core;
 				PRODUCT_NAME = YooMoneyCoreApi;
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
@@ -1477,7 +1489,7 @@
 				PRODUCT_NAME = YooMoneyCoreApi;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;

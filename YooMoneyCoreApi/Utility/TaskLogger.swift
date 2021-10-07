@@ -21,9 +21,7 @@
  * THE SOFTWARE.
  */
 
-import struct Foundation.Data
-import struct Foundation.Date
-import Foundation.NSURLResponse
+import Foundation
 
 /// API requests and Response logger
 class TaskLogger {
