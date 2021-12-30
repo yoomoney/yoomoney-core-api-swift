@@ -5,6 +5,10 @@
 ### NEXT_VERSION_DESCRIPTION_BEGIN
 ### NEXT_VERSION_DESCRIPTION_END
 
+## [2.1.0] (30-12-2021)
+
+* Проект адаптирован для сборки в Xcode 13
+
 ## [2.0.1] (07-10-2021)
 
 * Update Functional swift dependency
